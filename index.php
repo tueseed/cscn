@@ -2,14 +2,12 @@
 <?php 
   // check 'action' from get params
   if(!array_key_exists("action", $_GET)){
-    header("Location: ?action=rg1");
+    header("Location: ?action=home");
     exit(0);
   }
   // get action value from action key in $_GET
-  $action = $_GET['action'];
-  if(array_key_exists("rg", $_GET)){$rg = $_GET['rg'];}
-  
-?>
+  $action = $_GET['action'];  
+// ?>
 <?php require('./partials/header.php'); ?>
 <?php 
   // filter only php extension
