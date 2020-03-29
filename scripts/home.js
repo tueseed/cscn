@@ -6,7 +6,37 @@ if(!getUrlVars()["code"])
 {window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https%3A%2F%2Fcscn.herokuapp.com%3Faction%3Dhome&state=12345abcd&scope=openid'}
 else if(getUrlVars()["code"])
 {
-  alert(getUrlVars()["code"])
+  var code = getUrlVars()["code"]
+  $.ajax({
+    async: true,
+    crossDomain: true,
+    url: "https://api.line.me/oauth2/v2.1/token",
+    method: "POST",
+    headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+              },
+    data: {
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": "https://shake-battle.herokuapp.com/",
+            "client_id": "1654004533",
+            "client_secret": "8021aaa3dad2e694da20a39c678486ec"
+          },
+    statusCode:{
+                400:function()
+                    {
+                      alert("400");
+                      window.location.href = 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https%3A%2F%2Fcscn.herokuapp.com%3Faction%3Dhome&state=12345abcd&scope=openid'
+                    }
+               },
+    success: function(response) {
+                                  var id_token = response.id_token
+                                  var base64 = id_token.split('.')[1]
+                                  var profile = JSON.parse(window.atob(base64))
+                                  console.log(profile)
+                                }		
+    })
 }
 fb.on('value',function(snapshot){                         
                                   var data = snapshot.val()

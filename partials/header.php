@@ -29,7 +29,7 @@
         <div class="container-fluid">
           <a class="navbar-brand font-weight-bold" href="?action=rg1">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
-            <span class="text-white" id="head_text">รายงานสถานะงานแก้กระแสไฟฟ้าขัดข้อง-การไฟฟ้าส่วนภูมิภาคอำเภอโพธาราม</span>
+            <span class="text-white" id="head_text">ระบบบริหารจัดการแฟ้มงานก่อสร้าง(CSCN)</span>
           </a>
       </nav>
     </header>
