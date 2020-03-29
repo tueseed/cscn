@@ -31,6 +31,24 @@
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
             <span class="text-white" id="head_text">ระบบบริหารจัดการแฟ้มงานก่อสร้าง(CSCN)</span>
           </a>
+          <div class="dropdown" id="userDropdown" style="display:none;">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              <span class="header text-dark font-weight-bold text-center" id="user_logged">
+                <span class="text-white" id="userName">ยังไม่ได้เข้าสู่ระบบ</span>
+                <img src="" id="userPicture" width="75" height="50">
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right justify-content-center">
+                <a class="dropdown-item" href="?action=upload" id="admin_menu">
+                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  นำเข้าข้อมูล
+                </a>
+                <a class="dropdown-item" href="#" onclick="logout()">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  ออกจากระบบ
+                </a>
+            </div>
+          </div>
       </nav>
     </header>
     <main class="mb-3" id="main">
