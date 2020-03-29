@@ -2,6 +2,12 @@ var fb = firebase.database().ref('event')
 var tech = firebase.database().ref('tech')
 var msg = firebase.database().ref('message')
 var images = firebase.storage().ref()
+if(!getUrlVars()["code"])
+{window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid'}
+else if(getUrlVars()["code"])
+{
+  alert(getUrlVars()["code"])
+}
 fb.on('value',function(snapshot){                         
                                   var data = snapshot.val()
                                   var i =0
