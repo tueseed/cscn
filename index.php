@@ -1,12 +1,15 @@
 <?php require('./utils/array_utils.php'); ?>
 <?php 
   // check 'action' from get params
+  if(array_key_exists("code", $_GET)){$code = $_GET['code'];}
   if(!array_key_exists("action", $_GET)){
-    header("Location: ?action=home");
+    header("Location: ?action=home&code=".$code);
     exit(0);
   }
   // get action value from action key in $_GET
-  $action = $_GET['action'];  
+  $action = $_GET['action'];
+  
+  
 // ?>
 <?php require('./partials/header.php'); ?>
 <?php 
