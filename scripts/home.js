@@ -3,7 +3,7 @@ var tech = firebase.database().ref('tech')
 var msg = firebase.database().ref('message')
 var images = firebase.storage().ref()
 if(!getUrlVars()["code"])
-{window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https%3A%2F%2Fcscn.herokuapp.com%3Faction%3Dhome&state=12345abcd&scope=openid'}
+{window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid'}
 else if(getUrlVars()["code"])
 {
   var code = getUrlVars()["code"]
