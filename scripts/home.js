@@ -19,7 +19,7 @@ else if(getUrlVars()["code"])
     data: {
             "grant_type": "authorization_code",
             "code": code,
-            "redirect_uri": "https://shake-battle.herokuapp.com/",
+            "redirect_uri": "https://cscn.herokuapp.com",
             "client_id": "1654004533",
             "client_secret": "8021aaa3dad2e694da20a39c678486ec"
           },
