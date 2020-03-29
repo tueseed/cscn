@@ -20,7 +20,7 @@ else if(getUrlVars()["code"])
     data: {
             "grant_type": "authorization_code",
             "code": code,
-            "redirect_uri": "https%3A%2F%2Fcscn.herokuapp.com%3Faction%3Dhome",
+            "redirect_uri": "https://cscn.herokuapp.com",
             "client_id": "1654004533",
             "client_secret": "8021aaa3dad2e694da20a39c678486ec"
           },
