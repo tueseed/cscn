@@ -1,0 +1,12 @@
+{
+  "name": "rg4-team/new-voca",
+  "authors": [
+    {
+      "name": "Cheevavorn Saitthakool",
+      "email": "mean.mea2@gmail.com"
+    }
+  ],
+  "require": {
+    "phpoffice/phpspreadsheet": "^1.9"
+  }
+}
