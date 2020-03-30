@@ -22,11 +22,10 @@
 
 <script>
 var config = {
-    apiKey: 'AIzaSyD1acjvp5u-cTOdI3sB-sxImdAjVVKaTmc',
-    authDomain: 'eo-ptr.firebaseapp.com',
-    databaseURL: 'https://eo-ptr.firebaseio.com',
-    projectId: 'eo-ptr',
-    storageBucket: "eo-ptr.appspot.com"
-};
+    apiKey: 'AIzaSyDxNF3vWAXTNmNu6eifZkxTlPTJUmPQwTQ',
+    authDomain: 'cscn-2567c.firebaseapp.com',
+    databaseURL: 'https://cscn-2567c.firebaseio.com',
+    projectId: 'cscn-2567c'
+}
 firebase.initializeApp(config);
 </script>
