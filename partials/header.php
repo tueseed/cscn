@@ -39,19 +39,19 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right justify-content-center">
-                <a class="dropdown-item" href="?action=upload" >
+                <a class="dropdown-item" href="#" >
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   <span id="empName"></span>
                 </a>
-                <a class="dropdown-item" href="?action=upload" >
+                <a class="dropdown-item" href="#" >
                   <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
                   <span id="empsecTion"></span>
                 </a>
-                <a class="dropdown-item" href="?action=upload" id="admin_menu">
+                <a class="dropdown-item" href="#" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานของแผนก
                 </a>
-                <a class="dropdown-item" href="?action=upload" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
                   เพิ่ม/นำเข้าข้อมูล
                 </a>
