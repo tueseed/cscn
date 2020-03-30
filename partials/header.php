@@ -53,7 +53,7 @@
                 </a>
                 <a class="dropdown-item" href="?action=upload" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
-                  นำเข้าข้อมูล
+                  เพิ่ม/นำเข้าข้อมูล
                 </a>
                 <a class="dropdown-item" href="#" onclick="logout()">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
