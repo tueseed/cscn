@@ -1,6 +1,6 @@
 var emp = firebase.database().ref('employee')
 
-function regis_ำทย()
+function regis_emp()
 {
     emp.orderByChild('staffId').equalTo($('#staffId').val()).once('value',function (snapshot){
                                                                                                 if(snapshot.val() == null)
