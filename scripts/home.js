@@ -127,7 +127,8 @@ function creat_job()
               'customerName':$('#customerName').val(),
               'customerTel':$('#customerTel').val(),
               'status':'creat',
-              'dateReq':dateReq
+              'dateReq':dateReq,
+              'owner':localStorage.getItem('display_url')
 
   })
 }
