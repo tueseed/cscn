@@ -6,13 +6,10 @@
                     <span class="card-title text-white mt-2">บันทึกข้อมูลงานก่อสร้าง</span>
                 </div>
                   <div class="row mb-2">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
+                      <input type="text" class="form-control mt-1" id="reqNumber" name="event_input" placeholder="เลขที่คำร้อง">  
                       <input type="text" class="form-control mt-1" id="jobName" name="event_input" placeholder="ชื่องาน">
-                      <input type="text" class="form-control mt-1" id="reqNumber" name="event_input" placeholder="เลขที่คำร้อง">
-                    </div>
-                    <div class="col-lg-6">
                       <input type="text" class="form-control mt-1" id="customerName" name="event_input" placeholder="ชื่อลูกค้า">
-                      <input type="text" class="form-control mt-1" id="customerTel" name="event_input" placeholder="เบอร์โทรศัพท์">
                     </div>
                 </div>
             </div>
