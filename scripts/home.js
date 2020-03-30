@@ -1,6 +1,17 @@
 var job = firebase.database().ref('job')
 var emp = firebase.database().ref('employee')
 
+$.blockUI({
+  message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">กำลังโพสต์..</h5>',
+  overlayCSS : { 
+                  backgroundColor: '#ffffff',
+                  opacity: 1
+              },
+      css : {
+        opacity: 1,
+        border: 'none',
+      }
+    })
 if(!getUrlVars()["code"])
 {
   window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid%20profile'
@@ -39,15 +50,15 @@ else if(getUrlVars()["code"])
                                   localStorage.setItem('name',profile.name)
                                   localStorage.setItem('display_url',profile.picture)
                                   localStorage.setItem('userId',profile.sub)
-                                  
+                                  $('#userDropdown').show()
+                                  $('#userName').html(profile.name)
+                                  $('#userPicture').attr('src',profile.picture)
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
                                   if(checkEmp.val() == null)
                                   {
                                       window.location.href = 'index.php?action=emp_regis'
                                   }
-                                  $('#userDropdown').show()
-                                  $('#userName').html(profile.name)
-                                  $('#userPicture').attr('src',profile.picture)
+                                  
                                 }		
     })
 }
