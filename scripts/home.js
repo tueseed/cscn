@@ -116,21 +116,39 @@ job.on('value',function(snapshot){
 //                                           })
 
 
-function creat_job()
+async function creat_job()
 {
   console.log('dfasjcfapdjo')
   var d = new Date()
   var dateReq = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
-  job.push({
-              'jobName':$('#jobName').val(),
-              'reqNumber':$('#reqNumber').val(),
-              'customerName':$('#customerName').val(),
-              'customerTel':$('#customerTel').val(),
-              'status':'creat',
-              'dateReq':dateReq,
-              'owner':localStorage.getItem('display_url')
-
-  })
+  var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqNumber').val()).once('value')
+  if(checkJob.val()== null)
+  {
+      var pushJob = await job.push({
+                                    'jobName':$('#jobName').val(),
+                                    'reqNumber':$('#reqNumber').val(),
+                                    'customerName':$('#customerName').val(),
+                                    'customerTel':$('#customerTel').val(),
+                                    'status':'creat',
+                                    'dateReq':dateReq,
+                                    'owner':localStorage.getItem('display_url')
+                                  })
+      Swal.fire({
+                  title: 'สำเร็จ!',
+                  html: 'เลขที่คำร้อง '+ $('#reqNumber').val() + 'มีอยู่ในระบบแล้ว',
+                  type: 'success',
+                  timer: 3000
+                })
+  }
+  else if(checkJob.val() !== null)
+  {
+    Swal.fire({
+      title: 'แจ้งเตือน',
+      html: 'เลขที่คำร้อง '+ $('#reqNumber').val() + 'มีอยู่ในระบบแล้ว',
+      type: 'warning',
+      timer: 3000
+    })
+  }
 }
 
 function tbl_btn(value, row, index) 
