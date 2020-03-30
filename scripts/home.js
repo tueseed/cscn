@@ -2,7 +2,7 @@ var job = firebase.database().ref('job')
 var emp = firebase.database().ref('employee')
 
 $.blockUI({
-  message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">กำลังโพสต์..</h5>',
+  message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">รอสักครู่..</h5>',
   overlayCSS : { 
                   backgroundColor: '#ffffff',
                   opacity: 1
@@ -59,7 +59,8 @@ else if(getUrlVars()["code"])
                                       window.location.href = 'index.php?action=emp_regis'
                                   }
                                   
-                                }		
+                                },	
+    complete: function(){$.unblockUI()}	
     })
 }
 
