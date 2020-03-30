@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4" id="upload_card">
+  <div class="col-lg-4 offset-lg-4" id="upload_card">
       <div class="card shadow mt-1 bg-primary" >
         <div class="card-body">
           <div class="row mb-2">
@@ -17,36 +17,8 @@
               บันทึก
             </button>
           </div>
-        </div>
-      </div>
-  </div>
-  <div class="col-lg-8">
-    <div class="row mt-4">
-      <div class="col-lg-12">
-          <div class="card shadow" >
-            <div class="card-body">
-            <table 
-            id="jobTbl_section"
-            data-toggle="table"  
-            data-fixed-columns="true"
-            data-sticky-header="true"
-            data-search="true">
-            <thead>
-              <tr>
-                <th data-align="center" data-field="owner" data-formatter="picOwner">Owner</th>
-                <th data-align="center" data-field="jobName" >ชื่องาน</th>
-                <th data-align="center" data-field="reqNumber">เลขที่คำร้อง</th>
-                <th data-align="center" data-field="dateReq">วันที่รับคำร้อง</th>
-                <th data-align="center" data-field="customerName">ชื่อลูกค้า</th>
-                <th data-align="center" data-field="customerTel" >เบอร์โทรศัพท์</th>
-                <th data-align="center" data-field="reqNumber" data-formatter="tbl_btn">ดำเนินการ</th>
-              </tr>
-            </thead>
-          </table>
             </div>
-          </div>
-        </div>
-    </div>
+      </div>
   </div>
 </div>
 <div class="row">
