@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-4 offset-lg-4" id="upload_card">
       <div class="card shadow mt-1 bg-primary" >
         <div class="card-body">
@@ -20,7 +20,8 @@
             </div>
       </div>
   </div>
-</div>
+</div> -->
+
 <div class="row">
   <div class="col-lg-12">
     <div class="row mt-4">
