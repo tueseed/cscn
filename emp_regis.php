@@ -13,8 +13,16 @@
             <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="ชื่อ - นามสกุลของท่าน" required>
         </div>
         <div class="form-group">
-            <label for="telInput" class="font-weight-bold text-white"><i class="fa fa-address-card"></i> ตำแหน่งสังกัด</label>
+            <label for="telInput" class="font-weight-bold text-white"><i class="fa fa-address-card"></i> ตำแหน่ง</label>
             <input type="text" class="form-control" id="position" name="position" placeholder="กรอกตำแหน่ง/สังกัด" required>
+        </div>
+        <div class="form-group">
+            <label for="telInput" class="font-weight-bold text-white"><i class="fa fa-address-card"></i> แผนก</label>
+            <select class="form-control" id="secTion">
+                <option>แผนกก่อสร้าง</option>
+                <option>แผนกบริการลูกค้า</option>
+                <option>แผนกปฏิบัติการและบำรุงรักษา</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="telInput" class="font-weight-bold text-white"><i class="fa fa-address-card"></i> รหัสพนักงาน</label>

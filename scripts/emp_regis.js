@@ -9,6 +9,7 @@ function regis_emp()
                                                                                                         'uid':localStorage.getItem('userId'),
                                                                                                         'techName':$('#nameInput').val(),
                                                                                                         'position':$('#position').val(),
+                                                                                                        'section':$('$secTion').val(),
                                                                                                         'staffId':$('#staffId').val(),
                                                                                                         'display_url':localStorage.getItem('display_url')
                                                                                                         })
