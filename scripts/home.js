@@ -140,7 +140,6 @@ async function creat_job()
                                     'jobName':$('#jobName').val(),
                                     'reqNumber':$('#reqNumber').val(),
                                     'customerName':$('#customerName').val(),
-                                    'customerTel':$('#customerTel').val(),
                                     'status':'creat',
                                     'dateReq':dateReq,
                                     'owner':localStorage.getItem('display_url'),

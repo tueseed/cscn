@@ -72,7 +72,12 @@
           </div>
       </div>
       <div class="modal-footer">
-          
+        <div class="float-right">
+          <button class="btn btn-success"  id="save_btn" onclick="creat_job()">
+            <i class="fas fa-save" aria-hidden="true"></i>
+            บันทึก
+          </button>
+        </div>
       </div>
     </div>
   </div>
