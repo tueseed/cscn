@@ -61,6 +61,9 @@
         <h5 class='modal-title font-weight-bold' id="head_modal">
           เพิ่ม/นำเข้าข้อมูล 
         </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
       </div>
       <div class='modal-body'>
           <div class="row">
