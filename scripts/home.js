@@ -150,9 +150,9 @@ async function creat_job()
                   html: 'เลขที่คำร้อง '+ $('#reqNumber').val() + 'มีอยู่ในระบบแล้ว',
                   type: 'success',
                   timer: 3000
-                })
-      $("input[name='event_input']").val('')
-      $('#jobCreat').hide()
+                }).then($('#jobCreat').hide())
+      
+      
   }
   else if(checkJob.val() !== null)
   {
