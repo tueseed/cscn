@@ -55,7 +55,7 @@ else if(getUrlVars()["code"])
                                   $('#userPicture').attr('src',profile.picture)
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
                                   var empInfo = checkEmp.val()
-                                  console.log(empInfo)
+                                  console.log(empInfo[0])
                                   if(checkEmp.val() == null)
                                   {
                                       window.location.href = 'index.php?action=emp_regis'
