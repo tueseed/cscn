@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-lg-8 offset-lg-2" id="upload_card">
+<div class="col-lg-4" id="upload_card">
         <div class="card shadow mt-1 bg-primary" >
             <div class="card-body">
                 <div class="row">
