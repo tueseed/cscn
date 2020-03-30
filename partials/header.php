@@ -39,6 +39,10 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right justify-content-center">
+                <a class="dropdown-item" href="?action=upload" >
+                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <span id="empName"></span>
+                </a>
                 <a class="dropdown-item" href="?action=upload" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
                   นำเข้าข้อมูล

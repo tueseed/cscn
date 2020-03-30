@@ -67,6 +67,7 @@ else if(getUrlVars()["code"])
                                     localStorage.setItem('section',empInfo.section)
                                     localStorage.setItem('staffId',empInfo.staffId)
                                     localStorage.setItem('display_url',empInfo.display_url)
+                                    $('#empName').html(empInfo.techName)
                                   }
                                   $.unblockUI()
                                 }
