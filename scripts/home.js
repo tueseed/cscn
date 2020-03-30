@@ -145,14 +145,14 @@ async function creat_job()
                                     'owner':localStorage.getItem('display_url'),
                                     'ownerSection':localStorage.getItem('section')
                                   })
-      Swal.fire({
-                  title: 'สำเร็จ!',
-                  html: 'เลขที่คำร้อง '+ $('#reqNumber').val() + 'มีอยู่ในระบบแล้ว',
-                  type: 'success',
-                  timer: 3000
-                }).then($('#jobCreat').hide())
+      // Swal.fire({
+      //             title: 'สำเร็จ!',
+      //             html: 'เลขที่คำร้อง '+ $('#reqNumber').val() + 'มีอยู่ในระบบแล้ว',
+      //             type: 'success',
+      //             timer: 3000
+      //           })
       
-      
+      $('#jobCreat').hide()
   }
   else if(checkJob.val() !== null)
   {
