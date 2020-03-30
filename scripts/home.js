@@ -58,9 +58,8 @@ else if(getUrlVars()["code"])
                                   {
                                       window.location.href = 'index.php?action=emp_regis'
                                   }
-                                  
-                                },	
-    complete: function(){$.unblockUI()}	
+                                  $.unblockUI()
+                                }
     })
 }
 
