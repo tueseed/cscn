@@ -55,20 +55,20 @@ else if(getUrlVars()["code"])
                                   $('#userPicture').attr('src',profile.picture)
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
                                   var empInfo = checkEmp.val()
-                                  console.log(empInfo[0])
+                                  console.log(empInfo)
                                   if(checkEmp.val() == null)
                                   {
                                       window.location.href = 'index.php?action=emp_regis'
                                   }
                                   else if(checkEmp.val() !== null)
                                   {
-                                    localStorage.setItem('userId',empInfo.uid)
-                                    localStorage.setItem('name',empInfo.techName)
-                                    localStorage.setItem('position',empInfo.position)
-                                    localStorage.setItem('section',empInfo.section)
-                                    localStorage.setItem('staffId',empInfo.staffId)
-                                    localStorage.setItem('display_url',empInfo.display_url)
-                                    $('#empName').html(empInfo.techName)
+                                    localStorage.setItem('userId',Object.values(empInfo)[0].uid)
+                                    localStorage.setItem('name',Object.values(empInfo)[0].techName)
+                                    localStorage.setItem('position',Object.values(empInfo)[0].position)
+                                    localStorage.setItem('section',Object.values(empInfo)[0].section)
+                                    localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
+                                    localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
+                                    $('#empName').html(Object.values(empInfo)[0].techName)
                                   }
                                   $.unblockUI()
                                 }
