@@ -142,6 +142,11 @@ function tbl_btn(value, row, index)
 ].join("")
 }
 
+function pivOwner(value,row,index)
+{
+  return '<img class="shadow-sm" src="'+value+'" id="userPicture" style="width:50px;height:50px;border-radius:50px 50px;"/>'
+}
+
 
 
 

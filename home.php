@@ -41,7 +41,7 @@
             data-search="true">
             <thead>
               <tr>
-                <th data-align="center" data-field="creatPic" >Owner</th>
+                <th data-align="center" data-field="creatPic" data-formatter="picOwner">Owner</th>
                 <th data-align="center" data-field="jobName" >ชื่องาน</th>
                 <th data-align="center" data-field="reqNumber">เลขที่คำร้อง</th>
                 <th data-align="center" data-field="dateReq">วันที่รับคำร้อง</th>
