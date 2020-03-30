@@ -139,6 +139,7 @@ async function creat_job()
                   type: 'success',
                   timer: 3000
                 })
+      $("input[name='event_input']").val('')
   }
   else if(checkJob.val() !== null)
   {
