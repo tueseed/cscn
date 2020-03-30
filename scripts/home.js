@@ -153,6 +153,7 @@ async function creat_job()
                   timer: 3000
                 })
       $("input[name='event_input']").val('')
+      $('#jobCreat').hide()
   }
   else if(checkJob.val() !== null)
   {
@@ -179,6 +180,12 @@ function picOwner(value,row,index)
 {
   return '<img class="shadow-sm" src="'+value+'" id="userPicture" style="width:50px;height:50px;border-radius:50px 50px;"/>'
 }
+
+
+
+$("#jobCreat").on('hide.bs.modal', function(){
+  $("input[name='event_input']").val('')
+ })
 
 
 
