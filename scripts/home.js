@@ -143,7 +143,8 @@ async function creat_job()
                                     'customerTel':$('#customerTel').val(),
                                     'status':'creat',
                                     'dateReq':dateReq,
-                                    'owner':localStorage.getItem('display_url')
+                                    'owner':localStorage.getItem('display_url'),
+                                    'ownerSection':localStorage.getItem('section')
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',

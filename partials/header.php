@@ -48,6 +48,10 @@
                   <span id="empsecTion"></span>
                 </a>
                 <a class="dropdown-item" href="?action=upload" id="admin_menu">
+                  <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
+                  กล่องงานของแผนก
+                </a>
+                <a class="dropdown-item" href="?action=upload" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
                   นำเข้าข้อมูล
                 </a>
