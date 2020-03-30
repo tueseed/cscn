@@ -36,9 +36,9 @@ else if(getUrlVars()["code"])
                                   var base64 = id_token.split('.')[1]
                                   var profile = JSON.parse(window.atob(base64))
                                   console.log(profile)
-                                  localStorage.set('name',profile.name)
-                                  localStorage.set('display_url',profile.picture)
-                                  localStorage.set('userId',profile.sub)
+                                  localStorage.setItem('name',profile.name)
+                                  localStorage.setItem('display_url',profile.picture)
+                                  localStorage.setItem('userId',profile.sub)
                                   
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
                                   if(checkEmp.val() == null)
