@@ -5,7 +5,7 @@ function regis_emp()
     emp.orderByChild('staffId').equalTo($('#staffId').val()).once('value',function (snapshot){
                                                                                                 if(snapshot.val() == null)
                                                                                                 {
-                                                                                                    tech.push({
+                                                                                                    emp.push({
                                                                                                         'uid':localStorage.getItem('userId'),
                                                                                                         'techName':$('#nameInput').val(),
                                                                                                         'position':$('#position').val(),
