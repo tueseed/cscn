@@ -46,7 +46,6 @@ else if(getUrlVars()["code"])
                                   var id_token = response.id_token
                                   var base64 = id_token.split('.')[1]
                                   var profile = JSON.parse(window.atob(base64))
-                                  console.log(profile)
                                   localStorage.setItem('name',profile.name)
                                   localStorage.setItem('display_url',profile.picture)
                                   localStorage.setItem('userId',profile.sub)
@@ -55,7 +54,6 @@ else if(getUrlVars()["code"])
                                   $('#userPicture').attr('src',profile.picture)
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
                                   var empInfo = checkEmp.val()
-                                  console.log(empInfo)
                                   if(checkEmp.val() == null)
                                   {
                                       window.location.href = 'index.php?action=emp_regis'
@@ -69,6 +67,7 @@ else if(getUrlVars()["code"])
                                     localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
                                     $('#empName').html(Object.values(empInfo)[0].techName)
+                                    $('#empsecTion').html(Object.values(empInfo)[0].section)
                                   }
                                   $.unblockUI()
                                 }
