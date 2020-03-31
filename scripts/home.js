@@ -184,6 +184,38 @@ $("#jobCreat").on('hide.bs.modal', function(){
   $("input[name='event_input']").val('')
  })
 
+ $('#selectFile').on('click', function(){$('#reqFile').trigger('click')})
+ $(document).ready(function(){
+    $('#reqFile').change(function(e){                         
+                                      readFile()                                                  
+                                          })
+  })
+
+function readFile()
+{
+  var fileUpload = document.getElementById("reqFile")
+  var reader = new FileReader()
+  if (reader.readAsBinaryString)
+  {
+    reader.onload = function (e) {ProcessExcel(e.target.result);}
+    reader.readAsBinaryString(fileUpload.files[0]);
+  }
+}
+
+function ProcessExcel(data)
+{
+  var workbook = XLSX.read(data, {type: 'binary'})
+  var firstSheet = workbook.SheetNames[0]
+  var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet])
+  console.log(excelRows)
+  var i = 0 
+  while(excelRows[i])
+  {
+    console.log(excelRows[i])
+    i++
+  }
+
+}
 
 
 

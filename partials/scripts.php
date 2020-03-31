@@ -14,6 +14,10 @@
 <script src="./assets/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.th.min.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <!-- <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>

@@ -41,7 +41,6 @@
                 <th data-align="center" data-field="reqNumber">เลขที่คำร้อง</th>
                 <th data-align="center" data-field="dateReq">วันที่รับคำร้อง</th>
                 <th data-align="center" data-field="customerName">ชื่อลูกค้า</th>
-                <th data-align="center" data-field="customerTel" >เบอร์โทรศัพท์</th>
                 <th data-align="center" data-field="reqNumber" data-formatter="tbl_btn">ดำเนินการ</th>
               </tr>
             </thead>
@@ -67,20 +66,23 @@
       </div>
       <div class='modal-body'>
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
               <input type="text" class="form-control mt-1" id="reqNumber" name="event_input" placeholder="เลขที่คำร้อง">  
               <input type="text" class="form-control mt-1" id="jobName" name="event_input" placeholder="ชื่องาน">
               <input type="text" class="form-control mt-1" id="customerName" name="event_input" placeholder="ชื่อลูกค้า">
             </div>
           </div>
       </div>
+      <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <div class="modal-footer">
-        <div class="float-right">
-          <button class="btn btn-success"  id="save_btn" onclick="creat_job()">
-            <i class="fas fa-save" aria-hidden="true"></i>
-            บันทึก
-          </button>
-        </div>
+                  <button class="btn btn-success mr-auto"  id="selectFile" >
+                    <i class="fas fa-save" aria-hidden="true"></i>
+                    เลือกไฟล์
+                  </button>
+                <button class="btn btn-success"  id="save_btn" onclick="creat_job()">
+                  <i class="fas fa-save" aria-hidden="true"></i>
+                  บันทึก
+                </button>
       </div>
     </div>
   </div>
