@@ -19,6 +19,23 @@
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
       }
+
+      .item {
+    position:relative;
+    padding-top:0px;
+    display:inline-block;
+}
+.notify-badge{
+    position: absolute;
+    right:-20px;
+    top:-15px;
+    background:red;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    color:white;
+    padding:5px 5px;
+    font-size:14px;
+}
     </style>
   </head>
 
@@ -35,7 +52,10 @@
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
               <span class="header text-dark font-weight-bold text-center" id="user_logged">
                 <span class="text-white" id="userName">ยังไม่ได้เข้าสู่ระบบ</span>
+                <div class="item">
+                <span class="notify-badge" >99+</span>
                 <img class="shadow-sm" src="" id="userPicture" style="width:50px;height:50px;border-radius:50px 50px;"/>
+                </div>
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right justify-content-center">
@@ -49,7 +69,7 @@
                 </a>
                 <a class="dropdown-item" href="#" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
-                  กล่องงานของแผนก
+                  กล่องงานของแผนก <span class="badge badge-danger">99+</span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
