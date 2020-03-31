@@ -202,16 +202,32 @@ function readFile()
   }
 }
 
-function ProcessExcel(data)
+async function ProcessExcel(data)
 {
   var workbook = XLSX.read(data, {type: 'binary'})
   var firstSheet = workbook.SheetNames[0]
   var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet])
   console.log(excelRows)
+  $('#rowUpload').show()
+  var allData = excelRows.length
+  var d = new Date()
+  var dateReq = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
   var i = 0 
   while(excelRows[i])
   {
-    console.log(excelRows[i])
+    var obj = excelRows[i]
+    console.log(Object.values(obj)[3])
+    var pushJob = await job.push({
+                                  'jobName':Object.values(obj)[7],
+                                  'reqNumber':Object.values(obj)[3],
+                                  'status':'creat',
+                                  'dateReq':dateReq,
+                                  'owner':localStorage.getItem('display_url'),
+                                  'ownerSection':localStorage.getItem('section')
+                                })
+    var percentUpload = (parseInt(i+1)/parseInt(allData))*100
+    $('#uploadStatus').attr('style','width:' + percentUpload + '%')
+    $('#uploadText').html('กำลังอัพโหลด ' + parseInt(i+1) + '/' + allData +' รายการ')
     i++
   }
 

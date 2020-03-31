@@ -31,7 +31,7 @@
             <table 
             id="jobTbl"
             data-toggle="table"  
-            data-fixed-columns="true"
+            data-fixed-columns="false"
             data-sticky-header="true"
             data-search="true">
             <thead>
@@ -40,7 +40,6 @@
                 <th data-align="center" data-field="jobName" >ชื่องาน</th>
                 <th data-align="center" data-field="reqNumber">เลขที่คำร้อง</th>
                 <th data-align="center" data-field="dateReq">วันที่รับคำร้อง</th>
-                <th data-align="center" data-field="customerName">ชื่อลูกค้า</th>
                 <th data-align="center" data-field="reqNumber" data-formatter="tbl_btn">ดำเนินการ</th>
               </tr>
             </thead>
@@ -72,17 +71,27 @@
               <input type="text" class="form-control mt-1" id="customerName" name="event_input" placeholder="ชื่อลูกค้า">
             </div>
           </div>
+          <div class="row mt-2" id="rowUpload" style="display:none;">
+            <div class="col-md-12 ">
+              <div class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:0%" id="uploadStatus">
+                    <spam id="uploadText"></span>
+                </div>
+              </div>
+              </div>
+          </div>
       </div>
       <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <div class="modal-footer">
-                  <button class="btn btn-success mr-auto"  id="selectFile" >
-                    <i class="fas fa-save" aria-hidden="true"></i>
-                    เลือกไฟล์
-                  </button>
-                <button class="btn btn-success"  id="save_btn" onclick="creat_job()">
-                  <i class="fas fa-save" aria-hidden="true"></i>
-                  บันทึก
-                </button>
+        <button class="btn btn-success mr-auto"  id="selectFile" >
+          <i class="fas fa-save" aria-hidden="true"></i>
+          เลือกไฟล์
+        </button>
+        <button class="btn btn-success"  id="save_btn" onclick="creat_job()">
+          <i class="fas fa-save" aria-hidden="true"></i>
+          บันทึก
+        </button>
       </div>
     </div>
   </div>
