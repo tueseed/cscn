@@ -31,6 +31,8 @@
             <table 
             id="jobTbl"
             data-toggle="table"  
+            data-pagination="true"
+            data-page-list="[5, 10, 20, 100, ALL]"
             data-fixed-columns="false"
             data-sticky-header="true"
             data-search="true">
