@@ -32,7 +32,9 @@
             id="jobTbl"
             data-toggle="table"  
             data-pagination="true"
+            data-pagination-v-align="both"
             data-page-list="[5, 10, 20, 100, ALL]"
+            data-page-size="5"
             data-fixed-columns="false"
             data-sticky-header="true"
             data-search="true">
