@@ -27,13 +27,13 @@
 }
 .notify-badge{
     position: absolute;
-    right:-20px;
-    top:-15px;
+    right:-15px;
+    top:-10px;
     background:red;
     text-align: center;
     border-radius: 10px 10px 10px 10px;
     color:white;
-    padding:5px 5px;
+    padding:1px 1px;
     font-size:14px;
 }
     </style>
@@ -53,7 +53,7 @@
               <span class="header text-dark font-weight-bold text-center" id="user_logged">
                 <span class="text-white" id="userName">ยังไม่ได้เข้าสู่ระบบ</span>
                 <div class="item">
-                <span class="notify-badge" >99+</span>
+                <span class="notify-badge" id="notifyNumber"></span>
                 <img class="shadow-sm" src="" id="userPicture" style="width:50px;height:50px;border-radius:50px 50px;"/>
                 </div>
               </span>

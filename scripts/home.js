@@ -94,6 +94,13 @@ job.on('value',function(snapshot){
                                 }
 )
 
+job.orderByChild('ownerSection').equalTo(localStorage.getItem('section')).on('value',function(snapshot){
+  var data = snapshot.val()
+  var jobNum = data.length
+  $('#notifyNumber').html(jobNum)
+  console.log(jobNum)
+})
+
 // fb.on('child_changed', function(snapshot){
 //                                             var newrequest = snapshot.val()
                                             
