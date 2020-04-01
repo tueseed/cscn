@@ -98,6 +98,7 @@ job.on('value',function(snapshot){
 job.orderByChild('ownerSection').equalTo(localStorage.getItem('section')).on('value',function(snapshot){
   var jobNum = snapshot.numChildren()
   $('#notifyNumber').html(jobNum)
+  $('#notifyNumber1').html(jobNum)
   console.log(jobNum)
 })
 

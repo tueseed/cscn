@@ -69,7 +69,7 @@
                 </a>
                 <a class="dropdown-item" href="#" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
-                  กล่องงานของแผนก <span class="badge badge-danger">99+</span>
+                  กล่องงานของแผนก <span class="badge badge-danger" id="notifyNumber1"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
