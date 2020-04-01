@@ -66,7 +66,7 @@ else if(getUrlVars()["code"])
                                     localStorage.setItem('section',Object.values(empInfo)[0].section)
                                     localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
-                                   
+                                   var countJob = await countJob(Object.values(empInfo)[0].section)
                                     $('#empName').html(Object.values(empInfo)[0].techName)
                                     var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
                                     $('#empsecTion').html(section[Object.values(empInfo)[0].section])
@@ -94,24 +94,25 @@ job.on('value',function(snapshot){
                                   }
                                 }
 )
-
-job.orderByChild('ownerSection').equalTo(localStorage.getItem('section')).on('value',function(snapshot){
-  var jobNum = snapshot.numChildren()
-  if(jobNum > 0)
-  {
-    $('#notifyNumber').show()
-    $('#notifyNumber1').show()
-    $('#notifyNumber').html(jobNum)
-    $('#notifyNumber1').html(jobNum)
-  }else if(jobNum == 0)
-  {
-    $('#notifyNumber').hide()
-    $('#notifyNumber1').hide()
-  }
-  
-  console.log(jobNum)
-})
-
+function countJob(section)
+{
+  job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
+    var jobNum = snapshot.numChildren()
+    if(jobNum > 0)
+    {
+      $('#notifyNumber').show()
+      $('#notifyNumber1').show()
+      $('#notifyNumber').html(jobNum)
+      $('#notifyNumber1').html(jobNum)
+    }else if(jobNum == 0)
+    {
+      $('#notifyNumber').hide()
+      $('#notifyNumber1').hide()
+    }
+    
+    console.log(jobNum)
+  })
+}
 // fb.on('child_changed', function(snapshot){
 //                                             var newrequest = snapshot.val()
                                             
