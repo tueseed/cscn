@@ -66,7 +66,7 @@ else if(getUrlVars()["code"])
                                     localStorage.setItem('section',Object.values(empInfo)[0].section)
                                     localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
-                                   var countJob = await countJob(Object.values(empInfo)[0].section)
+                                    countJob(Object.values(empInfo)[0].section)
                                     $('#empName').html(Object.values(empInfo)[0].techName)
                                     var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
                                     $('#empsecTion').html(section[Object.values(empInfo)[0].section])
