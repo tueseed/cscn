@@ -27,8 +27,8 @@
 }
 .notify-badge{
     position: absolute;
-    right:-15px;
-    top:-10px;
+    right:-10px;
+    top:-5px;
     background:red;
     text-align: center;
     border-radius: 10px 10px 10px 10px;
