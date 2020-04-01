@@ -97,8 +97,18 @@ job.on('value',function(snapshot){
 
 job.orderByChild('ownerSection').equalTo(localStorage.getItem('section')).on('value',function(snapshot){
   var jobNum = snapshot.numChildren()
-  $('#notifyNumber').html(jobNum)
-  $('#notifyNumber1').html(jobNum)
+  if(jobNum > 0)
+  {
+    $('#notifyNumber').show()
+    $('#notifyNumber1').show()
+    $('#notifyNumber').html(jobNum)
+    $('#notifyNumber1').html(jobNum)
+  }else if(jobNum == 0)
+  {
+    $('#notifyNumber').hide()
+    $('#notifyNumber1').hide()
+  }
+  
   console.log(jobNum)
 })
 
