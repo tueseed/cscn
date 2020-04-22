@@ -101,52 +101,39 @@ job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(sna
                                 }
                         )
 
-async function countJob(section)
+function countJob(section)
 {
-  // job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
-  // var jobNum = snapshot.numChildren()
-  // if(jobNum > 0)
-  // {
-  //   $('#notifyNumber').show()
-  //   $('#notifyNumberIn').show()
-  //   $('#notifyNumber').html(jobNum)
-  //   $('#notifyNumberIn').html(jobNum)
-  // }
-  // else if(jobNum == 0)
-  // {
-  //   $('#notifyNumber').hide()
-  //   $('#notifyNumberIn').hide()
-  // }   
-  // })
-  var jobIn = await job.orderByChild('ownerSection').equalTo(section+'in').on('value')
-  var jobOut = await job.orderByChild('ownerSection').equalTo(section+'ou').on('value')
-  var jobInnum = jobIn.numChildren()
-  var jobOutnum = jobOut.numChildren()
-  if(jobInnum > 0)
+  job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
+  var jobNumin = snapshot.numChildren()
+  if(jobNumin > 0)
   {
     $('#notifyNumber').show()
     $('#notifyNumberIn').show()
-    $('#notifyNumber').html(jobInnum)
-    $('#notifyNumberIn').html(jobInnum)
+    $('#notifyNumber').html(jobNumin)
+    $('#notifyNumberIn').html(jobNumin)
   }
-  else if(jobInnum == 0)
+  else if(jobNumin == 0)
   {
     $('#notifyNumber').hide()
     $('#notifyNumberIn').hide()
-  }
+  }   
+  })
 
-  if(jobOutnum > 0)
-  {
-    $('#notifyNumber').show()
-    $('#notifyNumberOut').show()
-    $('#notifyNumber').html(jobOutnum)
-    $('#notifyNumberOut').html(jobOutnum)
-  }
-  else if(jobOutnum == 0)
-  {
-    $('#notifyNumber').hide()
-    $('#notifyNumberOut').hide()
-  }
+  job.orderByChild('ownerSection').equalTo(section+'ou').on('value',function(snapshot){
+    var jobNumout = snapshot.numChildren()
+    if(jobNumout > 0)
+    {
+      $('#notifyNumber').show()
+      $('#notifyNumberIn').show()
+      $('#notifyNumber').html(jobNumout)
+      $('#notifyNumberIn').html(jobNumout)
+    }
+    else if(jobNumout == 0)
+    {
+      $('#notifyNumber').hide()
+      $('#notifyNumberIn').hide()
+    }   
+    })
 
 }
 
