@@ -69,11 +69,11 @@
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobSection" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
-                  กล่องงานเข้า <span class="badge badge-danger" id="notifyNumber1"></span>
+                  กล่องงานเข้า <span class="badge badge-danger" id="notifyNumberIn"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobSection" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
-                  กล่องงานออก <span class="badge badge-danger" id="notifyNumber1"></span>
+                  กล่องงานออก <span class="badge badge-danger" id="notifyNumberOut"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" id="admin_menu">
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>

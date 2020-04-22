@@ -75,8 +75,9 @@ else if(getUrlVars()["code"])
                                 }
     })
 }
-
-job.on('value',function(snapshot){                         
+// var section = 'cs' //สมมุติแผนก
+var section = localStorage.getItem('section')
+job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(snapshot){                         
                                   if(snapshot.val() !== null)
                                   {
                                     var data = snapshot.val()
@@ -100,23 +101,53 @@ job.on('value',function(snapshot){
                                 }
                         )
 
-function countJob(section)
+async function countJob(section)
 {
-  job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
-  var jobNum = snapshot.numChildren()
-  if(jobNum > 0)
+  // job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
+  // var jobNum = snapshot.numChildren()
+  // if(jobNum > 0)
+  // {
+  //   $('#notifyNumber').show()
+  //   $('#notifyNumberIn').show()
+  //   $('#notifyNumber').html(jobNum)
+  //   $('#notifyNumberIn').html(jobNum)
+  // }
+  // else if(jobNum == 0)
+  // {
+  //   $('#notifyNumber').hide()
+  //   $('#notifyNumberIn').hide()
+  // }   
+  // })
+  var jobIn = await job.orderByChild('ownerSection').equalTo(section+'in').on('value')
+  var jobOut = await job.orderByChild('ownerSection').equalTo(section+'ou').on('value')
+  var jobInnum = jobIn.numChildren()
+  var jobOutnum = jobOut.numChildren()
+  if(jobInnum > 0)
   {
     $('#notifyNumber').show()
-    $('#notifyNumber1').show()
-    $('#notifyNumber').html(jobNum)
-    $('#notifyNumber1').html(jobNum)
+    $('#notifyNumberIn').show()
+    $('#notifyNumber').html(jobInnum)
+    $('#notifyNumberIn').html(jobInnum)
   }
-  else if(jobNum == 0)
+  else if(jobInnum == 0)
   {
     $('#notifyNumber').hide()
-    $('#notifyNumber1').hide()
-  }   
-  })
+    $('#notifyNumberIn').hide()
+  }
+
+  if(jobOutnum > 0)
+  {
+    $('#notifyNumber').show()
+    $('#notifyNumberOut').show()
+    $('#notifyNumber').html(jobOutnum)
+    $('#notifyNumberOut').html(jobOutnum)
+  }
+  else if(jobOutnum == 0)
+  {
+    $('#notifyNumber').hide()
+    $('#notifyNumberOut').hide()
+  }
+
 }
 
 async function creat_job()
@@ -130,10 +161,9 @@ async function creat_job()
                                     'jobName':$('#jobName').val(),
                                     'reqNumber':$('#reqNumber').val(),
                                     'customerName':$('#customerName').val(),
-                                    'status':'creat',
                                     'dateReq':dateReq,
                                     'owner':localStorage.getItem('display_url'),
-                                    'ownerSection':localStorage.getItem('section')
+                                    'ownerSection':localStorage.getItem('section') + 'ow'
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
@@ -237,7 +267,7 @@ async function edit_job()
 async function sendJob()
 {
   var updateStatus = await job.child($('#jobKey').val()).update({
-    'test':'test' // อัพเดทข้อมูลงาน
+    'ownerSection':localStorage.getItem('section') + 'ou'
   })
 }
 
