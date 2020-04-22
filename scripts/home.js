@@ -124,14 +124,14 @@ function countJob(section)
     if(jobNumout > 0)
     {
       $('#notifyNumber').show()
-      $('#notifyNumberIn').show()
+      $('#notifyNumberOut').show()
       $('#notifyNumber').html(jobNumout)
-      $('#notifyNumberIn').html(jobNumout)
+      $('#notifyNumberOut').html(jobNumout)
     }
     else if(jobNumout == 0)
     {
       $('#notifyNumber').hide()
-      $('#notifyNumberIn').hide()
+      $('#notifyNumberOut').hide()
     }   
     })
 
@@ -266,6 +266,16 @@ $("#jobDetail").on('hide.bs.modal', function(){
   $('#edit_save_btn').html('<i class="fas fa-edit" aria-hidden="true"></i> แก้ไข')
   $('#edit_save_btn').val('edit')
   $('#geberate_number_btn').hide()
+ })
+
+ $("#jobDetail").on('show.bs.modal', function(){
+  var section = localStorage.getItem('section')
+  if(section == 'cn')
+  {$('#sendJobbtn').html('<i class="fas fa-paper-plane" aria-hidden="true"></i> ส่งงานให้แผนกบริการ')}
+  else if(section == 'cs')
+  {
+    $('#sendJobbtn').html('<i class="fas fa-paper-plane" aria-hidden="true"></i> ส่งงานให้แผนกก่อสร้าง')
+  }
  })
 
  $("#jobCreat").on('hide.bs.modal', function(){
