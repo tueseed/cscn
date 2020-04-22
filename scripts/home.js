@@ -390,6 +390,12 @@ async function genNumber()
   
 }
 
+function logout()
+{
+  localStorage.clear()
+  location.reload()
+}
+
 
 
 
