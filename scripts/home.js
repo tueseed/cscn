@@ -1,7 +1,7 @@
 var job = firebase.database().ref('job')
 var emp = firebase.database().ref('employee')
 var number = firebase.database().ref('number')
-// window.onbeforeunload = localStorage.clear()
+window.onbeforeunload = localStorage.clear()
 $.blockUI({
   message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">รอสักครู่..</h5>',
   overlayCSS : { 
@@ -78,6 +78,8 @@ else if(getUrlVars()["code"])
 }
 // var section = 'cs' //สมมุติแผนก
 var section = localStorage.getItem('section')
+if(section)
+{
 job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(snapshot){                         
                                   if(snapshot.val() !== null)
                                   {
@@ -101,7 +103,7 @@ job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(sna
                                   }
                                 }
                         )
-
+  }
 function countJob(section)
 {
   job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
