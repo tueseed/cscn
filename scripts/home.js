@@ -393,7 +393,7 @@ async function genNumber()
 function logout()
 {
   localStorage.clear()
-  location.reload()
+  window.location.href = 'https://cscn.herokuapp.com'
 }
 
 
