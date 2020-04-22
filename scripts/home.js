@@ -77,6 +77,8 @@ else if(getUrlVars()["code"])
     })
 }
 // var section = 'cs' //สมมุติแผนก
+function getdata()
+{
 var section = localStorage.getItem('section')
 if(section)
 {
@@ -104,6 +106,7 @@ job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(sna
                                 }
                         )
   }
+}
 function countJob(section)
 {
   job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
@@ -299,7 +302,8 @@ $("#jobDetail").on('hide.bs.modal', function(){
                                         })
 
  $(document).ready(function(){
-    $('#reqFile').change(function(e){readFile()})                          
+    $('#reqFile').change(function(e){readFile()})  
+    getdata()                      
 })
 
 // $('#datePaid').val("2017-06-01")
