@@ -309,6 +309,14 @@ $("#jobDetail").on('hide.bs.modal', function(){
 
  $("#jobIn").on('show.bs.modal', async function(){
     var jobIncoming = await jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).once('value')
+    var i = 0
+    var jobCard = ''
+    while(Object.keys(jobIncoming.val()))
+    {
+      jobCard = render_jobIn_card(Object.values(jobIncoming.val())[i].jobkey,Object.values(jobIncoming.val())[i].jobName)
+      $('#jobInarea').append(jobCard)
+      i++
+    }
     console.log(jobIncoming.val())
  })
 
@@ -423,14 +431,20 @@ function logout()
   window.location.href = 'https://cscn.herokuapp.com'
 }
 
-function test()
+function render_jobIn_card(jobKey,jobName)
 {
-  
-  job.orderByChild('ownerSection').startAt('cs').on('value',function(snapshot){
-    var jobNumout = snapshot.numChildren()
-    console.log(jobNumout)
-  })
-  
+  return[
+          '<span class="text-success" id="jobInarea">' + jobName + '</span>',
+          '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob('+"'"+jobKey+"'"+')" style="border-radius:50px 50px;">',
+            '<i class="fas fa-save" aria-hidden="true"></i>',
+            'รับงาน',
+          '</button>'
+        ].join("")
+}
+
+function getJob(jobKey)
+{
+  console.log(jobKey)
 }
 
 
