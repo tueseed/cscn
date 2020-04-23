@@ -308,12 +308,12 @@ $("#jobDetail").on('hide.bs.modal', function(){
  })
 
  $("#jobIn").on('show.bs.modal', function(){
-    $('#jobInarea').html('')
     jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).on('value',function(jobIncoming){
     var snapJobincomimg = jobIncoming.val()
+    $('#jobInarea').empty()
     var i = 0
     var jobCard = ''
-    while(Object.keys(snapJobincomimg))
+    while(Object.keys(snapJobincomimg)[i])
     {
       jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobKey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
       $('#jobInarea').append(jobCard)
