@@ -312,5 +312,36 @@
   </div>
 </div>
 
+<div class='modal fade' tabindex='-1' role='dialog' id='jobIn'>
+  <div class='modal-dialog modal-md' role='document' >
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title font-weight-bold' id="head_modal">
+            กล่องงานเข้า
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card shadow mt-1  " >
+                <div class="card-body">
+                  
+                      <span class="text-success">งานขยายเขตบ้านนายนัทธพงศ์ เจริญกิจพิเชียร</span>
+                      <button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob()" style="border-radius:50px 50px;">
+                        <i class="fas fa-save" aria-hidden="true"></i>
+                        รับงาน
+                      </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

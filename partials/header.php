@@ -67,11 +67,11 @@
                   <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
                   <span id="empsecTion"></span>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobSection" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobIn" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานเข้า <span class="badge badge-danger" id="notifyNumberIn"></span>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobSection" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobOut" id="admin_menu">
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานออก <span class="badge badge-danger" id="notifyNumberOut"></span>
                 </a>

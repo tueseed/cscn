@@ -287,6 +287,14 @@ $("#jobDetail").on('hide.bs.modal', function(){
   $("input[name^='add_input']").prop('disabled', true)
  })
 
+ $("#jobIn").on('show.bs.modal', function(){
+  job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
+    
+    })
+ })
+
+
+
  $('#selectFile').on('click', function(){$('#reqFile').trigger('click')})
  $("#operator").on('change',function(){
                                         if(this.value == '0')
@@ -337,7 +345,7 @@ async function ProcessExcel(data)
                                   'reqNumber':Object.values(obj)[3],
                                   'dateReq':dateReq,
                                   'owner':localStorage.getItem('display_url'),
-                                  'ownerSection':localStorage.getItem('section') + 'ow'
+                                  'ownerSection':localStorage.getItem('section')
                                 })
     var percentUpload = (parseInt(i+1)/parseInt(allData))*100
     $('#uploadStatus').attr('style','width:' + percentUpload + '%')
