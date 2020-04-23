@@ -489,7 +489,7 @@ function convdate(dateInput)
   var d = date_do.substring(8,10)
   var y_thai = parseInt(y) + parseInt(543)
   var month_thai = {1:'มกราคม',2:'กุมภาพันธ์',3:'มีนาคม',4:'เมษายน',5:'พฤษภาคม',6:'มิถุนายน',7:'กรกฏาคม',8:'สิงหาคม',9:'กันยายน',10:'ตุลาคม',11:'พฤศจิกายน',12:'ธันวาคม'}
-  return d + ' ' + month_thai + ' ' + y_thai
+  return d + ' ' + month_thai[parseInt(m)] + ' ' + y_thai
 }
 
 
