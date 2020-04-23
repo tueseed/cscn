@@ -309,11 +309,12 @@ $("#jobDetail").on('hide.bs.modal', function(){
 
  $("#jobIn").on('show.bs.modal', async function(){
     var jobIncoming = await jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).once('value')
+    var snapJobincomimg = jobIncoming.val()
     var i = 0
     var jobCard = ''
-    while(Object.keys(jobIncoming.val()))
+    while(Object.keys(snapJobincomimg))
     {
-      jobCard = render_jobIn_card(Object.values(jobIncoming.val())[i].jobkey,Object.values(jobIncoming.val())[i].jobName)
+      jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobkey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
       $('#jobInarea').append(jobCard)
       i++
     }
@@ -434,7 +435,7 @@ function logout()
 function render_jobIn_card(jobKey,jobName)
 {
   return[
-          '<span class="text-success" id="jobInarea">' + jobName + '</span>',
+          '<span class="text-success">' + jobName + '</span>',
           '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob('+"'"+jobKey+"'"+')" style="border-radius:50px 50px;">',
             '<i class="fas fa-save" aria-hidden="true"></i>',
             'รับงาน',
@@ -442,9 +443,10 @@ function render_jobIn_card(jobKey,jobName)
         ].join("")
 }
 
-function getJob(jobKey)
+async function getJob(jobKey,jobinKey)
 {
-  console.log(jobKey)
+  var get2section = await job.child(jobKey).update({'ownerSection':localStorage.getItem('section')})
+  var removefromsending = await jobSending.child(jobinKey).remove()
 }
 
 

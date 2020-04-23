@@ -335,13 +335,9 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow mt-1  " >
-                <div class="card-body">
+                <div class="card-body" id="jobInarea">
                   
-                      <span class="text-success" id="jobInarea"></span>
-                      <button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob()" style="border-radius:50px 50px;">
-                        <i class="fas fa-save" aria-hidden="true"></i>
-                        รับงาน
-                      </button>
+
                   
                 </div>
               </div>
