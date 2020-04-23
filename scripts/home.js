@@ -306,10 +306,9 @@ $("#jobDetail").on('hide.bs.modal', function(){
   $("input[name^='add_input']").prop('disabled', true)
  })
 
- $("#jobIn").on('show.bs.modal', function(){
-    // job.orderByChild('ownerSection').equalTo('-'+ section).on('value',function(snapshot){
-    
-    // })
+ $("#jobIn").on('show.bs.modal', async function(){
+    var jobIncoming = await jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).once('value')
+    console.log(jobIncoming.val())
  })
 
 
