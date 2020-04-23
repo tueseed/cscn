@@ -228,7 +228,7 @@ async function fetchDetail(reqNumber)
   var jobValue = Object.values(jobKey)[0]
   $('#reqNumbermodal').val(Object.values(jobKey)[0].reqNumber)
   $('#jobNamemodal').val(Object.values(jobKey)[0].jobName)
-  $('#dateRecivemodal').val(Object.values(jobKey)[0].dateReq) 
+  $('#dateRecivemodal').val(convdatetomodal(Object.values(jobKey)[0].dateReq))
   $('#drawingNumber').val(Object.values(jobKey)[0].drawingNumber) 
   //แสดงหมายเลขงาน
   var docNumber = await number.orderByChild('jobkey').equalTo(Object.keys(jobKey)[0]).once('value')
@@ -490,6 +490,15 @@ function convdate(dateInput)
   var y_thai = parseInt(y) + parseInt(543)
   var month_thai = {0:'มกราคม',1:'กุมภาพันธ์',2:'มีนาคม',3:'เมษายน',4:'พฤษภาคม',5:'มิถุนายน',6:'กรกฏาคม',7:'สิงหาคม',8:'กันยายน',9:'ตุลาคม',10:'พฤศจิกายน',11:'ธันวาคม'}
   return d + ' ' + month_thai[parseInt(m)] + ' ' + y_thai
+}
+
+function convdatetomodal(dateInput)
+{
+  var date_do = dateInput
+  var y = date_do.substring(0,4)
+  var m = date_do.substring(5,7)
+  var d = date_do.substring(8,10)
+  return y + '-' + m + '-' + d
 }
 
 
