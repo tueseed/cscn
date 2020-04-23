@@ -435,11 +435,15 @@ function logout()
 function render_jobIn_card(jobKey,jobName,jobinkey)
 {
   return[
-          '<span class="text-success">' + jobName + '</span>',
-          '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob(' + "'" + jobKey + "','" + jobinkey + "'" + ')" style="border-radius:50px 50px;">',
+        '<div class="card shadow mt-1" >',
+          '<div class="card-body">',    
+            '<span class="text-success">' + jobName + '</span>',
+            '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob(' + "'" + jobKey + "','" + jobinkey + "'" + ')" style="border-radius:50px 50px;">',
             '<i class="fas fa-save" aria-hidden="true"></i>',
             'รับงาน',
-          '</button>'
+          '</button>',
+          '</div>',
+        '</div>'
         ].join("")
 }
 

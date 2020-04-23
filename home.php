@@ -333,9 +333,9 @@
       </div>
       <div class='modal-body'>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" id="jobInarea">
               <div class="card shadow mt-1  " >
-                <div class="card-body" id="jobInarea">
+                <div class="card-body">
                   
 
                   
