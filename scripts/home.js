@@ -1,6 +1,7 @@
 var job = firebase.database().ref('job')
 var emp = firebase.database().ref('employee')
 var number = firebase.database().ref('number')
+var jobSending = firebase.database().ref('jobSending')
 window.onbeforeunload = localStorage.clear()
 $.blockUI({
   message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">รอสักครู่..</h5>',
@@ -109,7 +110,7 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
 function countJob(section)
 {
   //จำนวนงานกล่องงานออก
-  job.orderByChild('ownerSection').startAt(section +'-').on('value',function(snapshot){
+  jobSending.orderByChild('from').equalTo(section).on('value',function(snapshot){
   var jobNumout = snapshot.numChildren()
   if(jobNumout > 0)
   {
@@ -125,7 +126,7 @@ function countJob(section)
   }   
   })
 //จำนวนงานกล่องงานเข้า
-  job.orderByChild('ownerSection').endAt('-' + section).on('value',function(snapshot){
+  jobSending.orderByChild('to').equalTo(section).on('value',function(snapshot){
     var jobNumin = snapshot.numChildren()
     console.log(jobNumin)
     if(jobNumin > 0)
@@ -261,8 +262,9 @@ async function edit_job()
 async function sendJob(sectionrecive)
 {
   var updateStatus = await job.child($('#jobKey').val()).update({
-    'ownerSection':localStorage.getItem('section') + '-' + sectionrecive
+    'ownerSection':'se'
   })
+  var senDing = await jobSending.push({'jobkey':('#jobKey').val(),'from':localStorage.getItem('section'),'to':sectionrecive})
   
 }
 
@@ -300,9 +302,9 @@ $("#jobDetail").on('hide.bs.modal', function(){
  })
 
  $("#jobIn").on('show.bs.modal', function(){
-  job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
+    // job.orderByChild('ownerSection').equalTo('-'+ section).on('value',function(snapshot){
     
-    })
+    // })
  })
 
 
@@ -414,6 +416,16 @@ function logout()
 {
   localStorage.clear()
   window.location.href = 'https://cscn.herokuapp.com'
+}
+
+function test()
+{
+  
+  job.orderByChild('ownerSection').startAt('cs').on('value',function(snapshot){
+    var jobNumout = snapshot.numChildren()
+    console.log(jobNumout)
+  })
+  
 }
 
 
