@@ -158,7 +158,7 @@ async function creat_job()
                                     'customerName':$('#customerName').val(),
                                     'dateReq':dateReq,
                                     'owner':localStorage.getItem('display_url'),
-                                    'ownerSection':localStorage.getItem('section') + 'ow'
+                                    'ownerSection':localStorage.getItem('section')
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
