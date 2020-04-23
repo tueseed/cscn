@@ -213,6 +213,11 @@ function disWbs(value,row,index)
   }
 }
 
+function dateDis(value)
+{
+  return convdate(value)
+}
+
 async function fetchDetail(reqNumber)
 {
   // แสดงรายละเอียดงานใน Modal
@@ -476,9 +481,16 @@ async function getJob(jobKey,jobinKey)
   var removefromsending = await jobSending.child(jobinKey).remove()
 }
 
-$('.datepicker').datepicker({
-  format: 'yyyy-mm-dd'
-}).datepicker("setDate",'now')
+function convdate(dateInput)
+{
+  var date_do = dateInput
+  var y = date_do.substring(0,4)
+  var m = date_do.substring(5,7)
+  var d = date_do.substring(8,10)
+  var y_thai = parseInt(y) + parseInt(543)
+  var month_thai = {1:'มกราคม',2:'กุมภาพันธ์',3:'มีนาคม',4:'เมษายน',5:'พฤษภาคม',6:'มิถุนายน',7:'กรกฏาคม',8:'สิงหาคม',9:'กันยายน',10:'ตุลาคม',11:'พฤศจิกายน',12:'ธันวาคม'}
+  return d + ' ' + month_thai + ' ' + y_thai
+}
 
 
 
