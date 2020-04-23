@@ -125,7 +125,7 @@ function countJob(section)
   }   
   })
 //จำนวนงานกล่องงานเข้า
-  job.orderByChild('ownerSection').endAt('--').on('value',function(snapshot){
+  job.orderByChild('ownerSection').endAt('-cs').on('value',function(snapshot){
     var jobNumin = snapshot.numChildren()
     console.log(jobNumin)
     if(jobNumin > 0)
