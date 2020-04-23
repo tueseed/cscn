@@ -266,7 +266,7 @@ async function sendJob(sectionrecive)
   })
   var senDing = await jobSending.push(
     {
-      'jobkey': $('#jobKey').val(),
+      'jobKey': $('#jobKey').val(),
       'jobName':$('#jobNamemodal').val(),
       'from':localStorage.getItem('section'),
       'to':sectionrecive
@@ -314,7 +314,7 @@ $("#jobDetail").on('hide.bs.modal', function(){
     var jobCard = ''
     while(Object.keys(snapJobincomimg))
     {
-      jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobkey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
+      jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobKey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
       $('#jobInarea').append(jobCard)
       i++
     }
