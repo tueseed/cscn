@@ -370,7 +370,7 @@ async function ProcessExcel(data)
   $('#rowUpload').show()
   var allData = excelRows.length
   var d = new Date()
-  var dateReq = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
+  var dateReq = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate()
   var i = 0 
   while(excelRows[i])
   {
