@@ -449,7 +449,7 @@ function render_jobIn_card(jobKey,jobName,jobinkey)
 
 async function getJob(jobKey,jobinKey)
 {
-  var get2section = await job.child(jobKey).update({'ownerSection':localStorage.getItem('section')})
+  var get2section = await job.child(jobKey).update({'ownerSection':localStorage.getItem('section'),'owner':localStorage.getItem('display_url')})
   var removefromsending = await jobSending.child(jobinKey).remove()
 }
 
