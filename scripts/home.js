@@ -103,6 +103,12 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                     })
                                     console.log(data_for_tbl)
                                   }
+                                  else if(snapshot.val() == null)
+                                  {
+                                    $table.bootstrapTable('refreshOptions', {
+                                      data: []
+                                    })
+                                  }
                                 }
                         )
   }
