@@ -109,7 +109,7 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
 function countJob(section)
 {
   //จำนวนงานกล่องงานออก
-  job.orderByChild('ownerSection').startAt(section+'o').on('value',function(snapshot){
+  job.orderByChild('ownerSection').startAt(section +'o').on('value',function(snapshot){
   var jobNumout = snapshot.numChildren()
   if(jobNumout > 0)
   {
@@ -125,8 +125,9 @@ function countJob(section)
   }   
   })
 //จำนวนงานกล่องงานเข้า
-  job.orderByChild('ownerSection').endAt('o'+section).on('value',function(snapshot){
+  job.orderByChild('ownerSection').endAt('o'+ section).on('value',function(snapshot){
     var jobNumin = snapshot.numChildren()
+    console.log(jobNumin)
     if(jobNumin > 0)
     {
       $('#notifyNumber').show()
