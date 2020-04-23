@@ -267,10 +267,11 @@ async function sendJob(sectionrecive)
   var senDing = await jobSending.push(
     {
       'jobkey': $('#jobKey').val(),
+      'jobName':$('#jobNamemodal').val(),
       'from':localStorage.getItem('section'),
       'to':sectionrecive
     })
-  
+    $('#jobDetail').modal('hide')
 }
 
 $("#jobDetail").on('hide.bs.modal', function(){
