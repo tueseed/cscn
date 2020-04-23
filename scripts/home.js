@@ -264,7 +264,12 @@ async function sendJob(sectionrecive)
   var updateStatus = await job.child($('#jobKey').val()).update({
     'ownerSection':'se'
   })
-  var senDing = await jobSending.push({'jobkey':('#jobKey').val(),'from':localStorage.getItem('section'),'to':sectionrecive})
+  var senDing = await jobSending.push(
+    {
+      'jobkey': $('#jobKey').val(),
+      'from':localStorage.getItem('section'),
+      'to':sectionrecive
+    })
   
 }
 
