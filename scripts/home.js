@@ -432,11 +432,11 @@ function logout()
   window.location.href = 'https://cscn.herokuapp.com'
 }
 
-function render_jobIn_card(jobKey,jobName)
+function render_jobIn_card(jobKey,jobName,jobinkey)
 {
   return[
           '<span class="text-success">' + jobName + '</span>',
-          '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob('+"'"+jobKey+"'"+')" style="border-radius:50px 50px;">',
+          '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob(' + "'" + jobKey + "','" + jobinkey + "'" + ')" style="border-radius:50px 50px;">',
             '<i class="fas fa-save" aria-hidden="true"></i>',
             'รับงาน',
           '</button>'
