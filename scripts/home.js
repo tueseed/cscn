@@ -307,8 +307,9 @@ $("#jobDetail").on('hide.bs.modal', function(){
   $("input[name^='add_input']").prop('disabled', true)
  })
 
- $("#jobIn").on('show.bs.modal', async function(){
-    var jobIncoming = await jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).once('value')
+ $("#jobIn").on('show.bs.modal', function(){
+    $('#jobInarea').html('')
+    jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).on('value',function(jobIncoming){
     var snapJobincomimg = jobIncoming.val()
     var i = 0
     var jobCard = ''
@@ -318,7 +319,7 @@ $("#jobDetail").on('hide.bs.modal', function(){
       $('#jobInarea').append(jobCard)
       i++
     }
-    console.log(jobIncoming.val())
+  })
  })
 
 
