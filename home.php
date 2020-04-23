@@ -102,51 +102,6 @@
   </div>
 </div>
 
-<div class='modal fade' tabindex='-1' role='dialog' id='jobSection'>
-  <div class='modal-dialog modal-lg' role='document' >
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title font-weight-bold' id="head_modal">
-          กล่องงานของแผนก
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
-        </button>
-      </div>
-      <div class='modal-body'>
-          <div class="row">
-            <div class="col-md-12">
-              <input type="text" class="form-control mt-1" id="reqnumberSection" name="event_input" placeholder="เลขที่คำร้อง">  
-              <input type="text" class="form-control mt-1" id="jobnameSection" name="event_input" placeholder="ชื่องาน">
-              <input type="text" class="form-control mt-1" id="customernameSection" name="event_input" placeholder="ชื่อลูกค้า">
-            </div>
-          </div>
-          <div class="row mt-2" id="rowUpload" style="display:none;">
-            <div class="col-md-12 ">
-              <div class="progress">
-                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
-                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:0%" id="uploadStatus">
-                    <spam id="uploadText"></span>
-                </div>
-              </div>
-              </div>
-          </div>
-      </div>
-      <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-      <div class="modal-footer">
-        <button class="btn btn-ouitline-primary mr-auto"  id="selectFile" style="border-radius:50px 50px;">
-          <i class="fas fa-save" aria-hidden="true"></i>
-          เลือกไฟล์
-        </button>
-        <button class="btn btn-outline-primary"  id="save_btn" onclick="creat_job()" style="border-radius:50px 50px;">
-          <i class="fas fa-save" aria-hidden="true"></i>
-          บันทึก
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class='modal fade' tabindex='-1' role='dialog' id='jobDetail'>
   <div class='modal-dialog modal-lg' role='document' >
     <div class='modal-content'>

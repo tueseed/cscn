@@ -101,10 +101,11 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                     $table.bootstrapTable('refreshOptions', {
                                       data: data_for_tbl
                                     })
-                                    console.log(data_for_tbl)
+                                    // console.log(data_for_tbl)
                                   }
                                   else if(snapshot.val() == null)
                                   {
+                                    var $table = $('#jobTbl')
                                     $table.bootstrapTable('refreshOptions', {
                                       data: []
                                     })
@@ -374,14 +375,29 @@ async function ProcessExcel(data)
   while(excelRows[i])
   {
     var obj = excelRows[i]
-    console.log(Object.values(obj)[3])
-    var pushJob = await job.push({
+    var checkReq = await job.orderByChild('reqNumber').equalTo(Object.values(obj)[3]).once('value')
+    if(checkReq.val() == null)
+    {
+      var pushJob = await job.push({
                                   'jobName':Object.values(obj)[7],
                                   'reqNumber':Object.values(obj)[3],
                                   'dateReq':dateReq,
                                   'owner':localStorage.getItem('display_url'),
-                                  'ownerSection':localStorage.getItem('section')
+                                  'ownerSection':localStorage.getItem('section'),
+                                  'cnJobname':'-',
+                                  'datePaid':'-',
+                                  'techCon':'-',
+                                  'datePlan':'-',
+                                  'operator':'-',
+                                  'textContractor':'-',
+                                  'dateSendtocn':'-',
+                                  'datecnRecive':'-'
                                 })
+    }
+    else if(checkReq.val() !== null)
+    {
+      var updateJob = await job.child().update({})
+    }
     var percentUpload = (parseInt(i+1)/parseInt(allData))*100
     $('#uploadStatus').attr('style','width:' + percentUpload + '%')
     $('#uploadText').html('กำลังอัพโหลด ' + parseInt(i+1) + '/' + allData +' รายการ')
