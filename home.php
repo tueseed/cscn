@@ -262,10 +262,18 @@
       </div>
       <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <div class="modal-footer">
-        <button class="btn btn-outline-primary mr-auto"  id="sendJobbtn" onclick="sendJob()" style="border-radius:50px 50px;">
+        <button id="change_status" type="button" class="btn btn-outline-primary mr-auto dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50px 50px;">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>          
+          ส่งงาน
+        </button>
+        <div class="dropdown-menu" aria-labelledby="change_status" id="dropSendjob">
+            <a class="dropdown-item" href="#" onclick="sendJob()">แผนกก่อสร้าง</a>
+            <a class="dropdown-item" href="#" onclick="sendJob()">แผนกบริการ</a>
+        </div>
+        <!-- <button class="btn btn-outline-primary mr-auto"  id="sendJobbtn" onclick="sendJob()" style="border-radius:50px 50px;">
             <i class="fas fa-paper-plane" aria-hidden="true"></i>
             ส่งงานให้แผนกก่อสร้าง
-        </button>
+        </button> -->
         <button class="btn btn-outline-primary"  id="geberate_number_btn" data-toggle="modal" data-target="#generate_number_modal" style="border-radius:50px 50px;">
           <span id="btnText"><i class="fas fa-folder-plus"></i> สร้างหมายเลขงาน</span>
         </button>

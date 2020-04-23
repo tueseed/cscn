@@ -69,6 +69,7 @@ else if(getUrlVars()["code"])
                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
                                     countJob(Object.values(empInfo)[0].section)
                                     getdata(Object.values(empInfo)[0].section)
+                                    
                                     $('#empName').html(Object.values(empInfo)[0].techName)
                                     var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
                                     $('#empsecTion').html(section[Object.values(empInfo)[0].section])
@@ -80,7 +81,7 @@ else if(getUrlVars()["code"])
 // var section = 'cs' //สมมุติแผนก
 function getdata(section)
 {
-job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(snapshot){                         
+job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
                                   if(snapshot.val() !== null)
                                   {
                                     var data = snapshot.val()
@@ -107,35 +108,36 @@ job.orderByChild('ownerSection').equalTo(section + 'ow').on('value',function(sna
 
 function countJob(section)
 {
-  job.orderByChild('ownerSection').equalTo(section+'in').on('value',function(snapshot){
-  var jobNumin = snapshot.numChildren()
-  if(jobNumin > 0)
+  //จำนวนงานกล่องงานออก
+  job.orderByChild('ownerSection').startAt(section+'o').on('value',function(snapshot){
+  var jobNumout = snapshot.numChildren()
+  if(jobNumout > 0)
   {
     $('#notifyNumber').show()
-    $('#notifyNumberIn').show()
-    $('#notifyNumber').html(jobNumin)
-    $('#notifyNumberIn').html(jobNumin)
+    $('#notifyNumberOut').show()
+    $('#notifyNumber').html(jobNumout)
+    $('#notifyNumberOut').html(jobNumout)
   }
-  else if(jobNumin == 0)
+  else if(jobNumout == 0)
   {
     $('#notifyNumber').hide()
-    $('#notifyNumberIn').hide()
+    $('#notifyNumberOut').hide()
   }   
   })
-
-  job.orderByChild('ownerSection').equalTo(section+'ou').on('value',function(snapshot){
-    var jobNumout = snapshot.numChildren()
-    if(jobNumout > 0)
+//จำนวนงานกล่องงานเข้า
+  job.orderByChild('ownerSection').endAt('o'+section).on('value',function(snapshot){
+    var jobNumin = snapshot.numChildren()
+    if(jobNumin > 0)
     {
       $('#notifyNumber').show()
-      $('#notifyNumberOut').show()
-      $('#notifyNumber').html(jobNumout)
-      $('#notifyNumberOut').html(jobNumout)
+      $('#notifyNumberIn').show()
+      $('#notifyNumber').html(jobNumin)
+      $('#notifyNumberIn').html(jobNumin)
     }
-    else if(jobNumout == 0)
+    else if(jobNumin == 0)
     {
       $('#notifyNumber').hide()
-      $('#notifyNumberOut').hide()
+      $('#notifyNumberIn').hide()
     }   
     })
 
@@ -255,11 +257,12 @@ async function edit_job()
   }
 }
 
-async function sendJob()
+async function sendJob(sectionrecive)
 {
   var updateStatus = await job.child($('#jobKey').val()).update({
-    'ownerSection':localStorage.getItem('section') + 'ou'
+    'ownerSection':localStorage.getItem('section') + 'o' + sectionrecive
   })
+  
 }
 
 $("#jobDetail").on('hide.bs.modal', function(){
@@ -273,12 +276,20 @@ $("#jobDetail").on('hide.bs.modal', function(){
  })
 
  $("#jobDetail").on('show.bs.modal', function(){
-  var section = localStorage.getItem('section')
+   var section = localStorage.getItem('section')
+  
   if(section == 'cn')
-  {$('#sendJobbtn').html('<i class="fas fa-paper-plane" aria-hidden="true"></i> ส่งงานให้แผนกบริการ')}
+  {
+    $('#dropSendjob').html('<a class="dropdown-item" href="#" onclick="sendJob('+"'"+'cs'+"'"+')">แผนกบริการลูกค้า</a><a class="dropdown-item" href="#" onclick="sendJob('+"'"+'om'+"'"+')">แผนกปฎิบัติการ</a>')
+  }
   else if(section == 'cs')
   {
-    $('#sendJobbtn').html('<i class="fas fa-paper-plane" aria-hidden="true"></i> ส่งงานให้แผนกก่อสร้าง')
+    $('#dropSendjob').html('<a class="dropdown-item" href="#" onclick="sendJob('+"'"+'cn'+"'"+')">แผนกก่อสร้าง</a><a class="dropdown-item" href="#" onclick="sendJob('+"'"+'om'+"'"+')">แผนกปฎิบัติการ</a>')
+  }
+  else if(section == 'om')
+  {
+    $('#dropSendjob').html('<a class="dropdown-item" href="#" onclick="sendJob('+"'"+'cn'+"'"+')">แผนกก่อสร้าง</a><a class="dropdown-item" href="#" onclick="sendJob('+"'"+'cs'+"'"+')">แผนกบริการลูกค้า</a>')
+  
   }
  })
 
