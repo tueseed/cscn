@@ -396,7 +396,7 @@ async function ProcessExcel(data)
     }
     else if(checkReq.val() !== null)
     {
-      var updateJob = await job.child().update({})
+      // var updateJob = await job.child().update({})
     }
     var percentUpload = (parseInt(i+1)/parseInt(allData))*100
     $('#uploadStatus').attr('style','width:' + percentUpload + '%')
@@ -476,7 +476,9 @@ async function getJob(jobKey,jobinKey)
   var removefromsending = await jobSending.child(jobinKey).remove()
 }
 
-
+$('.datepicker').datepicker({
+  format: 'yyyy-mm-dd'
+}).datepicker("setDate",'now')
 
 
 
