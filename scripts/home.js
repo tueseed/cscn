@@ -268,11 +268,12 @@ async function fetchDetail(reqNumber)
   var jobValue = Object.values(jobKey)[0]
   $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)
   $('#jobNamemodal').val(Object.values(jobKey)[0].jobName)
-  $('#dateRecivemodal').val(await convdate(Object.values(jobKey)[0].dateReq))
+  $('#dateRecivemodal').val(convdate(Object.values(jobKey)[0].dateReq))
+  $('#dateSendtocn').html(convdate(Object.values(jobKey)[0].dateSendtocn))
   $('#techCon').val(Object.values(jobKey)[0].techCon)
   $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)
-  $('#datePaid').val(await convdate(Object.values(jobKey)[0].datePaid))
-  $('#datePlan').val(await convdate(Object.values(jobKey)[0].datePlan))
+  $('#datePaid').val(convdate(Object.values(jobKey)[0].datePaid))
+  $('#datePlan').val(convdate(Object.values(jobKey)[0].datePlan))
   $('#operator').val(Object.values(jobKey)[0].operator)
   $('#textContractor').val(Object.values(jobKey)[0].textContractor)
   if(Object.values(jobKey)[0].operator == '1'){$('#contractor').show()}else{$('#contractor').hide() }
@@ -335,7 +336,8 @@ async function sendJob(sectionrecive)
 {
   var updateStatus = await job.child($('#jobKey').val()).update({
     'ownerSection':'se',
-    'owner':'./pic/sending.jpeg'
+    'owner':'./pic/sending.jpeg',
+    'dateSendtocn':getdateNow()
   })
   var senDing = await jobSending.push(
     {
@@ -467,8 +469,6 @@ async function ProcessExcel(data)
   console.log(excelRows)
   $('#rowUpload').show()
   var allData = excelRows.length
-  var d = new Date()
-  var dateReq = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate()
   var i = 0 
   while(excelRows[i])
   {
@@ -617,6 +617,14 @@ function convThdatetoEndate(dateInput)
   var year_thai = parseInt(splitDate[2]) - 543
   dateEn = year_thai+'-'+month_eng+'-'+splitDate[0]
   return dateEn
+}
+function getdateNow()
+{  
+  var d = new Date()
+  var Month = d.getMonth() +1
+  var dateNow = d.getFullYear() + '-' + Month + '-' + d.getDate()
+  return dateNow
+  
 }
 
 
