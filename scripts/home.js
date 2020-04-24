@@ -473,14 +473,14 @@ async function ProcessExcel(data)
     if(checkReq.val() == null)
     {
       var pushJob = await job.push({
-                                  'jobName':Object.values(obj)[4],
-                                  'reqNumber':Object.values(obj)[2],
-                                  'dateReq':Object.values(obj)[1],
+                                  'jobName':Object.values(obj)[5],
+                                  'reqNumber':Object.values(obj)[3],
+                                  'dateReq':Object.values(obj)[2],
                                   'owner':localStorage.getItem('display_url'),
                                   'ownerSection':localStorage.getItem('section'),
-                                  'cnJobname':Object.values(obj)[3],
-                                  'datePaid':Object.values(obj)[6],
-                                  'ca':Object.values(obj)[0],
+                                  'cnJobname':Object.values(obj)[4],
+                                  'datePaid':Object.values(obj)[7],
+                                  'ca':Object.values(obj)[1],
                                   'recNumber':Object.values(obj)[5],//เลขที่ใบเสร็จ
                                   'techCon':'-',
                                   'datePlan':'-',
@@ -495,7 +495,8 @@ async function ProcessExcel(data)
                                   'trSize':'-',
                                   'cirHt':'-',
                                   'cirLt':'-',
-                                  'cirSt':'-'
+                                  'cirSt':'-',
+                                  'techSurvey':'-'
                                 })
     }
     else if(checkReq.val() !== null)
