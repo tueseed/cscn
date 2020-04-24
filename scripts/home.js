@@ -334,7 +334,8 @@ async function edit_job()
 async function sendJob(sectionrecive)
 {
   var updateStatus = await job.child($('#jobKey').val()).update({
-    'ownerSection':'se'
+    'ownerSection':'se',
+    'owner':'./pic/sending.jpeg'
   })
   var senDing = await jobSending.push(
     {

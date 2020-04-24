@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./assets/css/effect.css">
     <link rel="stylesheet" href="./assets/css/sidemenu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
-    <link rel="icon" href="./pic/logo-auc.png" type="image/gif" sizes="64x64">
+    <link rel="icon" href="./pic/sending.jpeg" type="image/gif" sizes="64x64">
     <style>
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
