@@ -481,7 +481,7 @@ async function ProcessExcel(data)
                                   'cnJobname':Object.values(obj)[4],
                                   'datePaid':Object.values(obj)[7],
                                   'ca':Object.values(obj)[1],
-                                  'recNumber':Object.values(obj)[5],//เลขที่ใบเสร็จ
+                                  'recNumber':Object.values(obj)[6],//เลขที่ใบเสร็จ
                                   'techCon':'-',
                                   'datePlan':'-',
                                   'operator':'0',
