@@ -80,9 +80,10 @@ else if(getUrlVars()["code"])
     })
 }
 // var section = 'cs' //สมมุติแผนก
+getdata()
 function getdata(section)
 {
-job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
+job.orderByChild('ownerSection').equalTo('cs').on('value',function(snapshot){                         
                                   if(snapshot.val() !== null)
                                   {
                                     var data = snapshot.val()
@@ -226,28 +227,38 @@ async function fetchDetail(reqNumber)
   var jobKey = jobDetail.val()
   $('#jobKey').val(Object.keys(jobKey)[0])
   var jobValue = Object.values(jobKey)[0]
-  $('#reqNumbermodal').val(Object.values(jobKey)[0].reqNumber)
+  $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)
   $('#jobNamemodal').val(Object.values(jobKey)[0].jobName)
-  $('#dateRecivemodal').val(convdatetomodal(Object.values(jobKey)[0].dateReq))
-  $('#drawingNumber').val(Object.values(jobKey)[0].drawingNumber) 
+  $('#dateRecivemodal').val(await convdate(Object.values(jobKey)[0].dateReq))
+  $('#techCon').val(Object.values(jobKey)[0].techCon)
+  $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)
+  $('#datePaid').val(await convdate(Object.values(jobKey)[0].datePaid))
+  $('#datePlan').val(await convdate(Object.values(jobKey)[0].datePlan))
+  $('#operator').val(Object.values(jobKey)[0].operator)
+  $('#textContractor').val(Object.values(jobKey)[0].textContractor)
+  if(Object.values(jobKey)[0].operator == '1'){$('#contractor').show()}else{$('#contractor').hide() }
   //แสดงหมายเลขงาน
   var docNumber = await number.orderByChild('jobkey').equalTo(Object.keys(jobKey)[0]).once('value')
   var snapdocNumber = docNumber.val()
   if(docNumber.val() !== null)
   {
     $('#geberate_number_btn').hide()
+    $('#send_btn').show()
+    $('#editBudget_btn').show()
     var budget = Object.values(snapdocNumber)[0].budget
     var docNo = Object.values(snapdocNumber)[0].docnumber
     var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     var zeroFill = (budget == 'c') ? '0000':'000' 
     var draWingzero = '0000'
-    $('#jobWbs').val(budgetArr[budget] + zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo)
-    $('#drawingNumber').val('TB19-015/63'+draWingzero.slice(0, parseInt(draWingzero.length) - parseInt(docNo.length)) + docNo)
-    $('#approveNumber').val('ต.1 พธร.(บค.)'+zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo + '/2563')
+    $('#jobWbs').html(budgetArr[budget] + zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo)
+    $('#drawingNumber').html('TB19-015/63'+draWingzero.slice(0, parseInt(draWingzero.length) - parseInt(docNo.length)) + docNo)
+    $('#approveNumber').html('ต.1 พธร.(บค.)'+zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo + '/2563')
   }
   else if(docNumber.val() == null)
   {
     $('#geberate_number_btn').show()
+    $('#send_btn').hide()
+    $('#editBudget_btn').hide()
   }
 }
 
@@ -264,9 +275,19 @@ async function edit_job()
   {
     $('#edit_save_btn').html('<i class="fas fa-edit" aria-hidden="true"></i> แก้ไข')
     $('#edit_save_btn').val('edit')
+    var dateEngreq = await convThdatetoEndate($('#dateRecivemodal').val())
     var updateJob = await job.child($('#jobKey').val()).update({
-      'test':'test' // อัพเดทข้อมูลงาน
-    })
+                                                                'jobName':$('#jobNamemodal').val(),
+                                                                'dateReq': dateEngreq,
+                                                                'cnJobname':$('#cnJobname').val(),
+                                                                'datePaid':'-',
+                                                                'techCon':$('#techCon').val(),
+                                                                'datePlan':'-',
+                                                                'operator':'-',
+                                                                'textContractor':'-',
+                                                                'dateSendtocn':'-',
+                                                                'datecnRecive':'-'
+                                                                })
     $('#jobDetail').modal('toggle')
   }
 }
@@ -286,10 +307,10 @@ async function sendJob(sectionrecive)
     $('#jobDetail').modal('hide')
 }
 
-$("#jobDetail").on('hide.bs.modal', function(){
+$("#jobDetail").on('hidden.bs.modal', function(){
   $("input[name^='inputJobmodal']").prop('disabled', true)
   $("select[name='inputJobmodal']").prop('disabled', true)
-  $("input[name='inputNumber']").val('')
+  $("span[name='inputNumber']").html('')
   $("input[name^='inputJobmodal']").val('')
   $('#edit_save_btn').html('<i class="fas fa-edit" aria-hidden="true"></i> แก้ไข')
   $('#edit_save_btn').val('edit')
@@ -297,8 +318,8 @@ $("#jobDetail").on('hide.bs.modal', function(){
  })
 
  $("#jobDetail").on('show.bs.modal', function(){
+ 
    var section = localStorage.getItem('section')
-  
   if(section == 'cn')
   {
     $('#dropSendjob').html('<a class="dropdown-item" href="#" onclick="sendJob('+"'"+'cs'+"'"+')">แผนกบริการลูกค้า</a><a class="dropdown-item" href="#" onclick="sendJob('+"'"+'om'+"'"+')">แผนกปฎิบัติการ</a>')
@@ -337,6 +358,7 @@ $("#jobDetail").on('hide.bs.modal', function(){
 
 
  $('#selectFile').on('click', function(){$('#reqFile').trigger('click')})
+
  $("#operator").on('change',function(){
                                         if(this.value == '0')
                                         {
@@ -349,12 +371,29 @@ $("#jobDetail").on('hide.bs.modal', function(){
                                         })
 
  $(document).ready(function(){
-    $('#reqFile').change(function(e){readFile()})                      
+    $('#reqFile').change(function(e){readFile()})
+    $('[data-toggle="datepicker"]').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    })
+    $('#dateRecivemodal').change(async function(e){
+                                                    var getdate = await convdate(this.value)
+                                                    $('#dateRecivemodal').val(getdate)
+                                                  })
+    $('#datePaid').change(async function(e){
+                                              var getdate = await convdate(this.value)
+                                              $('#datePaid').val(getdate)
+                                            }) 
+    $('#datePlan').change(async function(e){
+                                              var getdate = await convdate(this.value)
+                                              $('#datePlan').val(getdate)
+                                            })                  
 })
 
-// $('#datePaid').val("2017-06-01")
-$('#geberate_number_btn').hide()
 
+$('#geberate_number_btn').hide()
+$('#send_btn').hide()
+$('#editBudget_btn').hide()
 function readFile()
 {
   var fileUpload = document.getElementById("reqFile")
@@ -384,19 +423,29 @@ async function ProcessExcel(data)
     if(checkReq.val() == null)
     {
       var pushJob = await job.push({
-                                  'jobName':Object.values(obj)[7],
-                                  'reqNumber':Object.values(obj)[3],
-                                  'dateReq':dateReq,
+                                  'jobName':Object.values(obj)[4],
+                                  'reqNumber':Object.values(obj)[2],
+                                  'dateReq':Object.values(obj)[1],
                                   'owner':localStorage.getItem('display_url'),
                                   'ownerSection':localStorage.getItem('section'),
-                                  'cnJobname':'-',
-                                  'datePaid':'-',
+                                  'cnJobname':Object.values(obj)[3],
+                                  'datePaid':Object.values(obj)[6],
+                                  'ca':Object.values(obj)[0],
+                                  'recNumber':Object.values(obj)[5],
                                   'techCon':'-',
                                   'datePlan':'-',
-                                  'operator':'-',
+                                  'operator':'0',
                                   'textContractor':'-',
                                   'dateSendtocn':'-',
-                                  'datecnRecive':'-'
+                                  'datecnRecive':'-',
+                                  'customerName':'-',
+                                  'customerPhone':'-',
+                                  'trOwner':'0',//เจ้าของหม้อแปลง 0=PEA,1=CUSTOMER
+                                  'trSupply':'0',//ผู้จัดหาหม้อแปลง 0=PEA,1=CUSTOMER
+                                  'trSize':'-',
+                                  'cirHt':'-',
+                                  'cirLt':'-',
+                                  'cirSt':'-'
                                 })
     }
     else if(checkReq.val() !== null)
@@ -453,7 +502,16 @@ async function genNumber()
   fetchDetail(getreqNumber.val().reqNumber)
   
 }
-
+async function editBudget()
+{
+  var getkeyFromnumber = await number.orderByChild('jobkey').equalTo($('#jobKey').val()).once('value')
+  var numKey = Object.keys(getkeyFromnumber.val())[0]
+  var updatebudgetInnumber = await number.child(numKey).update({'budget':$('#budgeteditSel').val()})
+  var updatebudgetInjob = await job.child($('#jobKey').val()).update({'budget':$('#budgeteditSel').val()})
+  var getreqNumber = await job.child($('#jobKey').val()).once('value')
+  $('#edit_budget').modal('hide')
+  fetchDetail(getreqNumber.val().reqNumber)
+}
 function logout()
 {
   localStorage.clear()
@@ -483,23 +541,33 @@ async function getJob(jobKey,jobinKey)
 
 function convdate(dateInput)
 {
-  var date_do = dateInput
-  var y = date_do.substring(0,4)
-  var m = date_do.substring(5,7)
-  var d = date_do.substring(8,10)
-  var y_thai = parseInt(y) + parseInt(543)
-  var month_thai = {0:'มกราคม',1:'กุมภาพันธ์',2:'มีนาคม',3:'เมษายน',4:'พฤษภาคม',5:'มิถุนายน',6:'กรกฏาคม',7:'สิงหาคม',8:'กันยายน',9:'ตุลาคม',10:'พฤศจิกายน',11:'ธันวาคม'}
-  return d + ' ' + month_thai[parseInt(m)] + ' ' + y_thai
+  dateReturn = dateInput
+  if(dateInput !== '-')
+  {
+  var splitDate = dateInput.split("-")
+  var m = splitDate[1]
+  var d = splitDate[2]
+  var y_thai = parseInt(splitDate[0]) + parseInt(543)
+  var month_thai = {1:'มกราคม',2:'กุมภาพันธ์',3:'มีนาคม',4:'เมษายน',5:'พฤษภาคม',6:'มิถุนายน',7:'กรกฏาคม',8:'สิงหาคม',9:'กันยายน',10:'ตุลาคม',11:'พฤศจิกายน',12:'ธันวาคม'}
+  var dateReturn =  parseInt(d) + ' ' + month_thai[parseInt(m)] + ' ' + y_thai
+  }
+  return dateReturn
 }
 
-function convdatetomodal(dateInput)
+function convThdatetoEndate(dateInput)
 {
-  var date_do = dateInput
-  var y = date_do.substring(0,4)
-  var m = date_do.substring(5,7)
-  var d = date_do.substring(8,10)
-  return y + '-' + m + '-' + d
+  var splitDate = dateInput.split(" ")
+  var month_thai = {1:'มกราคม',2:'กุมภาพันธ์',3:'มีนาคม',4:'เมษายน',5:'พฤษภาคม',6:'มิถุนายน',7:'กรกฏาคม',8:'สิงหาคม',9:'กันยายน',10:'ตุลาคม',11:'พฤศจิกายน',12:'ธันวาคม'}
+  var month_eng = Object.keys(month_thai).find(key => month_thai[key] === splitDate[1])
+  var year_thai = parseInt(splitDate[2]) - 543
+  dateEn = year_thai+'-'+month_eng+'-'+splitDate[0]
+  return dateEn
 }
+
+
+
+
+
 
 
 

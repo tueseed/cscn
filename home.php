@@ -118,20 +118,20 @@
             <input type="hidden" id="jobKey">
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่คำร้อง</label>
-                <input type="text" class="form-control" name="inputJobmodal[reqNumbermodal]" id="reqNumbermodal" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่คำร้อง</span>
+                <span  id="reqNumbermodal"> </span> 
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-info"></i> คำอธิบายงานงาน</label>
-                <input type="text" class="form-control" name="inputJobmodal[jobNamemodal]" id="jobNamemodal" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> ส่งแฟ้มงานให้ ผกส.</span>
+                <span  id="dateSendtocn" > </span> 
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่รับคำร้อง</label>
-                <input type="date" class="form-control" name="inputJobmodal[jobNamemodal]" id="dateRecivemodal" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> ผกส.รับแฟ้มงาน</span>
+                <span id="datecnrecive" ></span>
               </div>
             </div>
           </div>
@@ -139,20 +139,20 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่แบบ</label>
-                <input type="text" class="form-control" name="inputNumber" id="drawingNumber" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่แบบ</span>
+                <span id="drawingNumber" name='inputNumber'></span>
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่อนุมัติ</label>
-                <input type="text" class="form-control" name="inputNumber" id="approveNumber" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่อนุมัติ</span>
+                <span  id="approveNumber" name='inputNumber'></span>
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> หมายเลขงาน</label>
-                <input type="text" class="form-control" name="inputNumber" id="jobWbs" disabled>  
+                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> หมายเลขงาน</span>
+                <span id="jobWbs" name='inputNumber'></span> 
               </div>
             </div>
           </div>
@@ -167,13 +167,13 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่ชำระเงิน</label>
-                <input type="date" class="form-control" name="inputJobmodal[datePaid]" id="datePaid"  disabled>  
+                <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePaid]" id="datePaid"  disabled>  
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่ส่งแฟ้มงานให้แผนกก่อสร้าง</label>
-                <input type="date" class="form-control" name="inputJobmodal[dateSendtocn]" id="dateSendtocn" disabled>  
+                <label class="text-success font-weight-bold"><i class="fas fa-info"></i> คำอธิบายงานงาน</label>
+                <input type="text" class="form-control" name="inputJobmodal[jobNamemodal]" id="jobNamemodal" disabled>  
               </div>
             </div>
           </div>
@@ -181,8 +181,8 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่แผนกก่อสร้างรับแฟ้มงาน</label>
-                <input type="date" class="form-control" name="inputJobmodal[datecnrecive]" id="datecnrecive" disabled>  
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่รับคำร้อง</label>
+                <input type="text" class="form-control" data-toggle="datepicker"  name="inputJobmodal[jobNamemodal]" id="dateRecivemodal" disabled>  
               </div>
             </div>
             <div class="col-lg-4">
@@ -194,7 +194,7 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่คาดว่าจะดำเนินการ</label>
-                <input type="date" class="form-control" name="inputJobmodal[datePlan]" id="datePlan" disabled>  
+                <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePlan]" id="datePlan" disabled>  
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@
       </div>
       <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <div class="modal-footer">
-        <button id="change_status" type="button" class="btn btn-outline-primary mr-auto dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50px 50px;">
+        <button id="send_btn" type="button" class="btn btn-outline-primary mr-auto dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50px 50px;">
           <i class="fas fa-paper-plane" aria-hidden="true"></i>          
           ส่งงาน
         </button>
@@ -229,6 +229,9 @@
             <i class="fas fa-paper-plane" aria-hidden="true"></i>
             ส่งงานให้แผนกก่อสร้าง
         </button> -->
+        <button class="btn btn-outline-primary"  id="editBudget_btn" data-toggle="modal" data-target="#edit_budget" style="border-radius:50px 50px;">
+          <span id="btnText"><i class="fas fa-folder-plus"></i> แก้ไขงบประมาณ</span>
+        </button>
         <button class="btn btn-outline-primary"  id="geberate_number_btn" data-toggle="modal" data-target="#generate_number_modal" style="border-radius:50px 50px;">
           <span id="btnText"><i class="fas fa-folder-plus"></i> สร้างหมายเลขงาน</span>
         </button>
@@ -267,6 +270,40 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline-primary"  id="save_btn" onclick="genNumber()" style="border-radius:50px 50px;">
+          <i class="fas fa-save" aria-hidden="true"></i>
+          ยืนยัน
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='modal fade' tabindex='-1' role='dialog' id="edit_budget">
+  <div class='modal-dialog modal-md' role='document' >
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title font-weight-bold' id="head_modal">
+          แก้ไขงบประมาณ
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+          <div class="row">
+            <div class="col-md-12">
+            <div class="form-group">
+              <label for="sel1">เลือกงบ:</label>
+              <select class="form-control" id="budgeteditSel">
+                <option value="c">งบผู้ใช้ไฟฟ้า</option>
+                <option value="p">งบโครงการ</option>
+              </select>
+            </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-primary"  id="save_btn" onclick="editBudget()" style="border-radius:50px 50px;">
           <i class="fas fa-save" aria-hidden="true"></i>
           ยืนยัน
         </button>
