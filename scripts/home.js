@@ -83,7 +83,7 @@ else if(getUrlVars()["code"])
 getdata()
 function getdata(section)
 {
-job.orderByChild('ownerSection').equalTo('cs').on('value',function(snapshot){                         
+job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
                                   if(snapshot.val() !== null)
                                   {
                                     var data = snapshot.val()
