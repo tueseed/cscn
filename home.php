@@ -27,6 +27,14 @@
     <div class="row mt-4">
       <div class="col-lg-12">
           <div class="card shadow" >
+            <div class="card-header">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="disAllcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                  แสดงข้อมูลงานทั้งหมด
+                </label>
+              </div>
+            </div>
             <div class="card-body">
             <table 
             id="jobTbl"

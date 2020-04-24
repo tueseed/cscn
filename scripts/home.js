@@ -84,36 +84,75 @@ else if(getUrlVars()["code"])
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
-                                  if(snapshot.val() !== null)
-                                  {
-                                    var data = snapshot.val()
-                                    var i =0
-                                    var data_for_tbl = []
-                                
-                                    while(Object.keys(data)[i])
-                                    {
-                                      var obj = []
-                                      obj = Object.values(data)[i]
-                                      obj.key = Object.keys(data)[i]
-                                      data_for_tbl.push(obj)
-                                      i++
-                                    }
-                                    var $table = $('#jobTbl')
-                                    $table.bootstrapTable('refreshOptions', {
-                                      data: data_for_tbl
-                                    })
-                                    // console.log(data_for_tbl)
-                                  }
-                                  else if(snapshot.val() == null)
-                                  {
-                                    var $table = $('#jobTbl')
-                                    $table.bootstrapTable('refreshOptions', {
-                                      data: []
-                                    })
-                                  }
-                                }
+                                                                            if(!$('#disAllcheck').prop("checked")) 
+                                                                            {
+                                                                              if(snapshot.val() !== null)
+                                                                              {
+                                                                                var data = snapshot.val()
+                                                                                var i =0
+                                                                                var data_for_tbl = []
+                                                                            
+                                                                                while(Object.keys(data)[i])
+                                                                                {
+                                                                                  var obj = []
+                                                                                  obj = Object.values(data)[i]
+                                                                                  obj.key = Object.keys(data)[i]
+                                                                                  data_for_tbl.push(obj)
+                                                                                  i++
+                                                                                }
+                                                                                var $table = $('#jobTbl')
+                                                                                $table.bootstrapTable('refreshOptions', {
+                                                                                  data: data_for_tbl
+                                                                                })
+                                                                                // console.log(data_for_tbl)
+                                                                              }
+                                                                              else if(snapshot.val() == null)
+                                                                              {
+                                                                                var $table = $('#jobTbl')
+                                                                                $table.bootstrapTable('refreshOptions', {
+                                                                                  data: []
+                                                                                })
+                                                                              }
+                                                                            }
+                                                                            }
                         )
   }
+
+function getAlldata()
+{
+      job.on('value',function(snapshot){                         
+                                        if($('#disAllcheck').prop("checked")) 
+                                        {
+                                          if(snapshot.val() !== null)
+                                          {
+                                            var data = snapshot.val()
+                                            var i =0
+                                            var data_for_tbl = []
+                                        
+                                            while(Object.keys(data)[i])
+                                            {
+                                              var obj = []
+                                              obj = Object.values(data)[i]
+                                              obj.key = Object.keys(data)[i]
+                                              data_for_tbl.push(obj)
+                                              i++
+                                            }
+                                            var $table = $('#jobTbl')
+                                            $table.bootstrapTable('refreshOptions', {
+                                              data: data_for_tbl
+                                            })
+                                          }
+                                          else if(snapshot.val() == null)
+                                          {
+                                            var $table = $('#jobTbl')
+                                            $table.bootstrapTable('refreshOptions', {
+                                              data: []
+                                            })
+                                          }
+                                        }
+                                        }
+      )
+}
 
 function countJob(section)
 {
@@ -387,7 +426,18 @@ $("#jobDetail").on('hidden.bs.modal', function(){
     $('#datePlan').change(async function(e){
                                               var getdate = await convdate(this.value)
                                               $('#datePlan').val(getdate)
-                                            })                  
+                                            }) 
+    $('#disAllcheck').change( async function(e){
+                                          if($('#disAllcheck').prop("checked"))
+                                          {
+                                            var data = await getAlldata()
+                                          }
+                                          else if(!$('#disAllcheck').prop("checked")){
+                                            var data = await getdata(localStorage.getItem('section'))
+                                          }
+                                        }
+                                          
+                                          )                 
 })
 
 
@@ -431,7 +481,7 @@ async function ProcessExcel(data)
                                   'cnJobname':Object.values(obj)[3],
                                   'datePaid':Object.values(obj)[6],
                                   'ca':Object.values(obj)[0],
-                                  'recNumber':Object.values(obj)[5],
+                                  'recNumber':Object.values(obj)[5],//เลขที่ใบเสร็จ
                                   'techCon':'-',
                                   'datePlan':'-',
                                   'operator':'0',
