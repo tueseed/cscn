@@ -276,12 +276,12 @@ function dateDis(value)
 
 async function fetchDetail(reqNumber)
 {
-  if(localStorage.getItem('section') !== Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').hide()}
-  else if(localStorage.getItem('section') == Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').show()}
   // แสดงรายละเอียดงานใน Modal
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
+  if(localStorage.getItem('section') !== Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').hide()}
+  else if(localStorage.getItem('section') == Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').show()}
   $('#jobKey').val(Object.keys(jobKey)[0])
   var jobValue = Object.values(jobKey)[0]
   $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)//เลขที่คำร้้อง
