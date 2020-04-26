@@ -443,6 +443,21 @@ $("#jobDetail").on('hidden.bs.modal', function(){
   })
  })
 
+ $("#jobOut").on('show.bs.modal', function(){
+  jobSending.orderByChild('from').equalTo(localStorage.getItem('section')).on('value',function(jobOutgoing){
+  var snapJobOutgoimg = jobOutgoing.val()
+  $('#jobInarea').empty()
+  var i = 0
+  var jobCard = ''
+  while(Object.keys(snapJobOutgoimg)[i])
+  {
+    jobCard = render_jobIn_card(Object.values(snapJobOutgoimg)[i].jobKey,Object.values(snapJobOutgoimg)[i].jobName,Object.keys(snapJobOutgoimg)[i])
+    $('#jobInarea').append(jobCard)
+    i++
+  }
+})
+})
+
 
 
  $('#selectFile').on('click', function(){$('#reqFile').trigger('click')})
