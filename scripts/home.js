@@ -280,8 +280,8 @@ async function fetchDetail(reqNumber)
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
-  if(localStorage.getItem('section') !== Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').hide()}
-  else if(localStorage.getItem('section') == Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').show()}
+  if(localStorage.getItem('section') !== Object.values(jobKey)[0].onwerSection){$('#jobDetailfoot').hide()}
+  else if(localStorage.getItem('section') == Object.values(jobKey)[0].onwerSection){$('#jobDetailfoot').show()}
   $('#jobKey').val(Object.keys(jobKey)[0])
   var jobValue = Object.values(jobKey)[0]
   $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)//เลขที่คำร้้อง
