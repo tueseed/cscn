@@ -48,6 +48,7 @@
             data-search="true">
             <thead>
               <tr>
+                <th data-align="center" data-sortable="true" data-field="docnumber" data-formatter="docRunning">ลำดับที่</th>
                 <th data-align="center" data-field="owner" data-formatter="picOwner">ผู้รับผิดชอบ</th>
                 <th data-align="center" data-sortable="true" data-field="docnumber" data-formatter="disWbs">หมายเลขงาน</th>
                 <th data-align="center" data-field="jobName" >ชื่องาน</th>

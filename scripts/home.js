@@ -268,7 +268,13 @@ function disWbs(value,row,index)
     return wbs
   }
 }
-
+function docRunning(value)
+{
+  if(value)
+  {
+    return value
+  }
+}
 function dateDis(value)
 {
   return convdate(value)
