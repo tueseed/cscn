@@ -270,7 +270,7 @@ function disWbs(value,row,index)
 }
 function docRunning(value)
 {
-  var data = 'ยังไม่กำหนด'
+  var data = 'NA'
   if(value)
   {
     data = value
