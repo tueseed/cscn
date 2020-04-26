@@ -454,7 +454,7 @@ $("#jobDetail").on('hidden.bs.modal', function(){
     var jobCard = ''
     while(Object.keys(snapJobOutgoing)[i])
     {
-      jobCard = render_jobIn_card(Object.values(snapJobOutgoing)[i].jobKey,Object.values(snapJobOutgoing)[i].jobName,Object.keys(snapJobOutgoing)[i])
+      jobCard = render_jobOut_card(Object.values(snapJobOutgoing)[i].jobKey,Object.values(snapJobOutgoing)[i].jobName,Object.keys(snapJobOutgoing)[i])
       $('#jobOutarea').append(jobCard)
       i++
     }
@@ -651,6 +651,21 @@ function render_jobIn_card(jobKey,jobName,jobinkey)
             '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob(' + "'" + jobKey + "','" + jobinkey + "'" + ')" style="border-radius:50px 50px;">',
             '<i class="fas fa-save" aria-hidden="true"></i>',
             'รับงาน',
+          '</button>',
+          '</div>',
+        '</div>'
+        ].join("")
+}
+
+function render_jobOut_card(jobKey,jobName,jobinkey)
+{
+  return[
+        '<div class="card shadow mt-1" >',
+          '<div class="card-body">',    
+            '<span class="text-success">' + jobName + '</span>',
+            '<button class="btn btn-outline-primary float-right"  id="save_btn" onclick="getJob(' + "'" + jobKey + "','" + jobinkey + "'" + ')" style="border-radius:50px 50px;">',
+            '<i class="fas fa-save" aria-hidden="true"></i>',
+            'ยกเลิกส่งงาน',
           '</button>',
           '</div>',
         '</div>'
