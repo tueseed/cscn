@@ -445,14 +445,14 @@ $("#jobDetail").on('hidden.bs.modal', function(){
 
  $("#jobOut").on('show.bs.modal', function(){
   jobSending.orderByChild('from').equalTo(localStorage.getItem('section')).on('value',function(jobOutgoing){
-  var snapJobOutgoimg = jobOutgoing.val()
+  var snapJobOutgoing = jobOutgoing.val()
   $('#jobInarea').empty()
   var i = 0
   var jobCard = ''
   while(Object.keys(snapJobOutgoimg)[i])
   {
-    jobCard = render_jobIn_card(Object.values(snapJobOutgoimg)[i].jobKey,Object.values(snapJobOutgoimg)[i].jobName,Object.keys(snapJobOutgoimg)[i])
-    $('#jobInarea').append(jobCard)
+    jobCard = render_jobIn_card(Object.values(snapJobOutgoing)[i].jobKey,Object.values(snapJobOutgoing)[i].jobName,Object.keys(snapJobOutgoing)[i])
+    $('#jobOutarea').append(jobCard)
     i++
   }
 })
