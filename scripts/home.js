@@ -258,10 +258,10 @@ function picOwner(value,row,index)
 
 function disWbs(value,row,index)
 {
-  if(row.docnumber)
+  if(row.budget)
   {
-    var budget = value
-    var docNo = row.docnumber
+    var budget = row.budget
+    var docNo = value
     var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     var zeroFill = (budget == 'c') ? '0000':'000' 
     var wbs = budgetArr[budget] + zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo

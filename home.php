@@ -49,7 +49,7 @@
             <thead>
               <tr>
                 <th data-align="center" data-field="owner" data-formatter="picOwner">ผู้รับผิดชอบ</th>
-                <th data-align="center" data-sortable="true" data-field="budget" data-formatter="disWbs">หมายเลขงาน</th>
+                <th data-align="center" data-sortable="true" data-field="docnumber" data-formatter="disWbs">หมายเลขงาน</th>
                 <th data-align="center" data-field="jobName" >ชื่องาน</th>
                 <th data-align="center" data-field="reqNumber">เลขที่คำร้อง</th>
                 <th data-align="center" data-field="dateReq" data-formatter="dateDis">วันที่รับคำร้อง</th>
