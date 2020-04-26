@@ -270,10 +270,12 @@ function disWbs(value,row,index)
 }
 function docRunning(value)
 {
+  var data = 'ยังไม่กำหนด'
   if(value)
   {
-    return value
+    data = value
   }
+  return data
 }
 function dateDis(value)
 {
