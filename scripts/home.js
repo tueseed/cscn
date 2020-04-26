@@ -534,7 +534,7 @@ async function ProcessExcel(data)
                                   'trSize':'-',
                                   'distancecircuit':'-',
                                   'techSurvey':'-',
-                                  'hlService' : '-',
+                                  'hlService' : '0',
                                 })
     }
     else if(checkReq.val() !== null)
