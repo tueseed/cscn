@@ -280,15 +280,15 @@ async function fetchDetail(reqNumber)
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
-  // if(localStorage.getItem('section') != Object.values(jobKey)[0].onwerSection)
-  // {
-  //     $('#jobDetailfoot').hide()
-  // }else
-  // {
-  //   $('#jobDetailfoot').show()
-  // }
+  if(localStorage.getItem('section') != Object.values(jobKey)[0].ownerSection)
+  {
+      $('#jobDetailfoot').hide()
+  }else
+  {
+    $('#jobDetailfoot').show()
+  }
   console.log(localStorage.getItem('section'))
-  console.log(Object.values(jobKey)[0].onwerSection)
+  console.log(Object.values(jobKey)[0].ownerSection)
   $('#jobKey').val(Object.keys(jobKey)[0])
   var jobValue = Object.values(jobKey)[0]
   $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)//เลขที่คำร้้อง
