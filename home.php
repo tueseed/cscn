@@ -45,7 +45,7 @@
             data-page-size="5"
             data-fixed-columns="false"
             data-sticky-header="true"
-            data-sortable="true"
+            data-sort-order="desc"
             data-search="true">
             <thead>
               <tr>
