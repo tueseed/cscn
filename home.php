@@ -286,7 +286,7 @@
 
       </div>
       <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-      <div class="modal-footer">
+      <div class="modal-footer" id="jobDetailfoot">
         <button id="send_btn" type="button" class="btn btn-outline-primary mr-auto dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50px 50px;">
           <i class="fas fa-paper-plane" aria-hidden="true"></i>          
           ส่งงาน

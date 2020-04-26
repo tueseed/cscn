@@ -276,6 +276,8 @@ function dateDis(value)
 
 async function fetchDetail(reqNumber)
 {
+  if(localStorage.getItem('section') !== Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').hide()}
+  else if(localStorage.getItem('section') == Object.values(jobKey)[0].reqNumber.onwerSection){$('#jobDetailfoot').show()}
   // แสดงรายละเอียดงานใน Modal
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
