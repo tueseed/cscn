@@ -80,7 +80,7 @@ else if(getUrlVars()["code"])
     })
 }
 // var section = 'cs' //สมมุติแผนก
-getdata()
+// getdata()
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
