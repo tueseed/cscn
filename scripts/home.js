@@ -441,7 +441,7 @@ $("#jobDetail").on('hidden.bs.modal', function(){
         $('#jobInarea').append(jobCard)
         i++
       }
-    }
+    }else if(snapJobincomimg == null){$('#jobInarea').empty()}
   })
  })
 
@@ -458,7 +458,7 @@ $("#jobDetail").on('hidden.bs.modal', function(){
       $('#jobOutarea').append(jobCard)
       i++
     }
-  }
+  }else if(snapJobOutgoing == null){$('#jobOutarea').empty()}
 })
 })
 
