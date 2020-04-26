@@ -80,7 +80,7 @@ else if(getUrlVars()["code"])
     })
 }
 // var section = 'cs' //สมมุติแผนก
-// getdata()
+getdata()
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
@@ -266,16 +266,29 @@ async function fetchDetail(reqNumber)
   var jobKey = jobDetail.val()
   $('#jobKey').val(Object.keys(jobKey)[0])
   var jobValue = Object.values(jobKey)[0]
-  $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)
-  $('#jobNamemodal').val(Object.values(jobKey)[0].jobName)
-  $('#dateRecivemodal').val(convdate(Object.values(jobKey)[0].dateReq))
-  $('#dateSendtocn').html(convdate(Object.values(jobKey)[0].dateSendtocn))
-  $('#techCon').val(Object.values(jobKey)[0].techCon)
-  $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)
-  $('#datePaid').val(convdate(Object.values(jobKey)[0].datePaid))
-  $('#datePlan').val(convdate(Object.values(jobKey)[0].datePlan))
-  $('#operator').val(Object.values(jobKey)[0].operator)
-  $('#textContractor').val(Object.values(jobKey)[0].textContractor)
+  $('#reqNumbermodal').html(Object.values(jobKey)[0].reqNumber)//เลขที่คำร้้อง
+  $('#customerNamemodal').html(Object.values(jobKey)[0].customerName)//เลขที่คำร้้อง
+  $('#caNumbermodal').html(Object.values(jobKey)[0].ca)//บัญชีแสดงสัญญา
+  $('#dateSendtocn').html(convdate(Object.values(jobKey)[0].dateSendtocn))//วันที่ส่งแฟ้มงานให้แผนกก่อสร้าง
+  $('#datecnrecive').html(convdate(Object.values(jobKey)[0].datecnRecive))//วันที่แผนกก่อสร้างรับแฟ้มงาน
+  $('#dateRecivemodal').val(convdate(Object.values(jobKey)[0].dateReq))//วันที่รับคำร้อง
+  $('#datePaid').val(convdate(Object.values(jobKey)[0].datePaid))//วันที่ชำระเงิน
+  $('#recNumbermodal').val(Object.values(jobKey)[0].recNumber)//เลขที่ใบเสร็จรับเงิน
+  $('#hlService').val(Object.values(jobKey)[0].hlService)//บริการ hotline 
+  $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)//ชื่อแฟ้มงาน
+  $('#jobNamemodal').val(Object.values(jobKey)[0].jobName) //คำอธิบายงาน
+  $('#techSurvey').val(Object.values(jobKey)[0].techSurvey)//ช่างสำรวจ
+  $('#trOwner').val(Object.values(jobKey)[0].trOwner)//เจ้าของหม้อแปลง
+  $('#trSupply').val(Object.values(jobKey)[0].trSupply)//ผู้จัดหาหม้อแปลง
+  $('#trSize').val(Object.values(jobKey)[0].trSize)//ขนาดหม้อแปลง
+  $('#polemodal').val(polefromdatabasetotext(Object.values(jobKey)[0].pole))//ขนาดและจำนวนเสไฟฟ้า
+  $('#distancemodal').val(polefromdatabasetotext(Object.values(jobKey)[0].distancecircuit))//ควายาวระบบจำหน่าย
+  $('#techCon').val(Object.values(jobKey)[0].techCon)//ผู้ควบคุมงานก่อสร้าง
+  $('#datePlan').val(convdate(Object.values(jobKey)[0].datePlan))//วันที่คาดว่าจะดำเนินการ
+  $('#operator').val(Object.values(jobKey)[0].operator) //การดำเนินการ
+  $('#textContractor').val(Object.values(jobKey)[0].textContractor)//คู่สัญญา
+  
+
   if(Object.values(jobKey)[0].operator == '1'){$('#contractor').show()}else{$('#contractor').hide() }
   //แสดงหมายเลขงาน
   var docNumber = await number.orderByChild('jobkey').equalTo(Object.keys(jobKey)[0]).once('value')
@@ -306,6 +319,7 @@ async function edit_job()
 {
   $("input[name^='inputJobmodal']").prop('disabled', false)
   $("select[name='inputJobmodal']").prop('disabled', false)
+  $("textarea[name='textareadetailModal']").prop('disabled', false) 
   if($('#edit_save_btn').val() == 'edit')
   {
     $('#edit_save_btn').html('<i class="fas fa-save" aria-hidden="true"></i> บันทึก')
@@ -315,19 +329,28 @@ async function edit_job()
   {
     $('#edit_save_btn').html('<i class="fas fa-edit" aria-hidden="true"></i> แก้ไข')
     $('#edit_save_btn').val('edit')
+    var dateEngpaid = await convThdatetoEndate($('#datePaid').val())
+    var dateEngplan = await convThdatetoEndate($('#datePlan').val())
     var dateEngreq = await convThdatetoEndate($('#dateRecivemodal').val())
     var updateJob = await job.child($('#jobKey').val()).update({
-                                                                'jobName':$('#jobNamemodal').val(),
-                                                                'dateReq': dateEngreq,
-                                                                'cnJobname':$('#cnJobname').val(),
-                                                                'datePaid':'-',
-                                                                'techCon':$('#techCon').val(),
-                                                                'datePlan':'-',
-                                                                'operator':'-',
-                                                                'textContractor':'-',
-                                                                'dateSendtocn':'-',
-                                                                'datecnRecive':'-'
-                                                                })
+                                                                
+                                                                "cnJobname" : $('#cnJobname').val(),
+                                                                "datePaid" : dateEngpaid,
+                                                                "datePlan" : dateEngplan,
+                                                                "dateReq" : dateEngreq,
+                                                                "distancecircuit" : $('#distancemodal').val().replace('\n','|'),
+                                                                "hlService" : $('#hlService').val(),
+                                                                "jobName" : $('#jobNamemodal').val(),
+                                                                "operator" : $('#operator').val(),
+                                                                "pole" : $('#polemodal').val().replace('\n','|'),
+                                                                "recNumber" : $('#recNumbermodal').val(),
+                                                                "techCon" : $('#techCon').val(),
+                                                                "techSurvey" : $('#techSurvey').val(),
+                                                                "textContractor" : $('#textContractor').val(),
+                                                                "trOwner" : $('#trOwner').val(),
+                                                                "trSize" : $('#trSize').val(),
+                                                                "trSupply" : $('#trSupply').val()
+    })
     $('#jobDetail').modal('toggle')
   }
 }
@@ -352,8 +375,10 @@ async function sendJob(sectionrecive)
 $("#jobDetail").on('hidden.bs.modal', function(){
   $("input[name^='inputJobmodal']").prop('disabled', true)
   $("select[name='inputJobmodal']").prop('disabled', true)
+  $("textarea[name='textareadetailModal']").prop('disabled', true)
   $("span[name='inputNumber']").html('')
   $("input[name^='inputJobmodal']").val('')
+  $("textarea[name='textareadetailModal']").val('')
   $('#edit_save_btn').html('<i class="fas fa-edit" aria-hidden="true"></i> แก้ไข')
   $('#edit_save_btn').val('edit')
   $('#geberate_number_btn').hide()
@@ -381,6 +406,11 @@ $("#jobDetail").on('hidden.bs.modal', function(){
   $('#reqnumberAdd').val('')
   $("input[name^='add_input']").prop('disabled', true)
  })
+
+ $("#poleconfig").on('show.bs.modal', function(){polefromtexttomodal()})
+
+
+ $("#dismodal").on('show.bs.modal', function(){disfromtexttomodal()})
 
  $("#jobIn").on('show.bs.modal', function(){
     jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).on('value',function(jobIncoming){
@@ -414,12 +444,14 @@ $("#jobDetail").on('hidden.bs.modal', function(){
 
  $(document).ready(function(){
     $('#reqFile').change(function(e){readFile()})
-    $('[data-toggle="datepicker"]').datepicker({
-      format: 'yyyy-mm-dd',
-      autoclose: true
-    })
-    $('#dateRecivemodal').change(async function(e){
-                                                    var getdate = await convdate(this.value)
+
+    $('[data-toggle="datepicker"]').datepicker({format: 'yyyy-mm-dd',autoclose: true})
+
+    $('#polemodal').on('click',function(e){$('#poleconfig').modal('show')})
+
+    $('#distancemodal').on('click',function(e){$('#dismodal').modal('show')})
+
+    $('#dateRecivemodal').change(async function(e){var getdate = await convdate(this.value)
                                                     $('#dateRecivemodal').val(getdate)
                                                   })
     $('#datePaid').change(async function(e){
@@ -431,17 +463,19 @@ $("#jobDetail").on('hidden.bs.modal', function(){
                                               $('#datePlan').val(getdate)
                                             }) 
     $('#disAllcheck').change( async function(e){
-                                          if($('#disAllcheck').prop("checked"))
-                                          {
-                                            var data = await getAlldata()
-                                          }
-                                          else if(!$('#disAllcheck').prop("checked")){
-                                            var data = await getdata(localStorage.getItem('section'))
-                                          }
-                                        }
-                                          
-                                          )                 
+                                                if($('#disAllcheck').prop("checked"))
+                                                {
+                                                  var data = await getAlldata()
+                                                }
+                                                else if(!$('#disAllcheck').prop("checked")){
+                                                  var data = await getdata(localStorage.getItem('section'))
+                                                }
+                                                })
+
+  autocomplete(document.getElementById("techSurvey"),techSurvey)  
+  autocomplete(document.getElementById("trSize"),trSize)                                                     
 })
+
 
 
 $('#geberate_number_btn').hide()
@@ -496,11 +530,11 @@ async function ProcessExcel(data)
                                   'customerPhone':'-',
                                   'trOwner':'0',//เจ้าของหม้อแปลง 0=PEA,1=CUSTOMER
                                   'trSupply':'0',//ผู้จัดหาหม้อแปลง 0=PEA,1=CUSTOMER
+                                  'pole' : '-',
                                   'trSize':'-',
-                                  'cirHt':'-',
-                                  'cirLt':'-',
-                                  'cirSt':'-',
-                                  'techSurvey':'-'
+                                  'distancecircuit':'-',
+                                  'techSurvey':'-',
+                                  'hlService' : '-',
                                 })
     }
     else if(checkReq.val() !== null)
@@ -611,12 +645,16 @@ function convdate(dateInput)
 
 function convThdatetoEndate(dateInput)
 {
+  var dateReturn = dateInput
+  if(dateInput !== '-')
+  {
   var splitDate = dateInput.split(" ")
   var month_thai = {1:'มกราคม',2:'กุมภาพันธ์',3:'มีนาคม',4:'เมษายน',5:'พฤษภาคม',6:'มิถุนายน',7:'กรกฏาคม',8:'สิงหาคม',9:'กันยายน',10:'ตุลาคม',11:'พฤศจิกายน',12:'ธันวาคม'}
   var month_eng = Object.keys(month_thai).find(key => month_thai[key] === splitDate[1])
   var year_thai = parseInt(splitDate[2]) - 543
-  dateEn = year_thai+'-'+month_eng+'-'+splitDate[0]
-  return dateEn
+  dateReturn = year_thai+'-'+month_eng+'-'+splitDate[0]
+  }
+  return dateReturn
 }
 function getdateNow()
 {  
@@ -626,6 +664,74 @@ function getdateNow()
   return dateNow
   
 }
+
+function polefromtexttomodal() // แปลงข้อความจาก textarea ใน modal รายละเอียดงานเพื่อใส่ใน text ที่อยู่ใน modal กำหนดจำนวนเสาไฟฟ้า
+{
+  var strPole = $('#polemodal').val()
+  var poleSplits = strPole.split('\n')
+  
+  var i = 0
+  while(poleSplits[i])
+  {
+    var poleSplit = poleSplits[i].split(" ")
+    $('#p'+poleSplit[1].replace('.','')).val(poleSplit[3])
+    i++
+  }
+}
+
+function polefromdatabasetotext(textpole) //แปลงข้อความจำนวนเสาไฟฟ้าจาก database มาแสดงใน modal รายละเอียดงาน **เอาไปใช้กับความยาวระบบจพหน่ายด้วย
+{
+  var poleSplit = textpole.split("|")
+  var i = 0 
+  var textReturn = ''
+  while(poleSplit[i])
+  {
+    textReturn = textReturn + poleSplit[i] + '\n'
+    i++
+  }
+  return textReturn
+}
+
+function polefrommodalconfigtotext()
+{
+  var texttotextarea = ''
+  if($('#p8').val() >0){texttotextarea = texttotextarea + 'เสา 8 เมตร '+ $('#p8').val() + ' ต้น\n'} 
+  if($('#p9').val() >0){texttotextarea = texttotextarea + 'เสา 9 เมตร '+ $('#p9').val() + ' ต้น\n'} 
+  if($('#p12').val() >0){texttotextarea = texttotextarea + 'เสา 12 เมตร '+ $('#p12').val() + ' ต้น\n'} 
+  if($('#p1220').val() >0){texttotextarea = texttotextarea +'เสา 12.20 เมตร '+  $('#p1220').val() + ' ต้น\n'} 
+  $('#polemodal').val(texttotextarea)
+  $('#poleconfig').modal('hide')
+}
+
+function disfromtexttomodal()
+{
+  var distance = $('#distancemodal').val()
+  var distanceSplits = distance.split('\n')
+  var i = 0
+  while(distanceSplits[i])
+  {
+    var circuit = distanceSplits[i].split(" ")
+    var cirArr = {HT:'แรงสูง',LT:'แรงต่ำ',ST:'ไฟสาธารณะ'}
+    var cirEng = Object.keys(cirArr).find(key => cirArr[key] === circuit[0])
+    $('#'+cirEng).val(circuit[1])
+    i++
+  }
+}
+
+function circuitfrommodalconfigtotext()
+{
+  var texttotextarea = ''
+  if($('#HT').val() !== '-'){texttotextarea = texttotextarea + 'แรงสูง '+ $('#HT').val() + ' วงจร-กม.\n'} 
+  if($('#LT').val() !== '-'){texttotextarea = texttotextarea + 'แรงต่ำ '+ $('#LT').val() + ' วงจร-กม.\n'} 
+  if($('#ST').val() !== '-'){texttotextarea = texttotextarea + 'ไฟสาธารณะ '+ $('#ST').val() + ' วงจร-กม.\n'} 
+  $('#distancemodal').val(texttotextarea)
+  $('#dismodal').modal('hide')
+}
+
+var techSurvey = ["นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
+var trSize = ["30 KVA","50 KVA","100 KVA","160 KVA","250 KVA","315 KVA","500 KVA","1000 KVA","1500 KVA","2000 KVA"]
+
+
 
 
 

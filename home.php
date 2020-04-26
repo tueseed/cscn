@@ -115,7 +115,7 @@
     <div class='modal-content'>
       <div class='modal-header'>
         <h5 class='modal-title font-weight-bold' id="head_modal">
-            รายละเอียดงาน
+            รายละเอียดงาน เลขที่คำร้อง : <span class="text-success" id="reqNumbermodal"></span> <!-- ชื่อลูกค้า : <span class="text-success" id="customerNamemodal"></span>-->
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times;</span>
@@ -126,8 +126,8 @@
             <input type="hidden" id="jobKey">
             <div class="col-lg-4">
               <div class="form-group">
-                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> เลขที่คำร้อง</span>
-                <span  id="reqNumbermodal"> </span> 
+                <span class="text-success font-weight-bold"><i class="fas fa-sort-numeric-down"></i> บัญชีแสดงสัญญา</span>
+                <span  id="caNumbermodal"> </span> 
               </div>
             </div>
             <div class="col-lg-4">
@@ -166,19 +166,45 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-folder-open"></i> ชื่อแฟ้มงาน</label>
-                <input type="text" class="form-control" name="inputJobmodal[cnJobname]" id="cnJobname" disabled>  
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่รับคำร้อง</label>
+                <input type="text" class="form-control" data-toggle="datepicker"  name="inputJobmodal[jobNamemodal]" id="dateRecivemodal" disabled>  
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่ชำระเงิน</label>
                 <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePaid]" id="datePaid"  disabled>  
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-info"></i> เลขที่ใบเสร็จ</label>
+                <input type="text" class="form-control" name="inputJobmodal" id="recNumbermodal" disabled>  
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> บริการ Hotline</label>
+                <select class="form-control" id="hlService" name="inputJobmodal" disabled>
+                  <option value="0">-</option>
+                  <option value="1">ไม่มี</option>
+                  <option value="2">มี</option>
+                </select> 
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+            <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-folder-open"></i> ชื่อแฟ้มงาน</label>
+                <input type="text" class="form-control" name="inputJobmodal[cnJobname]" id="cnJobname" disabled>  
+              </div>
+             
+            </div>
+            <div class="col-lg-6">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-info"></i> คำอธิบายงานงาน</label>
                 <input type="text" class="form-control" name="inputJobmodal[jobNamemodal]" id="jobNamemodal" disabled>  
@@ -187,41 +213,77 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-4">
-              <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่รับคำร้อง</label>
-                <input type="text" class="form-control" data-toggle="datepicker"  name="inputJobmodal[jobNamemodal]" id="dateRecivemodal" disabled>  
+            <div class="col-lg-3">
+                <div class="form-group autocomplete">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> ช่างสำรวจ</label>
+                <input type="text" class="form-control" name="inputJobmodal" id="techSurvey" disabled>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-user-tag"></i> ช่างควบคุมงาน</label>
-                <input type="text" class="form-control" name="inputJobmodal[techCon]" id="techCon" disabled>  
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> หม้อแปลง(ทรัพย์สิน)</label>
+                <select class="form-control" id="trOwner" name="inputJobmodal" disabled>
+                  <option value="0">-</option>
+                  <option value="1">กฟภ.</option>
+                  <option value="2">ผู้ใช้ไฟฟ้า</option>
+                </select> 
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="form-group">
-                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่คาดว่าจะดำเนินการ</label>
-                <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePlan]" id="datePlan" disabled>  
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> หม้อแปลง(ผู้จัดหา)</label>
+                <select class="form-control" id="trSupply" name="inputJobmodal" disabled>
+                  <option value="0">-</option>
+                  <option value="1">กฟภ.</option>
+                  <option value="2">ผู้ใช้ไฟฟ้า</option>
+                </select> 
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> ขนาดหม้อแปลง</label>
+                <input type="text" class="form-control"  name="inputJobmodal[datePlan]" id="trSize" disabled>  
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-lg-4">
-              <label class="text-success font-weight-bold"><i class="fas fa-hammer"></i> การดำเนินการ</label>
-              <select class="form-control" id="operator" name="inputJobmodal" disabled>
-                  <option value="0">กฟภ.</option>
-                  <option value="1">จ้างเหมา</option>
-              </select>
-            </div>
-            <div class="col-lg-4" id="contractor" style="display:none;">
+            <div class="col-lg-3">
               <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> เสาไฟฟ้า</label>
+                <textarea id="polemodal" class="form-control"  name="textareadetailModal" rows="4" cols="20" disabled></textarea>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> ความยาวระบบจำหน่าย</label>
+                <textarea id="distancemodal" class="form-control"  name="textareadetailModal" rows="4" cols="20" disabled></textarea> 
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-user-tag"></i> ช่างควบคุมงาน</label>
+                <input type="text" class="form-control" name="inputJobmodal[techCon]" id="techCon" disabled>
+                <label class="text-success font-weight-bold mt-1"><i class="fas fa-hammer"></i> การดำเนินการ</label>
+                <select class="form-control" id="operator" name="inputJobmodal" disabled>
+                    <option value="0">-</option>
+                    <option value="1">กฟภ.</option>
+                    <option value="2">จ้างเหมา</option>
+                </select>  
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่คาดว่าจะดำเนินการ</label>
+                <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePlan]" id="datePlan" disabled>  
+                <div id="contractor" class="mt-1">
                 <label class="text-success font-weight-bold"><i class="fas fa-file-signature"></i> ผู้รับจ้าง</label>
-                <input type="text" class="form-control" name="inputJobmodal[contractor]" id="textContractor" disabled>  
+                <input type="text" class="form-control" name="inputJobmodal[contractor]" id="textContractor" disabled>
+                </div>
               </div>
             </div>
           </div>
+
       </div>
       <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
       <div class="modal-footer">
@@ -255,19 +317,19 @@
 <div class='modal fade' tabindex='-1' role='dialog' id='generate_number_modal'>
   <div class='modal-dialog modal-md' role='document' >
     <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title font-weight-bold' id="head_modal">
+      <div class='modal-header bg-dark'>
+        <h5 class='modal-title font-weight-bold text-white' id="head_modal">
           สร้างหมายเลขงาน
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
+          <span aria-hidden="true" class="text-white">&times;</span>
         </button>
       </div>
-      <div class='modal-body'>
+      <div class='modal-body bg-dark'>
           <div class="row">
             <div class="col-md-12">
             <div class="form-group">
-              <label for="sel1">เลือกงบ:</label>
+              <label class="text-white" for="sel1">เลือกงบ:</label>
               <select class="form-control" id="budgetSel">
                 <option value="c">งบผู้ใช้ไฟฟ้า</option>
                 <option value="p">งบโครงการ</option>
@@ -275,12 +337,14 @@
             </div>
             </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline-primary"  id="save_btn" onclick="genNumber()" style="border-radius:50px 50px;">
-          <i class="fas fa-save" aria-hidden="true"></i>
-          ยืนยัน
-        </button>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary"  id="save_btn" onclick="genNumber()" style="border-radius:50px 50px;">
+              <i class="fas fa-save" aria-hidden="true"></i>
+              ยืนยัน
+            </button>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -289,19 +353,19 @@
 <div class='modal fade' tabindex='-1' role='dialog' id="edit_budget">
   <div class='modal-dialog modal-md' role='document' >
     <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title font-weight-bold' id="head_modal">
+      <div class='modal-header bg-dark'>
+        <h5 class='modal-title font-weight-bold text-white' id="head_modal">
           แก้ไขงบประมาณ
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
+          <span aria-hidden="true" class="text-white">&times;</span>
         </button>
       </div>
-      <div class='modal-body'>
+      <div class='modal-body bg-dark'>
           <div class="row">
             <div class="col-md-12">
             <div class="form-group">
-              <label for="sel1">เลือกงบ:</label>
+              <label class="text-white"for="sel1">เลือกงบ:</label>
               <select class="form-control" id="budgeteditSel">
                 <option value="c">งบผู้ใช้ไฟฟ้า</option>
                 <option value="p">งบโครงการ</option>
@@ -309,14 +373,113 @@
             </div>
             </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline-primary"  id="save_btn" onclick="editBudget()" style="border-radius:50px 50px;">
-          <i class="fas fa-save" aria-hidden="true"></i>
-          ยืนยัน
-        </button>
+          <div class="row"> 
+            <div class="col-md-12">
+              <button class="btn btn-primary "  id="save_btn" onclick="editBudget()" style="border-radius:50px 50px;">
+                <i class="fas fa-save" aria-hidden="true"></i>
+                ยืนยัน
+              </button>
+            </div>
+          </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class='modal fade' tabindex='-1' role='dialog' id='poleconfig'>
+  <div class='modal-dialog modal-md' role='document' >
+    <div class='modal-content'>
+      <div class='modal-header bg-dark'>
+        <h5 class='modal-title font-weight-bold text-white' id="head_modal">
+            ระบุจำนวนเสาไฟฟ้า
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="text-white">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body bg-dark'>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> 8 เมตร</label>
+                  <input type="number" class="form-control"  id="p8" value="0" >  
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> 9 เมตร</label>
+                  <input type="number" class="form-control"  id="p9" value="0" >  
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> 12 เมตร</label>
+                  <input type="number" class="form-control"  id="p12" value="0" >  
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> 12.20 เมตร</label>
+                  <input type="number" class="form-control"  id="p1220" value="0" >  
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary "  id="poleconfig_btn" onclick="polefrommodalconfigtotext()" style="border-radius:50px 50px;">
+                <i class="fas fa-save" aria-hidden="true"></i>
+                ยืนยัน
+              </button>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class='modal fade' tabindex='-1' role='dialog' id='dismodal'>
+  <div class='modal-dialog modal-md' role='document' >
+    <div class='modal-content'>
+      <div class='modal-header bg-dark'>
+        <h5 class='modal-title font-weight-bold text-white'>
+            ระบุความยาวระบบจำหน่าย
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="text-white">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body bg-dark'>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> แรงสูง</label>
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="HT" value="-" disabled>  
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> แรงต่ำ</label>
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="LT" value="-" disabled>  
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="text-success font-weight-bold"> ไฟสาธารณะ</label>
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="ST" value="-" disabled>  
+              </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary "  id="poleconfig_btn" onclick="circuitfrommodalconfigtotext()" style="border-radius:50px 50px;">
+                <i class="fas fa-save" aria-hidden="true"></i>
+                ยืนยัน
+              </button>
+          </div>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
 

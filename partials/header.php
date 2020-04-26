@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/effect.css">
     <link rel="stylesheet" href="./assets/css/sidemenu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="./assets/css/autocomplete.css">
     <link rel="icon" href="./pic/sending.jpeg" type="image/gif" sizes="64x64">
     <style>
       * {
@@ -46,7 +47,7 @@
         <div class="container-fluid">
           <a class="navbar-brand font-weight-bold" href="?action=rg1">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
-            <span class="text-white" id="head_text">ระบบบริหารจัดการแฟ้มงานก่อสร้าง(CSCN)</span>
+            <span class="text-white" id="head_text">ระบบบริหารจัดการแฟ้มงานก่อสร้าง</span>
           </a>
           <div class="dropdown" id="userDropdown" style="display:none;">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
