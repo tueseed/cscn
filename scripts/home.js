@@ -81,6 +81,14 @@ else if(getUrlVars()["code"])
 }
 // var section = 'cs' //สมมุติแผนก
 // getdata()
+
+function sortByKeyAsc(array, key) {
+  return array.sort(function (a, b) {
+      var x = a[key]; var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
+
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
@@ -102,7 +110,7 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                                                                 }
                                                                                 var $table = $('#jobTbl')
                                                                                 $table.bootstrapTable('refreshOptions', {
-                                                                                  data: data_for_tbl
+                                                                                  data: sortByKeyAsc(data_for_tbl,'docnumber')
                                                                                 })
                                                                                 // console.log(data_for_tbl)
                                                                               }
