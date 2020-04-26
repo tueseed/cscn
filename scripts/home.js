@@ -194,18 +194,34 @@ function countJob(section)
 
 async function creat_job()
 {
-  var d = new Date()
-  var dateReq = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear()
   var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqNumber').val()).once('value')
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
-                                    'jobName':$('#jobName').val(),
-                                    'reqNumber':$('#reqNumber').val(),
-                                    'customerName':$('#customerName').val(),
-                                    'dateReq':dateReq,
+                                    'jobName':$('#jobnameAdd').val(),
+                                    'reqNumber':$('#reqnumberAdd').val(),
+                                    'dateReq':'-',
                                     'owner':localStorage.getItem('display_url'),
-                                    'ownerSection':localStorage.getItem('section')
+                                    'ownerSection':localStorage.getItem('section'),
+                                    'cnJobname':'-',
+                                    'datePaid':'-',
+                                    'ca':$('#caAdd').val(),
+                                    'recNumber':'-',//เลขที่ใบเสร็จ
+                                    'techCon':'-',
+                                    'datePlan':'-',
+                                    'operator':'0',
+                                    'textContractor':'-',
+                                    'dateSendtocn':'-',
+                                    'datecnRecive':'-',
+                                    'customerName':'-',
+                                    'customerPhone':'-',
+                                    'trOwner':'0',//เจ้าของหม้อแปลง 0=PEA,1=CUSTOMER
+                                    'trSupply':'0',//ผู้จัดหาหม้อแปลง 0=PEA,1=CUSTOMER
+                                    'pole' : '-',
+                                    'trSize':'-',
+                                    'distancecircuit':'-',
+                                    'techSurvey':'-',
+                                    'hlService' : '0'
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
@@ -534,7 +550,7 @@ async function ProcessExcel(data)
                                   'trSize':'-',
                                   'distancecircuit':'-',
                                   'techSurvey':'-',
-                                  'hlService' : '0',
+                                  'hlService' : '0'
                                 })
     }
     else if(checkReq.val() !== null)

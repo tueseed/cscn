@@ -81,7 +81,7 @@
             <div class="col-md-12">
               <input type="text" class="form-control mt-1" id="reqnumberAdd"  onkeyup="check_reqnumber()" placeholder="เลขที่คำร้อง">  
               <input type="text" class="form-control mt-1" id="jobnameAdd" name="add_input[jobnameAdd]" placeholder="ชื่องาน" disabled>
-              <input type="text" class="form-control mt-1" id="customernameAdd" name="add_input[customernameAdd]" placeholder="ชื่อลูกค้า" disabled>
+              <input type="text" class="form-control mt-1" id="caAdd" name="add_input[customernameAdd]" placeholder="บัญชีแสดงคู่สัญญา" disabled>
             </div>
           </div>
           <div class="row mt-2" id="rowUpload" style="display:none;">
