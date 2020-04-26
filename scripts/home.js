@@ -431,14 +431,16 @@ $("#jobDetail").on('hidden.bs.modal', function(){
  $("#jobIn").on('show.bs.modal', function(){
     jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).on('value',function(jobIncoming){
     var snapJobincomimg = jobIncoming.val()
-    $('#jobInarea').empty()
-    var i = 0
-    var jobCard = ''
-    while(Object.keys(snapJobincomimg)[i])
-    {
-      jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobKey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
-      $('#jobInarea').append(jobCard)
-      i++
+    if(snapJobincomimg !== null){
+      $('#jobInarea').empty()
+      var i = 0
+      var jobCard = ''
+      while(Object.keys(snapJobincomimg)[i])
+      {
+        jobCard = render_jobIn_card(Object.values(snapJobincomimg)[i].jobKey,Object.values(snapJobincomimg)[i].jobName,Object.keys(snapJobincomimg)[i])
+        $('#jobInarea').append(jobCard)
+        i++
+      }
     }
   })
  })
@@ -446,14 +448,16 @@ $("#jobDetail").on('hidden.bs.modal', function(){
  $("#jobOut").on('show.bs.modal', function(){
   jobSending.orderByChild('from').equalTo(localStorage.getItem('section')).on('value',function(jobOutgoing){
   var snapJobOutgoing = jobOutgoing.val()
-  $('#jobInarea').empty()
-  var i = 0
-  var jobCard = ''
-  while(Object.keys(snapJobOutgoimg)[i])
-  {
-    jobCard = render_jobIn_card(Object.values(snapJobOutgoing)[i].jobKey,Object.values(snapJobOutgoing)[i].jobName,Object.keys(snapJobOutgoing)[i])
-    $('#jobOutarea').append(jobCard)
-    i++
+  if(snapJobOutgoing !== null){
+    $('#jobOutarea').empty()
+    var i = 0
+    var jobCard = ''
+    while(Object.keys(snapJobOutgoing)[i])
+    {
+      jobCard = render_jobIn_card(Object.values(snapJobOutgoing)[i].jobKey,Object.values(snapJobOutgoing)[i].jobName,Object.keys(snapJobOutgoing)[i])
+      $('#jobOutarea').append(jobCard)
+      i++
+    }
   }
 })
 })
