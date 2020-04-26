@@ -84,9 +84,12 @@ else if(getUrlVars()["code"])
 
 function sortByKeyAsc(array, key) {
   return array.sort(function (a, b) {
-      var x = a[key]; var y = b[key];
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-  });
+                                        var x = parseInt(a[key])
+                                        var y = parseInt(b[key])
+                                        return (
+                                                  (x < y) ? -1 : ((x > y) ? 1 : 0)
+                                          )
+                    })
 }
 
 function getdata(section)
@@ -147,7 +150,7 @@ function getAlldata()
                                             }
                                             var $table = $('#jobTbl')
                                             $table.bootstrapTable('refreshOptions', {
-                                              data: data_for_tbl
+                                              data: sortByKeyAsc(data_for_tbl,'docnumber')
                                             })
                                           }
                                           else if(snapshot.val() == null)
