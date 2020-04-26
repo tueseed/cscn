@@ -280,7 +280,7 @@ async function fetchDetail(reqNumber)
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
-  if(localStorage.getItem('section') !== Object.values(jobKey)[0].onwerSection)
+  if(localStorage.getItem('section') != Object.values(jobKey)[0].onwerSection)
   {
       $('#jobDetailfoot').hide()
   }else
