@@ -92,7 +92,18 @@ else if(getUrlVars()["code"])
 }
 // var section = 'cs' //สมมุติแผนก
 // getdata()
-
+emp.orderByChild('uid').equalTo(localStorage.getItem('userId')).on('value',function(snapshot){
+                                                                                              var empsnapshot = snapshot.val()
+                                                                                              if(Object.values(empsnapshot)[0].authorize == 2)
+                                                                                              {
+                                                                                                  localStorage.clear()
+                                                                                                  Swal.fire({
+                                                                                                  title: 'แจ้งเตือน!',
+                                                                                                  html: 'บัญชีของท่านถูกระงับชั่วคราว!',
+                                                                                                  type: 'danger',
+                                                                                                  timer: 5000  
+                                                                                                }).then(function (){window.location.href = 'https://cscn.herokuapp.com' })}
+                                                                                            })
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
