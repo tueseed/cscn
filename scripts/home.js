@@ -51,7 +51,7 @@ else if(getUrlVars()["code"])
                                   localStorage.setItem('name',profile.name)
                                   localStorage.setItem('display_url',profile.picture)
                                   localStorage.setItem('userId',profile.sub)
-                                     $('#userDropdown').show()
+                                  $('#userDropdown').show()
                                   $('#userName').html(profile.name)
                                   $('#userPicture').attr('src',profile.picture)
                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
@@ -62,6 +62,17 @@ else if(getUrlVars()["code"])
                                   }
                                   else if(checkEmp.val() !== null)
                                   {
+                                    if(Object.values(empInfo)[0].authorize == 0)
+                                    {
+                                      localStorage.clear()
+                                      Swal.fire({
+                                        title: 'แจ้งเตือน!',
+                                        html: 'บัญชีของท่านยังไม่ได้รับการอนุมัติ',
+                                        type: 'warning',
+                                        timer: 3000
+                                      })
+                                      window.location.href = 'https://cscn.herokuapp.com'
+                                    }
                                     localStorage.setItem('userId',Object.values(empInfo)[0].uid)
                                     localStorage.setItem('name',Object.values(empInfo)[0].techName)
                                     localStorage.setItem('position',Object.values(empInfo)[0].position)
