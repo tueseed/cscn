@@ -103,7 +103,7 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                                                                 }
                                                                                 var $table = $('#jobTbl')
                                                                                 $table.bootstrapTable('refreshOptions', {
-                                                                                  data:data_for_tbl.sort(function(a, b){return a.docnumber-b.docnumber})
+                                                                                  data:data_for_tbl
                                                                                 })
                                                                                 // console.log(data_for_tbl)
                                                                               }
@@ -593,7 +593,7 @@ async function ProcessExcel(data)
                                   'distancecircuit':'-',
                                   'techSurvey':'-',
                                   'hlService' : '0',
-                                  'docnumber':'-',
+                                  'docnumber':i,
                                   'budget':'-'
                                 })
     }
@@ -633,19 +633,20 @@ async function check_reqnumber()
 
 async function genNumber()
 {
-  var checkNumber = await number.endAt().limitToLast(1).once('value')
-  var snapNumber = checkNumber.val()
-  console.log(checkNumber.val())
-  if(checkNumber.val() == null)
-  {
-    var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':'1','jobkey':$('#jobKey').val()})
-    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':'1' })
-  }else if(checkNumber.val() !== null)
-  {
-    var newdocnumber = parseInt(Object.values(snapNumber)[0].docnumber) + 1
-    var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString(),'jobkey':$('#jobKey').val()})
-    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString() })
-  }
+  // var checkNumber = await number.endAt().limitToLast(1).once('value')
+  // var snapNumber = checkNumber.val()
+  // console.log(checkNumber.val())
+  // if(checkNumber.val() == null)
+  // {
+  //   var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':'1','jobkey':$('#jobKey').val()})
+  //   var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':'1' })
+  // }else if(checkNumber.val() !== null)
+  // {
+  //   var newdocnumber = parseInt(Object.values(snapNumber)[0].docnumber) + 1
+  //   var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString(),'jobkey':$('#jobKey').val()})
+  //   var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString() })
+  // }
+  var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val()})
   var getreqNumber = await job.child($('#jobKey').val()).once('value')
   $('#generate_number_modal').modal('hide')
   fetchDetail(getreqNumber.val().reqNumber)
