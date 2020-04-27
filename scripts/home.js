@@ -82,8 +82,6 @@ else if(getUrlVars()["code"])
 // var section = 'cs' //สมมุติแผนก
 // getdata()
 
-
-
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
@@ -105,7 +103,7 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                                                                 }
                                                                                 var $table = $('#jobTbl')
                                                                                 $table.bootstrapTable('refreshOptions', {
-                                                                                  data:data_for_tbl
+                                                                                  data:data_for_tbl.sort(function(a, b){return a.docnumber-b.docnumber})
                                                                                 })
                                                                                 // console.log(data_for_tbl)
                                                                               }
