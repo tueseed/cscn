@@ -71,7 +71,7 @@ else if(getUrlVars()["code"])
                                         type: 'warning',
                                         timer: 5000,
                                         onClose: window.location.href = 'https://cscn.herokuapp.com'   
-                                      })
+                                      },function (){window.location.href = 'https://cscn.herokuapp.com' })
                                       
                                     }
                                     localStorage.setItem('userId',Object.values(empInfo)[0].uid)
