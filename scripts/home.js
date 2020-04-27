@@ -330,15 +330,13 @@ async function fetchDetail(reqNumber)
 
   if(Object.values(jobKey)[0].operator == '1'){$('#contractor').show()}else{$('#contractor').hide() }
   //แสดงหมายเลขงาน
-  var docNumber = await number.orderByChild('jobkey').equalTo(Object.keys(jobKey)[0]).once('value')
-  var snapdocNumber = docNumber.val()
   if(Object.values(jobKey)[0].budget !== '-')
   {
     $('#geberate_number_btn').hide()
     $('#send_btn').show()
     $('#editBudget_btn').show()
-    var budget = Object.values(snapdocNumber)[0].budget
-    var docNo = Object.values(snapdocNumber)[0].docnumber
+    var budget = Object.values(jobKey)[0].budget
+    var docNo = Object.values(jobKey)[0].docnumber
     var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     var zeroFill = (budget == 'c') ? '0000':'000' 
     var draWingzero = '0000'
