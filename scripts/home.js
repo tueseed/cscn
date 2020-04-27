@@ -639,12 +639,12 @@ async function genNumber()
   if(checkNumber.val() == null)
   {
     var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':'1','jobkey':$('#jobKey').val()})
-    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':'1' })
+    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':1 })
   }else if(checkNumber.val() !== null)
   {
     var newdocnumber = parseInt(Object.values(snapNumber)[0].docnumber) + 1
     var genNumber = await number.push({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString(),'jobkey':$('#jobKey').val()})
-    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':newdocnumber.toString() })
+    var updatejobNuber = await job.child($('#jobKey').val()).update({'budget':$('#budgetSel').val(),'docnumber':newdocnumber })
   }
   var getreqNumber = await job.child($('#jobKey').val()).once('value')
   $('#generate_number_modal').modal('hide')
