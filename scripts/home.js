@@ -94,7 +94,7 @@ else if(getUrlVars()["code"])
 // getdata()
 emp.orderByChild('uid').equalTo(localStorage.getItem('userId')).on('value',function(snapshot){
                                                                                               var empsnapshot = snapshot.val()
-                                                                                              console.log('>>>> ' + Object.values(empsnapshot)[0].authorize)
+                                                                                              console.log(empsnapshot)
                                                                                               if(Object.values(empsnapshot)[0].authorize == 2)
                                                                                               {
                                                                                                   localStorage.clear()
