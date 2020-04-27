@@ -593,7 +593,7 @@ async function ProcessExcel(data)
                                   'distancecircuit':'-',
                                   'techSurvey':'-',
                                   'hlService' : '0',
-                                  'docnumber':i,
+                                  'docnumber':i+1,
                                   'budget':'-'
                                 })
     }
