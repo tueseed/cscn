@@ -69,9 +69,8 @@ else if(getUrlVars()["code"])
                                         title: 'แจ้งเตือน!',
                                         html: 'บัญชีของท่านยังไม่ได้รับการอนุมัติ',
                                         type: 'warning',
-                                        timer: 5000,
-                                        onClose: window.location.href = 'https://cscn.herokuapp.com'   
-                                      },function (){window.location.href = 'https://cscn.herokuapp.com' })
+                                        timer: 5000  
+                                      }).then(function (){window.location.href = 'https://cscn.herokuapp.com' })
                                       
                                     }
                                     localStorage.setItem('userId',Object.values(empInfo)[0].uid)
