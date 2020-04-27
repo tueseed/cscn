@@ -62,23 +62,13 @@ else if(getUrlVars()["code"])
                                   }
                                   else if(checkEmp.val() !== null)
                                   {
-                                    if(Object.values(empInfo)[0].authorize == 0)
-                                    {
-                                      localStorage.clear()
-                                      Swal.fire({
-                                        title: 'แจ้งเตือน!',
-                                        html: 'บัญชีของท่านยังไม่ได้รับการอนุมัติ',
-                                        type: 'warning',
-                                        timer: 5000  
-                                      }).then(function (){window.location.href = 'https://cscn.herokuapp.com' })
-                                      
-                                    }
                                     localStorage.setItem('userId',Object.values(empInfo)[0].uid)
                                     localStorage.setItem('name',Object.values(empInfo)[0].techName)
                                     localStorage.setItem('position',Object.values(empInfo)[0].position)
                                     localStorage.setItem('section',Object.values(empInfo)[0].section)
                                     localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
+                                    var checkAutho = await check_authorize()
                                     countJob(Object.values(empInfo)[0].section)
                                     getdata(Object.values(empInfo)[0].section)
                                     
@@ -92,10 +82,22 @@ else if(getUrlVars()["code"])
 }
 // var section = 'cs' //สมมุติแผนก
 // getdata()
+async function check_authorize()
+{
 emp.orderByChild('uid').equalTo(localStorage.getItem('userId')).on('value',function(snapshot){
                                                                                               var empsnapshot = snapshot.val()
-                                                                                              console.log(empsnapshot)
-                                                                                              if(Object.values(empsnapshot)[0].authorize == 2)
+                                                                                              if(Object.values(empsnapshot)[0].authorize == 0)
+                                                                                              {
+                                                                                                localStorage.clear()
+                                                                                                Swal.fire({
+                                                                                                  title: 'แจ้งเตือน!',
+                                                                                                  html: 'บัญชีของท่านยังไม่ได้รับการอนุมัติ',
+                                                                                                  type: 'warning',
+                                                                                                  timer: 5000  
+                                                                                                }).then(function (){window.location.href = 'https://cscn.herokuapp.com' })
+                                                                                                
+                                                                                              }
+                                                                                              else if(Object.values(empsnapshot)[0].authorize == 2)
                                                                                               {
                                                                                                   localStorage.clear()
                                                                                                   Swal.fire({
@@ -105,6 +107,7 @@ emp.orderByChild('uid').equalTo(localStorage.getItem('userId')).on('value',funct
                                                                                                   timer: 5000  
                                                                                                 }).then(function (){window.location.href = 'https://cscn.herokuapp.com' })}
                                                                                             })
+}
 function getdata(section)
 {
 job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
