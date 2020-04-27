@@ -332,7 +332,7 @@ async function fetchDetail(reqNumber)
   //แสดงหมายเลขงาน
   var docNumber = await number.orderByChild('jobkey').equalTo(Object.keys(jobKey)[0]).once('value')
   var snapdocNumber = docNumber.val()
-  if(docNumber.val() !== null)
+  if(Object.values(jobKey)[0].budget !== '-')
   {
     $('#geberate_number_btn').hide()
     $('#send_btn').show()
@@ -346,7 +346,7 @@ async function fetchDetail(reqNumber)
     $('#drawingNumber').html('TB19-015/63'+draWingzero.slice(0, parseInt(draWingzero.length) - parseInt(docNo.length)) + docNo)
     $('#approveNumber').html('ต.1 พธร.(บค.)'+zeroFill.slice(0, parseInt(zeroFill.length) - parseInt(docNo.length)) + docNo + '/2563')
   }
-  else if(docNumber.val() == null)
+  else if(Object.values(jobKey)[0].budget == '-')
   {
     $('#geberate_number_btn').show()
     $('#send_btn').hide()
