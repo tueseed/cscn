@@ -2,89 +2,89 @@ var job = firebase.database().ref('job')
 var emp = firebase.database().ref('employee')
 var number = firebase.database().ref('number')
 var jobSending = firebase.database().ref('jobSending')
-// window.onbeforeunload = localStorage.clear()
-// $.blockUI({
-//   message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">รอสักครู่..</h5>',
-//   overlayCSS : { 
-//                   backgroundColor: '#ffffff',
-//                   opacity: 1
-//               },
-//       css : {
-//         opacity: 1,
-//         border: 'none',
-//       }
-//     })
-// if(!getUrlVars()["code"])
-// {
-//   window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid%20profile'
-// }
-// else if(getUrlVars()["code"])
-// {
-//   var code = getUrlVars()["code"]
-//   $.ajax({
-//     async: true,
-//     crossDomain: true,
-//     url: "https://api.line.me/oauth2/v2.1/token",
-//     method: "POST",
-//     headers: {
-//                 "Content-Type": "application/x-www-form-urlencoded",
-//                 "cache-control": "no-cache"
-//               },
-//     data: {
-//             "grant_type": "authorization_code",
-//             "code": code,
-//             "redirect_uri": "https://cscn.herokuapp.com",
-//             "client_id": "1654004533",
-//             "client_secret": "8021aaa3dad2e694da20a39c678486ec"
-//           },
-//     statusCode:{
-//                 400:function()
-//                     {
-//                       console.log('400')
-//                       window.location.href = 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid'
-//                     }
-//                },
-//     success: async function(response) {
-//                                   var id_token = response.id_token
-//                                   var base64 = id_token.split('.')[1]
-//                                   var profile = JSON.parse(window.atob(base64))
-//                                   localStorage.setItem('name',profile.name)
-//                                   localStorage.setItem('display_url',profile.picture)
-//                                   localStorage.setItem('userId',profile.sub)
-//                                      $('#userDropdown').show()
-//                                   $('#userName').html(profile.name)
-//                                   $('#userPicture').attr('src',profile.picture)
-//                                   var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
-//                                   var empInfo = checkEmp.val()
-//                                   if(checkEmp.val() == null)
-//                                   {
-//                                       window.location.href = 'index.php?action=emp_regis'
-//                                   }
-//                                   else if(checkEmp.val() !== null)
-//                                   {
-//                                     localStorage.setItem('userId',Object.values(empInfo)[0].uid)
-//                                     localStorage.setItem('name',Object.values(empInfo)[0].techName)
-//                                     localStorage.setItem('position',Object.values(empInfo)[0].position)
-//                                     localStorage.setItem('section',Object.values(empInfo)[0].section)
-//                                     localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
-//                                     localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
-//                                     countJob(Object.values(empInfo)[0].section)
-//                                     getdata(Object.values(empInfo)[0].section)
+window.onbeforeunload = localStorage.clear()
+$.blockUI({
+  message: '<div class="spinner-border text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div><br/><h5 class="font-weight-bold text-pea">รอสักครู่..</h5>',
+  overlayCSS : { 
+                  backgroundColor: '#ffffff',
+                  opacity: 1
+              },
+      css : {
+        opacity: 1,
+        border: 'none',
+      }
+    })
+if(!getUrlVars()["code"])
+{
+  window.location.href= 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid%20profile'
+}
+else if(getUrlVars()["code"])
+{
+  var code = getUrlVars()["code"]
+  $.ajax({
+    async: true,
+    crossDomain: true,
+    url: "https://api.line.me/oauth2/v2.1/token",
+    method: "POST",
+    headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+              },
+    data: {
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": "https://cscn.herokuapp.com",
+            "client_id": "1654004533",
+            "client_secret": "8021aaa3dad2e694da20a39c678486ec"
+          },
+    statusCode:{
+                400:function()
+                    {
+                      console.log('400')
+                      window.location.href = 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654004533&redirect_uri=https://cscn.herokuapp.com&state=12345abcd&scope=openid'
+                    }
+               },
+    success: async function(response) {
+                                  var id_token = response.id_token
+                                  var base64 = id_token.split('.')[1]
+                                  var profile = JSON.parse(window.atob(base64))
+                                  localStorage.setItem('name',profile.name)
+                                  localStorage.setItem('display_url',profile.picture)
+                                  localStorage.setItem('userId',profile.sub)
+                                     $('#userDropdown').show()
+                                  $('#userName').html(profile.name)
+                                  $('#userPicture').attr('src',profile.picture)
+                                  var checkEmp = await emp.orderByChild('uid').equalTo(profile.sub).once('value')
+                                  var empInfo = checkEmp.val()
+                                  if(checkEmp.val() == null)
+                                  {
+                                      window.location.href = 'index.php?action=emp_regis'
+                                  }
+                                  else if(checkEmp.val() !== null)
+                                  {
+                                    localStorage.setItem('userId',Object.values(empInfo)[0].uid)
+                                    localStorage.setItem('name',Object.values(empInfo)[0].techName)
+                                    localStorage.setItem('position',Object.values(empInfo)[0].position)
+                                    localStorage.setItem('section',Object.values(empInfo)[0].section)
+                                    localStorage.setItem('staffId',Object.values(empInfo)[0].staffId)
+                                    localStorage.setItem('display_url',Object.values(empInfo)[0].display_url)
+                                    countJob(Object.values(empInfo)[0].section)
+                                    getdata(Object.values(empInfo)[0].section)
                                     
-//                                     $('#empName').html(Object.values(empInfo)[0].techName)
-//                                     var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
-//                                     $('#empsecTion').html(section[Object.values(empInfo)[0].section])
-//                                   }
-//                                   $.unblockUI()
-//                                 }
-//     })
-// }
+                                    $('#empName').html(Object.values(empInfo)[0].techName)
+                                    var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
+                                    $('#empsecTion').html(section[Object.values(empInfo)[0].section])
+                                  }
+                                  $.unblockUI()
+                                }
+    })
+}
 // var section = 'cs' //สมมุติแผนก
-getdata()
+// getdata()
 
 function getdata(section)
 {
-job.orderByChild('ownerSection').equalTo('cs').on('value',function(snapshot){                         
+job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
                                                                             if(!$('#disAllcheck').prop("checked")) 
                                                                             {
                                                                               if(snapshot.val() !== null)
