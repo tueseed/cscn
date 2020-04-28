@@ -12,7 +12,7 @@ function fetchdata()
 
 async function editProfile()
 {
- var update = await emp.child().update(
+ var update = await emp.child(localStorage.getItem('key')).update(
                     {
                         'techName':$('#nameEdit').val(),
                         'position':$('#positionEdit').val(),
