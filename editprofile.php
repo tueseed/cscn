@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label for="telInput" class="font-weight-bold text-white"><i class="fa fa-address-card"></i> รหัสพนักงาน</label>
-            <input type="text" class="form-control" id="staffId" name="staffId"  required>
+            <input type="text" class="form-control" id="staffId" name="staffId" disabled>
         </div>
         <button type="ิbutton" class="btn btn-primary" onclick="editProfile()">ส่งข้อมูล</button>
     </div>
