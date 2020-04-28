@@ -9,7 +9,7 @@ emp.on('value',function(snapshot){
         empinfo = empinfo + empInfo(
                                     Object.values(emp)[i].display_url,
                                     Object.values(emp)[i].techName,
-                                    Object.values(emp)[i].staffid,
+                                    Object.values(emp)[i].staffId,
                                     Object.values(emp)[i].authorize,
                                     Object.keys(emp)[i]
                                     )

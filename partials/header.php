@@ -84,6 +84,10 @@
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
                   จัดการ User
                 </a>
+                <a class="dropdown-item" href="?action=editprofile">
+                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  แก้ไขข้อมูลส่วนตัว
+                </a>
                 <a class="dropdown-item" href="#" onclick="logout()">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   ออกจากระบบ
