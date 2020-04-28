@@ -71,7 +71,7 @@ else if(getUrlVars()["code"])
                                     var checkAutho = await check_authorize()
                                     countJob(Object.values(empInfo)[0].section)
                                     getdata(Object.values(empInfo)[0].section)
-                                    
+                                    if(Object.values(empInfo)[0].staffId == '500290'){$('#admin_menu').show()}
                                     $('#empName').html(Object.values(empInfo)[0].techName)
                                     var section = {'cn':'แผนกก่อสร้าง','cs':'แผนกบริการลูกค้า','om':'แผนกปฏิบัติการ'}
                                     $('#empsecTion').html(section[Object.values(empInfo)[0].section])
@@ -568,6 +568,7 @@ $("#jobDetail").on('hidden.bs.modal', function(){
 $('#geberate_number_btn').hide()
 $('#send_btn').hide()
 $('#editBudget_btn').hide()
+$('#admin_menu').hide()
 function readFile()
 {
   var fileUpload = document.getElementById("reqFile")

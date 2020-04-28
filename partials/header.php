@@ -68,17 +68,21 @@
                   <i class="fas fa-building fa-sm fa-fw mr-2 text-gray-400"></i>
                   <span id="empsecTion"></span>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobIn" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobIn" >
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานเข้า <span class="badge badge-danger" id="notifyNumberIn"></span>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobOut" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobOut" >
                   <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานออก <span class="badge badge-danger" id="notifyNumberOut"></span>
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" id="admin_menu">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" >
                   <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
                   เพิ่ม/นำเข้าข้อมูล
+                </a>
+                <a class="dropdown-item" href="?action=authorizemanage" id="admin_menu">
+                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  จัดการ User
                 </a>
                 <a class="dropdown-item" href="#" onclick="logout()">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
