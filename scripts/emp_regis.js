@@ -11,7 +11,8 @@ function regis_emp()
                                                                                                         'position':$('#position').val(),
                                                                                                         'section':$('#secTion').val(),
                                                                                                         'staffId':$('#staffId').val(),
-                                                                                                        'display_url':localStorage.getItem('display_url')
+                                                                                                        'display_url':localStorage.getItem('display_url'),
+                                                                                                        'authorize':0
                                                                                                         })
                                                                                                     window.location.href = 'index.php?action=home'
                                                                                                 }

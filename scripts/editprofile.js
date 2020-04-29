@@ -7,7 +7,6 @@ function fetchdata()
     $('#positionEdit').val(localStorage.getItem('position'))
     $('#sectionEdit').val(localStorage.getItem('section'))
     $('#staffId').val(localStorage.getItem('staffId'))
-    
 }
 
 async function editProfile()

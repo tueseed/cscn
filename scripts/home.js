@@ -794,6 +794,8 @@ function polefromtexttomodal() // แปลงข้อความจาก tex
 
 function polefromdatabasetotext(textpole) //แปลงข้อความจำนวนเสาไฟฟ้าจาก database มาแสดงใน modal รายละเอียดงาน **เอาไปใช้กับความยาวระบบจพหน่ายด้วย
 {
+  if(textpole !=='-')
+  {
   var poleSplit = textpole.split("|")
   var i = 0 
   var textReturn = ''
@@ -803,6 +805,7 @@ function polefromdatabasetotext(textpole) //แปลงข้อความจ
     i++
   }
   return textReturn
+  }
 }
 
 function polefrommodalconfigtotext()
@@ -834,9 +837,9 @@ function disfromtexttomodal()
 function circuitfrommodalconfigtotext()
 {
   var texttotextarea = ''
-  if($('#HT').val() !== '-'){texttotextarea = texttotextarea + 'แรงสูง '+ $('#HT').val() + ' วงจร-กม.\n'} 
-  if($('#LT').val() !== '-'){texttotextarea = texttotextarea + 'แรงต่ำ '+ $('#LT').val() + ' วงจร-กม.\n'} 
-  if($('#ST').val() !== '-'){texttotextarea = texttotextarea + 'ไฟสาธารณะ '+ $('#ST').val() + ' วงจร-กม.\n'} 
+  if($('#HT').val() >0){texttotextarea = texttotextarea + 'แรงสูง '+ $('#HT').val() + ' วงจร-กม.\n'} 
+  if($('#LT').val() >0){texttotextarea = texttotextarea + 'แรงต่ำ '+ $('#LT').val() + ' วงจร-กม.\n'} 
+  if($('#ST').val() >0){texttotextarea = texttotextarea + 'ไฟสาธารณะ '+ $('#ST').val() + ' วงจร-กม.\n'} 
   $('#distancemodal').val(texttotextarea)
   $('#dismodal').modal('hide')
 }

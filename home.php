@@ -454,19 +454,19 @@
             <div class="col-md-3">
               <div class="form-group">
                   <label class="text-success font-weight-bold"> แรงสูง</label>
-                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="HT" value="-" disabled>  
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="HT" value="0" disabled>  
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                   <label class="text-success font-weight-bold"> แรงต่ำ</label>
-                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="LT" value="-" disabled>  
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="LT" value="0" disabled>  
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                   <label class="text-success font-weight-bold"> ไฟสาธารณะ</label>
-                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="ST" value="-" disabled>  
+                  <input type="number" class="form-control" name="inputJobmodal[contractor]" id="ST" value="0" disabled>  
               </div>
             </div>
             
