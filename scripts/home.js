@@ -227,7 +227,7 @@ async function creat_job()
   var snapDocnumber = checkDocnumber.val()
   console.log(snapDocnumber[0].docnumber)
   var docno = 0
-  if(snapDocnumber == null){ docno = 1}else{ docno = snapDocnumber[0].docnumber + 1}
+  if(snapDocnumber == null){ docno = 1}else{ docno = parseInt(Object.values(snapNumber)[0].docnumber) + 1}
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
