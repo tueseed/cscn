@@ -264,8 +264,9 @@ async function creat_job()
                   type: 'success',
                   timer: 3000
                 }).then(function(){
-                  $('#jobCreat').modal('hide')
                   fetchDetail($('#reqnumberAdd').val())
+                  $('#jobCreat').modal('hide')
+                  
                 })
   }
   else if(checkJob.val() !== null)
