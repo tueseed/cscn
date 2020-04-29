@@ -223,6 +223,8 @@ function countJob(section)
 async function creat_job()
 {
   var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqnumberAdd').val()).once('value')
+  var checkDocnumber = await number.endAt().limitToLast(1).once('value')
+  var snapDocnumber = checkDocnumber.val()
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
@@ -249,11 +251,13 @@ async function creat_job()
                                     'trSize':'-',
                                     'distancecircuit':'-',
                                     'techSurvey':'-',
-                                    'hlService' : '0'
+                                    'hlService' : '0',
+                                    'docnumber':snapDocnumber[0].docnumber + 1,
+                                    'budget':'-'
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
-                  html: 'เลขที่คำร้อง '+ $('#reqNumber').val(),
+                  html: 'เลขที่คำร้อง '+ $('#reqnumberAdd').val(),
                   type: 'success',
                   timer: 3000
                 }).then(function(){
