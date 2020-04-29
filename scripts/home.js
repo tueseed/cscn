@@ -256,6 +256,9 @@ async function creat_job()
                   html: 'เลขที่คำร้อง '+ $('#reqNumber').val(),
                   type: 'success',
                   timer: 3000
+                }).then(function(){
+                  $('#jobCreat').modal('hide')
+                  fetchDetail($('#reqnumberAdd').val())
                 })
   }
   else if(checkJob.val() !== null)
