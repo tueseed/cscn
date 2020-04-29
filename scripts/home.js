@@ -225,6 +225,7 @@ async function creat_job()
   var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqnumberAdd').val()).once('value')
   var checkDocnumber = await number.endAt().limitToLast(1).once('value')
   var snapDocnumber = checkDocnumber.val()
+  if(snapDocnumber == null){var docno = 1}else{var docno = napDocnumber[0].docnumber + 1}
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
@@ -252,7 +253,7 @@ async function creat_job()
                                     'distancecircuit':'-',
                                     'techSurvey':'-',
                                     'hlService' : '0',
-                                    'docnumber':snapDocnumber[0].docnumber + 1,
+                                    'docnumber':docno,
                                     'budget':'-',
                                     'dateApprove':'-',
                                     'note':'-'
@@ -486,15 +487,20 @@ $("#jobDetail").on('hidden.bs.modal', function(){
   }
  })
 
- $("#jobCreat").on('hide.bs.modal', function(){
+$("#jobCreat").on('hide.bs.modal', function(){
   $('#reqnumberAdd').val('')
+  $('#jobnameAdd').val('')
+  $('#caAdd').val('')
   $("input[name^='add_input']").prop('disabled', true)
  })
 
- $("#poleconfig").on('show.bs.modal', function(){polefromtexttomodal()})
+$("#poleconfig").on('show.bs.modal', function(){polefromtexttomodal()})
 
 
- $("#dismodal").on('show.bs.modal', function(){disfromtexttomodal()})
+$("#dismodal").on('show.bs.modal', function(){disfromtexttomodal()})
+
+
+
 
  $("#jobIn").on('show.bs.modal', function(){
     jobSending.orderByChild('to').equalTo(localStorage.getItem('section')).on('value',function(jobIncoming){
