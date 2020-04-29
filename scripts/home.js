@@ -225,7 +225,7 @@ async function creat_job()
   var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqnumberAdd').val()).once('value')
   var checkDocnumber = await number.endAt().limitToLast(1).once('value')
   var snapDocnumber = checkDocnumber.val()
-  if(snapDocnumber == null){var docno = 1}else{var docno = napDocnumber[0].docnumber + 1}
+  if(snapDocnumber == null){var docno = 1}else{var docno = snapDocnumber[0].docnumber + 1}
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
