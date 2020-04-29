@@ -167,25 +167,31 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่รับคำร้อง</label>
                 <input type="text" class="form-control" data-toggle="datepicker"  name="inputJobmodal[jobNamemodal]" id="dateRecivemodal" disabled>  
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่ชำระเงิน</label>
                 <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[datePaid]" id="datePaid"  disabled>  
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> วันที่อนุมัติ</label>
+                <input type="text" class="form-control" data-toggle="datepicker" name="inputJobmodal[dateApprove]" id="dateApprove"  disabled>  
+              </div>
+            </div>
+            <div class="col-lg-2">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-info"></i> เลขที่ใบเสร็จ</label>
                 <input type="text" class="form-control" name="inputJobmodal" id="recNumbermodal" disabled>  
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <div class="form-group">
                 <label class="text-success font-weight-bold"><i class="fas fa-calendar-alt"></i> บริการ Hotline</label>
                 <select class="form-control" id="hlService" name="inputJobmodal" disabled>

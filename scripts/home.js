@@ -253,7 +253,8 @@ async function creat_job()
                                     'techSurvey':'-',
                                     'hlService' : '0',
                                     'docnumber':snapDocnumber[0].docnumber + 1,
-                                    'budget':'-'
+                                    'budget':'-',
+                                    'dateApprove':'-'
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
@@ -347,6 +348,7 @@ async function fetchDetail(reqNumber)
   $('#datecnrecive').html(convdate(Object.values(jobKey)[0].datecnRecive))//วันที่แผนกก่อสร้างรับแฟ้มงาน
   $('#dateRecivemodal').val(convdate(Object.values(jobKey)[0].dateReq))//วันที่รับคำร้อง
   $('#datePaid').val(convdate(Object.values(jobKey)[0].datePaid))//วันที่ชำระเงิน
+  $('#dateApprove').val(convdate(Object.values(jobKey)[0].dateApprove))//วันที่อนุมัติ  
   $('#recNumbermodal').val(Object.values(jobKey)[0].recNumber)//เลขที่ใบเสร็จรับเงิน
   $('#hlService').val(Object.values(jobKey)[0].hlService)//บริการ hotline 
   $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)//ชื่อแฟ้มงาน
@@ -375,12 +377,13 @@ async function fetchDetail(reqNumber)
     var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     console.log(budget)
     var zeroFill = (budget == 'c') ? '0':'' 
-    var draWingzero = 1000
-    var runningNo =  100 + parseInt(docNo)
+    var draWingzero = 200
+    var runningNo =  200 + parseInt(docNo)
     var drawingNumber = parseInt(draWingzero) + parseInt(docNo)
-    var docruning = 100 + parseInt(docNo)
+    var zeroFilldrwing = (drawingNumber < 1000) ? '0':''
+    var docruning = 200 + parseInt(docNo)
     $('#jobWbs').html(budgetArr[budget] + zeroFill + runningNo)
-    $('#drawingNumber').html('TB19-015/63'+ drawingNumber)
+    $('#drawingNumber').html('TB19-015/63'+ zeroFilldrwing + drawingNumber)
     $('#approveNumber').html('ต.1 พธร.(บค.)'+ docruning + '/2563')
   }
   else if(Object.values(jobKey)[0].budget == '-')
@@ -408,6 +411,7 @@ async function edit_job()
     var dateEngpaid = await convThdatetoEndate($('#datePaid').val())
     var dateEngplan = await convThdatetoEndate($('#datePlan').val())
     var dateEngreq = await convThdatetoEndate($('#dateRecivemodal').val())
+    var dateApprove = await convThdatetoEndate($('#dateApprove').val())
     var updateJob = await job.child($('#jobKey').val()).update({
                                                                 
                                                                 "cnJobname" : $('#cnJobname').val(),
@@ -425,7 +429,8 @@ async function edit_job()
                                                                 "textContractor" : $('#textContractor').val(),
                                                                 "trOwner" : $('#trOwner').val(),
                                                                 "trSize" : $('#trSize').val(),
-                                                                "trSupply" : $('#trSupply').val()
+                                                                "trSupply" : $('#trSupply').val(),
+                                                                'dateApprove':dateApprove
     })
     $('#jobDetail').modal('toggle')
   }
@@ -556,6 +561,10 @@ $("#jobDetail").on('hidden.bs.modal', function(){
     $('#datePlan').change(async function(e){
                                               var getdate = await convdate(this.value)
                                               $('#datePlan').val(getdate)
+                                            }) 
+    $('#dateApprove').change(async function(e){
+                                              var getdate = await convdate(this.value)
+                                              $('#dateApprove').val(getdate)
                                             }) 
     $('#disAllcheck').change( async function(e){
                                                 if($('#disAllcheck').prop("checked"))
