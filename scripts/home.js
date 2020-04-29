@@ -223,17 +223,10 @@ function countJob(section)
 async function creat_job()
 {
   var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqnumberAdd').val()).once('value')
-  var checkDocnumber = await number.endAt().limitToLast(1).once('value')
+  var checkDocnumber = await job.endAt().limitToLast(1).once('value')
   var snapDocnumber = checkDocnumber.val()
-  console.log(Object.values(snapDocnumber)[0].docnumber)
   var docno = 0
-  if(snapDocnumber == null){
-
-    docno = 1
-  }
-  else if (snapDocnumber !== null){ 
-    console.log(Object.values(snapDocnumber)[0].docnumber)
-    docno = parseInt(Object.values(snapDocnumber)[0].docnumber) + 1}
+  if(snapDocnumber == null){docno = 1}else if (snapDocnumber !== null){docno = parseInt(Object.values(snapDocnumber)[0].docnumber) + 1}
 
   if(checkJob.val()== null)
   {
