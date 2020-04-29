@@ -861,6 +861,24 @@ function circuitfrommodalconfigtotext()
   $('#dismodal').modal('hide')
 }
 
+async function creatExcel()
+{
+  var jsonData = await job.once('value')
+  var i =0
+  var data_for_tbl = []
+
+  while(Object.keys(jsonData.val())[i])
+  {
+    var obj = []
+    obj = Object.values(jsonData.val())[i]
+    data_for_tbl.push(obj)
+    i++
+  }
+  var dataWS = XLSX.utils.json_to_sheet(data_for_tbl)
+  var wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, dataWS)
+  XLSX.writeFile(wb,'export.xlsx')
+}
 var techSurvey = ["นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
 var trSize = ["30 KVA","50 KVA","100 KVA","160 KVA","250 KVA","315 KVA","500 KVA","1000 KVA","1500 KVA","2000 KVA"]
 

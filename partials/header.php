@@ -69,11 +69,11 @@
                   <span id="empsecTion"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobIn" >
-                  <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานเข้า <span class="badge badge-danger" id="notifyNumberIn"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobOut" >
-                  <i class="fas fa-inbox fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   กล่องงานออก <span class="badge badge-danger" id="notifyNumberOut"></span>
                 </a>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#jobCreat" >
@@ -81,15 +81,19 @@
                   เพิ่ม/นำเข้าข้อมูล
                 </a>
                 <a class="dropdown-item" href="?action=authorizemanage" id="admin_menu">
-                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-users-cog fa-sm fa-fw mr-2 text-gray-400"></i>
                   จัดการ User
                 </a>
                 <a class="dropdown-item" href="?action=editprofile">
-                  <i class="fas fa-upload fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                   แก้ไขข้อมูลส่วนตัว
+                </a><a class="dropdown-item" href="#" onclick="creatExcel()">
+                  <i class="fas fa-cloud-download-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  ดาวน์โหลดข้อมูล
                 </a>
+
                 <a class="dropdown-item" href="#" onclick="logout()">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-power-off fa-sm fa-fw mr-2 text-gray-400"></i>
                   ออกจากระบบ
                 </a>
             </div>
