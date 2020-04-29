@@ -201,6 +201,12 @@
                 </select> 
               </div>
             </div>
+            <div class="col-lg-2">
+              <div class="form-group">
+                <label class="text-success font-weight-bold"><i class="fas fa-info"></i> หมายเหตุ</label>
+                <input type="text" class="form-control" name="inputJobmodal" id="noteModal" disabled>  
+              </div>
+            </div>
           </div>
 
           <div class="row">

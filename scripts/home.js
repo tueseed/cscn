@@ -254,7 +254,8 @@ async function creat_job()
                                     'hlService' : '0',
                                     'docnumber':snapDocnumber[0].docnumber + 1,
                                     'budget':'-',
-                                    'dateApprove':'-'
+                                    'dateApprove':'-',
+                                    'note':'-'
                                   })
       Swal.fire({
                   title: 'สำเร็จ!',
@@ -351,6 +352,7 @@ async function fetchDetail(reqNumber)
   $('#dateApprove').val(convdate(Object.values(jobKey)[0].dateApprove))//วันที่อนุมัติ  
   $('#recNumbermodal').val(Object.values(jobKey)[0].recNumber)//เลขที่ใบเสร็จรับเงิน
   $('#hlService').val(Object.values(jobKey)[0].hlService)//บริการ hotline 
+  $('#noteModal').val(Object.values(jobKey)[0].note)//บริการ hotline 
   $('#cnJobname').val(Object.values(jobKey)[0].cnJobname)//ชื่อแฟ้มงาน
   $('#jobNamemodal').val(Object.values(jobKey)[0].jobName) //คำอธิบายงาน
   $('#techSurvey').val(Object.values(jobKey)[0].techSurvey)//ช่างสำรวจ
@@ -430,7 +432,8 @@ async function edit_job()
                                                                 "trOwner" : $('#trOwner').val(),
                                                                 "trSize" : $('#trSize').val(),
                                                                 "trSupply" : $('#trSupply').val(),
-                                                                'dateApprove':dateApprove
+                                                                'dateApprove':dateApprove,
+                                                                'note':$('#noteModal').val()
     })
     $('#jobDetail').modal('toggle')
   }
@@ -642,7 +645,8 @@ async function ProcessExcel(data)
                                   'hlService' : '0',
                                   'docnumber':i+1,
                                   'budget':'-',
-                                  'dateApprove':'-'
+                                  'dateApprove':'-',
+                                  'note':'-'
                                 })
     }
     else if(checkReq.val() !== null)
