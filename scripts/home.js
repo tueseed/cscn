@@ -222,7 +222,7 @@ function countJob(section)
 
 async function creat_job()
 {
-  var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqNumber').val()).once('value')
+  var checkJob = await job.orderByChild('reqNumber').equalTo($('#reqnumberAdd').val()).once('value')
   if(checkJob.val()== null)
   {
       var pushJob = await job.push({
