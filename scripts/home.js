@@ -641,7 +641,8 @@ async function ProcessExcel(data)
                                   'techSurvey':'-',
                                   'hlService' : '0',
                                   'docnumber':i+1,
-                                  'budget':'-'
+                                  'budget':'-',
+                                  'dateApprove':'-'
                                 })
     }
     else if(checkReq.val() !== null)
