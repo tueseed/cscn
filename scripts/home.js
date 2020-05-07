@@ -307,7 +307,7 @@ function disWbs(value,row,index)
     if(budget !== '-')
     {
     var docNo = value
-    var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
+    var budgetArr = {c:"C-63-J-PTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     var zeroFill = (budget == 'c') ? '0':''
     var runningNo =  100 + parseInt(docNo)
     wbs = budgetArr[budget] + zeroFill +runningNo
@@ -380,7 +380,7 @@ async function fetchDetail(reqNumber)
     $('#editBudget_btn').show()
     var budget = Object.values(jobKey)[0].budget
     var docNo = Object.values(jobKey)[0].docnumber
-    var budgetArr = {c:"C-63-JPTMCS.",p:"P-NHE02.0-JPTMD0.3"}
+    var budgetArr = {c:"C-63-J-PTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     console.log(budget)
     var zeroFill = (budget == 'c') ? '0':'' 
     var draWingzero = 200
@@ -892,7 +892,7 @@ async function creatExcel()
   XLSX.utils.book_append_sheet(wb, dataWS)
   XLSX.writeFile(wb,'export.xlsx')
 }
-var techSurvey = ["นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
+var techSurvey = ["นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬห์ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
 var trSize = ["30 KVA","50 KVA","100 KVA","160 KVA","250 KVA","315 KVA","500 KVA","1000 KVA","1500 KVA","2000 KVA"]
 
 
