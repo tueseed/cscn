@@ -309,7 +309,7 @@ function disWbs(value,row,index)
     var docNo = value
     var budgetArr = {c:"C-63-J-PTMCS.",p:"P-NHE02.0-JPTMD0.3"}
     var zeroFill = (budget == 'c') ? '0':''
-    var runningNo =  100 + parseInt(docNo)
+    var runningNo =  200 + parseInt(docNo)
     wbs = budgetArr[budget] + zeroFill +runningNo
     }
     return wbs
