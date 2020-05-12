@@ -111,7 +111,7 @@ emp.orderByChild('uid').equalTo(localStorage.getItem('userId')).on('value',funct
 }
 function getdata(section)
 {
-job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
+  job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){                         
                                                                             if(!$('#disAllcheck').prop("checked")) 
                                                                             {
                                                                               if(snapshot.val() !== null)
@@ -144,6 +144,15 @@ job.orderByChild('ownerSection').equalTo(section).on('value',function(snapshot){
                                                                             }
                                                                             }
                         )
+    // emp.orderByChild('section').equalTo('cs').on('value',function(empsnapshot){
+    //   var empdata = empsnapshot.val()
+    //   var i = 0
+    //   while(Object.keys(empdata)[i])
+    //   {
+    //     techSurvey.push(Object.values(empdata)[i].techName)
+    //     i++
+    //   }
+    // })
   }
 
 function getAlldata()
@@ -335,13 +344,13 @@ async function fetchDetail(reqNumber)
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
-  if(localStorage.getItem('section') != Object.values(jobKey)[0].ownerSection)
-  {
-      $('#jobDetailfoot').hide()
-  }else
-  {
-    $('#jobDetailfoot').show()
-  }
+  // if(localStorage.getItem('section') != Object.values(jobKey)[0].ownerSection)
+  // {
+  //     $('#jobDetailfoot').hide()
+  // }else
+  // {
+  //   $('#jobDetailfoot').show()
+  // }
   console.log(localStorage.getItem('section'))
   console.log(Object.values(jobKey)[0].ownerSection)
   $('#jobKey').val(Object.keys(jobKey)[0])
@@ -542,7 +551,7 @@ $("#dismodal").on('show.bs.modal', function(){disfromtexttomodal()})
 
 
  $('#selectFile').on('click', function(){$('#reqFile').trigger('click')})
-
+//  $('#selectFilepdf').on('click', function(){$('#planPdf').trigger('click')})
  $("#operator").on('change',function(){
                                         if(this.value == '0')
                                         {
@@ -892,8 +901,9 @@ async function creatExcel()
   XLSX.utils.book_append_sheet(wb, dataWS)
   XLSX.writeFile(wb,'export.xlsx')
 }
-var techSurvey = ["นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬห์ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
+var techSurvey = ["นายภพสรรค์ แผงสุข","นายปรัชญา จีนชาวขำ","นายเอกพล พงษ์แสวง","นายอาสาฬห์ เฮ็งมี","นายเสกสัณห์ ชูแก้ว"]
 var trSize = ["30 KVA","50 KVA","100 KVA","160 KVA","250 KVA","315 KVA","500 KVA","1000 KVA","1500 KVA","2000 KVA"]
+
 
 
 

@@ -298,7 +298,7 @@
           </div>
 
       </div>
-      <input id="reqFile" type="file"  style="display: none;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+      <input id="planPdf" type="file"  style="display: none;" accept="application/pdf">
       <div class="modal-footer" id="jobDetailfoot">
         <button id="send_btn" type="button" class="btn btn-outline-primary mr-auto dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50px 50px;">
           <i class="fas fa-paper-plane" aria-hidden="true"></i>          
@@ -311,6 +311,9 @@
         <!-- <button class="btn btn-outline-primary mr-auto"  id="sendJobbtn" onclick="sendJob()" style="border-radius:50px 50px;">
             <i class="fas fa-paper-plane" aria-hidden="true"></i>
             ส่งงานให้แผนกก่อสร้าง
+        </button> -->
+        <!-- <button class="btn btn-outline-primary"  id="selectFilepdf"   style="border-radius:50px 50px;">
+          <span><i class="fas fa-upload"></i> อัพโหลดแผนผัง</span>
         </button> -->
         <button class="btn btn-outline-primary"  id="editBudget_btn" data-toggle="modal" data-target="#edit_budget" style="border-radius:50px 50px;">
           <span id="btnText"><i class="fas fa-folder-plus"></i> แก้ไขงบประมาณ</span>
