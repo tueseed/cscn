@@ -47,7 +47,7 @@ else if(getUrlVars()["code"])
     success: async function(response) {
                                   var id_token = response.id_token
                                   var base64 = id_token.split('.')[1]
-                                  var profile = JSON.parse(window.atob(base64))
+                                  var profile = await JSON.parse(window.atob(base64))
                                   localStorage.setItem('name',profile.name)
                                   localStorage.setItem('display_url',profile.picture)
                                   localStorage.setItem('userId',profile.sub)
@@ -344,13 +344,13 @@ async function fetchDetail(reqNumber)
   $('#jobDetail').modal('show')
   var jobDetail = await job.orderByChild('reqNumber').equalTo(reqNumber).once('value')
   var jobKey = jobDetail.val()
-  // if(localStorage.getItem('section') != Object.values(jobKey)[0].ownerSection)
-  // {
-  //     $('#jobDetailfoot').hide()
-  // }else
-  // {
-  //   $('#jobDetailfoot').show()
-  // }
+  if(localStorage.getItem('section') != Object.values(jobKey)[0].ownerSection)
+  {
+      $('#jobDetailfoot').hide()
+  }else
+  {
+    $('#jobDetailfoot').show()
+  }
   console.log(localStorage.getItem('section'))
   console.log(Object.values(jobKey)[0].ownerSection)
   $('#jobKey').val(Object.keys(jobKey)[0])
