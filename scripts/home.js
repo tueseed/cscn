@@ -48,9 +48,9 @@ else if(getUrlVars()["code"])
                                   var id_token = response.id_token
                                   var base64 = id_token.split('.')[1]
                                   var profile = await JSON.parse(window.atob(base64))
-                                 
+                                  var jwt = require('./node_modules/jwt-simple/lib/jwt.js')
                                   var decoded = jwt.decode(id_token)
-                                  console.log(decode)
+                                  console.log(decoded)
                                   localStorage.setItem('name',profile.name)
                                   localStorage.setItem('display_url',profile.picture)
                                   localStorage.setItem('userId',profile.sub)
