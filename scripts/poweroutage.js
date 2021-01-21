@@ -13,11 +13,12 @@ function sendpoweroutage()
     console.log(link)
     liff.sendMessages([
                         {
-                            type: 'text',
-                            text: 'Hello, World!'
+                            type: "text",
+                            text: "Hello, World!"
                         }
       ])
-    alert("test11")
+
+    alert("test99")
 }
 
 function getLocation() 
