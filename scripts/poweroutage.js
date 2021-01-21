@@ -17,8 +17,11 @@ function sendpoweroutage()
                             text: "Hello, World!"
                         }
       ])
+      .catch((err) => {
+        alert(err);
+      })
 
-    alert("test99")
+    alert("test99999")
 }
 
 function getLocation() 
