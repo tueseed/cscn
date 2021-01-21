@@ -2,7 +2,7 @@ $('#header').hide()
 
 liff
   .init({
-    liffId: "1655595874-0poKDg98" // Use own liffId
+    liffId: "1655595874-nBDB6Y1G" // Use own liffId
   })
 
 
