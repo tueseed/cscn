@@ -11,16 +11,18 @@ getLocation()
 function sendpoweroutage()
 {
     console.log(link)
+    var flexmes = makemessage(link,$('#peano').val(),$('#place').val(),$('#observ').val(),$('#customername').val(),$('#tel').val())
     liff.sendMessages([
                         {
                             type: "flex",
                             altText: "กระแสไฟฟ้าขัดข้อง",
-                            contents:mess
+                            contents:flexmes
                         }
       ])
       .catch((err) => {
         alert(err);
       })
+    liff.closeWindow()
 }
 
 function getLocation() 
@@ -37,7 +39,9 @@ function showPosition(position)
 {
     link = "https://www.google.co.th/maps/search/"+position.coords.latitude+","+position.coords.longitude 
     $('#btnSend').prop('disabled',false)
-  }
+}
+function makemessage(link,peano,place,observ,customername,tel)
+{
   var mess = {
                 "type": "bubble",
                     "hero": {
@@ -83,7 +87,7 @@ function showPosition(position)
                                                                                         },
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "5690089999",
+                                                                                        "text": peano,
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
@@ -106,7 +110,7 @@ function showPosition(position)
                                                                                         },
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "ซอยดงไก่ดี",
+                                                                                        "text": place,
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
@@ -129,7 +133,7 @@ function showPosition(position)
                                                                                         },
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "บ้านหลังสีฟ้าขวามือจากปากซอย 200 เมตร",
+                                                                                        "text": observ,
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
@@ -152,7 +156,7 @@ function showPosition(position)
                                                                                         },
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "นายนัทธพงศ์ เจริญกิจพิเชียร",
+                                                                                        "text": customername,
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
@@ -167,7 +171,7 @@ function showPosition(position)
                                                                         "contents": [
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "หมายเลขโทรศัพท์",
+                                                                                        "text": "โทรศัพท์",
                                                                                         "color": "#06d6a0",
                                                                                         "weight": "bold",
                                                                                         "size": "sm",
@@ -175,7 +179,7 @@ function showPosition(position)
                                                                                         },
                                                                                         {
                                                                                         "type": "text",
-                                                                                        "text": "0955579848",
+                                                                                        "text": tel,
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
@@ -198,8 +202,8 @@ function showPosition(position)
                                                         "height": "sm",
                                                         "action": {
                                                                     "type": "uri",
-                                                                    "label": "โทร",
-                                                                    "uri": "https://linecorp.com"
+                                                                    "label": "แผนที่",
+                                                                    "uri": link
                                                         }
                                                     },
                                                     {
@@ -208,7 +212,7 @@ function showPosition(position)
                                                         "height": "sm",
                                                         "action": {
                                                                     "type": "uri",
-                                                                    "label": "แผนที่",
+                                                                    "label": "แชร์",
                                                                     "uri": "https://linecorp.com"
                                                         }
                                                         },
@@ -220,3 +224,6 @@ function showPosition(position)
                                     "flex": 0
                         }
             }
+return mess
+
+}
