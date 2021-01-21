@@ -14,7 +14,7 @@
     <div class="row mt-3">  
         <div class="col-lg-12">
             <div class="img-square-wrapper text-center" >
-                <img class="shadow" src="pic/android.png" width="200" height="50" alt="Card image cap">
+                <img class="shadow" src="pic/android.jpg" width="200" height="50" alt="Card image cap">
             </div>
         </div>
     </div>
