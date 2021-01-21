@@ -14,15 +14,13 @@ function sendpoweroutage()
     liff.sendMessages([
                         {
                             type: "flex",
-                            altText: "this is a flex message",
+                            altText: "กระแสไฟฟ้าขัดข้อง",
                             contents:mess
                         }
       ])
       .catch((err) => {
         alert(err);
       })
-
-    alert("test8888")
 }
 
 function getLocation() 
@@ -59,7 +57,8 @@ function showPosition(position)
                                 "contents": [
                                                 {
                                                     "type": "text",
-                                                    "text": "Brown Cafe",
+                                                    "text": "แจ้งกระแสไฟฟ้าขัดข้อง",
+                                                    "color":"#703E91",
                                                     "weight": "bold",
                                                     "size": "xl"
                                                 },                            
@@ -77,7 +76,8 @@ function showPosition(position)
                                                                                         {
                                                                                         "type": "text",
                                                                                         "text": "PEA มิเตอร์ :",
-                                                                                        "color": "#aaaaaa",
+                                                                                        "color": "#06d6a0",
+                                                                                        "weight": "bold",
                                                                                         "size": "sm",
                                                                                         "flex": 1
                                                                                         },
@@ -87,7 +87,7 @@ function showPosition(position)
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
-                                                                                        "flex": 5
+                                                                                        "flex": 2
                                                                                         }
                                                                                     ]
                                                                     },            
@@ -99,7 +99,8 @@ function showPosition(position)
                                                                                         {
                                                                                         "type": "text",
                                                                                         "text": "สถานที่ :",
-                                                                                        "color": "#aaaaaa",
+                                                                                        "color": "#06d6a0",
+                                                                                        "weight": "bold",
                                                                                         "size": "sm",
                                                                                         "flex": 1
                                                                                         },
@@ -109,7 +110,7 @@ function showPosition(position)
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
-                                                                                        "flex": 5
+                                                                                        "flex": 2
                                                                                         }
                                                                                     ]
                                                                     },
@@ -121,7 +122,8 @@ function showPosition(position)
                                                                                         {
                                                                                         "type": "text",
                                                                                         "text": "จุดสังเกตุ",
-                                                                                        "color": "#aaaaaa",
+                                                                                        "color": "#06d6a0",
+                                                                                        "weight": "bold",
                                                                                         "size": "sm",
                                                                                         "flex": 1
                                                                                         },
@@ -131,7 +133,7 @@ function showPosition(position)
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
-                                                                                        "flex": 5
+                                                                                        "flex": 2
                                                                                         }
                                                                                     ]
                                                                     },
@@ -143,7 +145,8 @@ function showPosition(position)
                                                                                         {
                                                                                         "type": "text",
                                                                                         "text": "ผู้แจ้ง",
-                                                                                        "color": "#aaaaaa",
+                                                                                        "color": "#06d6a0",
+                                                                                        "weight": "bold",
                                                                                         "size": "sm",
                                                                                         "flex": 1
                                                                                         },
@@ -153,7 +156,7 @@ function showPosition(position)
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
-                                                                                        "flex": 5
+                                                                                        "flex": 2
                                                                                         }
                                                                                     ]
                                                                     },
@@ -165,7 +168,8 @@ function showPosition(position)
                                                                                         {
                                                                                         "type": "text",
                                                                                         "text": "หมายเลขโทรศัพท์",
-                                                                                        "color": "#aaaaaa",
+                                                                                        "color": "#06d6a0",
+                                                                                        "weight": "bold",
                                                                                         "size": "sm",
                                                                                         "flex": 1
                                                                                         },
@@ -175,7 +179,7 @@ function showPosition(position)
                                                                                         "wrap": true,
                                                                                         "color": "#666666",
                                                                                         "size": "sm",
-                                                                                        "flex": 5
+                                                                                        "flex": 2
                                                                                         }
                                                                                     ]
                                                                     }
