@@ -1,48 +1,31 @@
 $('#header').hide()
 
-liff
-  .init({
-    liffId: "1655595874-nBDB6Y1G" // Use own liffId
-  })
-
-
-var lat = ""
-var long = ""
-getLocation()
-function sendpoweroutage()
+async function main()
 {
-    var flexmes = makemessage(lat,long,$('#peano').val(),$('#place').val(),$('#observ').val(),$('#customername').val(),$('#tel').val())
-    liff.sendMessages([
-                        {
-                            type: "flex",
-                            altText: "กระแสไฟฟ้าขัดข้อง",
-                            contents:flexmes
-                        }
-      ])
-      .catch((err) => {
-        alert(err);
-      })
+    var lat = getUrlVars()["lat"]
+    var long = getUrlVars()["long"]
+    var peano = getUrlVars()["peano"]
+    var place = getUrlVars()["place"]
+    var observ = getUrlVars()["observ"]
+    var customername = getUrlVars()["customername"]
+    var tel = getUrlVars()["tel"]
+    await liff.init({liffId: "1655595874-1mYGWaze"}) // Use own liffId})
+    var flexmes =  await makemessage(lat,long,peano,place,observ,customername,tel)
+    await liff.shareTargetPicker([
+    
+        {
+            type: "flex",
+            altText: "กระแสไฟฟ้าขัดข้อง",
+            contents:flexmes
+        }
+    
+    ])
     liff.closeWindow()
+
+
 }
 
-function getLocation() 
-{
-    if (navigator.geolocation) 
-    {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else 
-    { 
-      var text = "Geolocation is not supported by this browser."
-    }
-} 
-function showPosition(position) 
-{
-    // link = "https://www.google.co.th/maps/search/"+position.coords.latitude+","+position.coords.longitude 
-    lat = position.coords.latitude
-    long = position.coords.longitude
-    $('#btnSend').prop('disabled',false)
-}
-function makemessage(lat,long,peano,place,observ,customername,tel)
+async function makemessage(lat,long,peano,place,observ,customername,tel)
 {
   var mess = {
                 "type": "bubble",
@@ -215,7 +198,7 @@ function makemessage(lat,long,peano,place,observ,customername,tel)
                                                         "action": {
                                                                     "type": "uri",
                                                                     "label": "แชร์",
-                                                                    "uri": "https://liff.line.me/1655595874-1mYGWaze?lat="+lat+"&long="+long+"&peano="+peano+"&place="+place+"&observ="+observ+"&customername="+customername+"&tel="+tel
+                                                                    "uri": "https://linecorp.com"
                                                         }
                                                         },
                                                         {
