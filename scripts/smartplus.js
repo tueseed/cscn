@@ -5,5 +5,5 @@ liff
   })
 liff.getOs().then(os => {
     const getos = os
-    alert(getos)
+    alert(getos + "vdsvj")
 })
