@@ -215,8 +215,8 @@ function makemessage(lat,long,peano,place,observ,customername,tel)
                                                         "action": {
                                                                     "type": "uri",
                                                                     "label": "แชร์",
-                                                                    // "uri": "https://liff.line.me/1655595874-1mYGWaze?lat="+lat+"&long="+long+"&peano="+peano+"&place="+place+"&observ="+observ+"&customername="+customername+"&tel="+tel
-                                                                    "uri": "https://liff.line.me/1655595874-1mYGWaze"
+                                                                    "uri": "https://liff.line.me/1655595874-1mYGWaze?lat="+lat+"&long="+long+"&peano="+peano+"&place="+place+"&observ="+observ+"&customername="+customername+"&tel="+tel
+                                                                    // "uri": "https://liff.line.me/1655595874-1mYGWaze"
                                                         }
                                                         },
                                                         {
