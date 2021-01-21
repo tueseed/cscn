@@ -11,7 +11,13 @@ getLocation()
 function sendpoweroutage()
 {
     console.log(link)
-    liff.sendMessages(mess)
+    liff.sendMessages([
+                        {
+                        type: 'flex',
+                        altText: "this is a flex message",
+                        contents: mess
+                        }
+      ])
     alert("test")
 }
 
