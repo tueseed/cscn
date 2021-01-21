@@ -44,7 +44,7 @@ function showPosition(position)
                 "type": "bubble",
                     "hero": {
                                 "type": "image",
-                                "url": "pic/poweroutageflex",
+                                "url": "https://cscn.herokuapp.com/pic/poweroutageflex.png",
                                 "size": "full",
                                 "aspectRatio": "20:13",
                                 "aspectMode": "cover",
