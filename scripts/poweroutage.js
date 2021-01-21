@@ -44,7 +44,8 @@ function showPosition(position)
 }
 function makemessage(lat,long,peano,place,observ,customername,tel)
 {
-  var mess = {
+    alert("https://liff.line.me/1655595874-1mYGWaze?lat=" + lat + "&long=" + long + "&peano=" + peano + "&place=" + place + "&observ=" + observ + "&customername=" + customername + "&tel=" + tel)
+    var mess = {
                 "type": "bubble",
                     "hero": {
                                 "type": "image",
@@ -215,7 +216,7 @@ function makemessage(lat,long,peano,place,observ,customername,tel)
                                                         "action": {
                                                                     "type": "uri",
                                                                     "label": "แชร์",
-                                                                    // "uri": "https://liff.line.me/1655595874-1mYGWaze?lat="+lat+"&long="+long+"&peano="+peano+"&place="+place+"&observ="+observ+"&customername="+customername+"&tel="+tel
+                                                                    // "uri": "https://liff.line.me/1655595874-1mYGWaze?lat=" + lat + "&long=" + long + "&peano=" + peano + "&place=" + place + "&observ=" + observ + "&customername=" + customername + "&tel=" + tel
                                                                     "uri": "https://liff.line.me/1655595874-1mYGWaze"
                                                         }
                                                         },
