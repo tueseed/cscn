@@ -1,5 +1,5 @@
 $('#header').hide()
-
+main()
 async function main()
 {
     var lat = getUrlVars()["lat"]
