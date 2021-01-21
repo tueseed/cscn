@@ -40,7 +40,7 @@
     </style>
   </head>
 
-  <body class="bg-dark">
+  <body>
     <header class="pb-3" id="header">
       <!-- Image and text -->
       <nav class="shadow-sm navbar navbar-light bg-dark">
