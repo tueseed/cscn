@@ -2,13 +2,13 @@ $('#header').hide()
 main()
 async function main()
 {
-    var lat = getUrlVars()["lat"]
-    var long = getUrlVars()["long"]
-    var peano = getUrlVars()["peano"]
-    var place = getUrlVars()["place"]
-    var observ = getUrlVars()["observ"]
-    var customername = getUrlVars()["customername"]
-    var tel = getUrlVars()["tel"]
+    var lat = localStorage.getItem('lat')
+    var long = localStorage.getItem('long')
+    var peano = localStorage.getItem('peano')
+    var place = localStorage.getItem('place')
+    var observ = localStorage.getItem('observ')
+    var customername = localStorage.getItem('customername')
+    var tel = localStorage.getItem('tel')
     await liff.init({liffId: "1655595874-1mYGWaze"}) // Use own liffId})
     var flexmes =  await makemessage(lat,long,peano,place,observ,customername,tel)
     await liff.shareTargetPicker([
@@ -198,7 +198,7 @@ async function makemessage(lat,long,peano,place,observ,customername,tel)
                                                         "action": {
                                                                     "type": "uri",
                                                                     "label": "แชร์",
-                                                                    "uri": "https://linecorp.com"
+                                                                    "uri": "https://liff.line.me/1655595874-1mYGWaze"
                                                         }
                                                         },
                                                         {
