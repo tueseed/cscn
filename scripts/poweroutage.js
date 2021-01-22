@@ -44,8 +44,8 @@ function showPosition(position)
 }
 function makemessage(lat,long,peano,place,observ,customername,tel)
 {
-    var link = "https://liff.line.me/1655595874-1mYGWaze?lat=lat&long=long&peano=peano&place=บ้านยายนะ&observ=observ&customername=nutthapong&tel=tel"
-    alert(link.length)
+    var link = "https://liff.line.me/1655595874-1mYGWaze?lat="+lat+"&long="+long+"&peano="+peano+"&place="+place+"&observ="+observ+"&customername="+customername+"&tel="+tel
+    var linkendcode = encodeURIComponent(link)
     var mess = {
                 "type": "bubble",
                     "hero": {
@@ -218,7 +218,7 @@ function makemessage(lat,long,peano,place,observ,customername,tel)
                                                                     "type": "uri",
                                                                     "label": "แชร์",
                                                                     // "uri": "https://liff.line.me/1655595874-1mYGWaze?lat=" + lat + "&long=" + long + "&peano=" + peano + "&place=" + place + "&observ=" + observ + "&customername=" + customername + "&tel=" + tel
-                                                                    "uri": link
+                                                                    "uri": linkendcode
                                                         }
                                                         },
                                                         {
