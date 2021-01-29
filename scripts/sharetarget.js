@@ -191,16 +191,6 @@ async function makemessage(lat,long,peano,place,observ,customername,tel)
                                                                     "uri": "https://www.google.co.th/maps/search/" + lat + "," + long
                                                         }
                                                     },
-                                                    {
-                                                        "type": "button",
-                                                        "style": "link",
-                                                        "height": "sm",
-                                                        "action": {
-                                                                    "type": "uri",
-                                                                    "label": "แชร์",
-                                                                    "uri": "https://liff.line.me/1655595874-1mYGWaze"
-                                                        }
-                                                        },
                                                         {
                                                             "type": "spacer",
                                                             "size": "sm"
