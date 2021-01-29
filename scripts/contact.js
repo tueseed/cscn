@@ -1,3 +1,4 @@
+$('#header').hide()
 liff
   .init({
     liffId: "1655595874-03WvDLp6" // Use own liffId
@@ -11,7 +12,7 @@ liff
       liff.sendMessages([
                           {
                               type: "flex",
-                              altText: "กระแสไฟฟ้าขัดข้อง",
+                              altText: "ข้อมูลการติดต่อ",
                               contents:flexmes
                           }
         ])
@@ -28,22 +29,22 @@ function makemessage()
 {
 
     var mess = {
-        "type": "bubble",
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "ข้อมูลการติดต่อ",
-              "weight": "bold",
-              "size": "xl"
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "margin": "md",
-              "contents": [
+                "type": "bubble",
+                "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                                    {
+                                    "type": "text",
+                                    "text": "ข้อมูลการติดต่อ",
+                                    "weight": "bold",
+                                    "size": "xl"
+                                    },
+                                    {
+                                    "type": "box",
+                                    "layout": "baseline",
+                                    "margin": "md",
+                                    "contents": [
                 {
                   "type": "icon",
                   "size": "xl",
