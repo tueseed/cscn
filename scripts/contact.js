@@ -1,20 +1,18 @@
 $('#header').hide()
-liff
-  .init({
-    liffId: "1655595874-03WvDLp6" // Use own liffId
-  })
+
 
 sendcontact()
 
 async function sendcontact()
   {
-      var flexmes = await makemessage()
-      liff.sendMessages([
-                          {
-                              type: "flex",
-                              altText: "ข้อมูลการติดต่อ",
-                              contents:flexmes
-                          }
+    await liff.init({iffId: "1655595874-03WvDLp6"})
+    var flexmes = await makemessage()
+    liff.sendMessages([
+                        {
+                            type: "flex",
+                            altText: "ข้อมูลการติดต่อ",
+                            contents:flexmes
+                        }
         ])
         .catch((err) => {
           alert(err);
