@@ -4,11 +4,11 @@ liff
     liffId: "1655595874-03WvDLp6" // Use own liffId
   })
 
-  sendcontact()
+sendcontact()
 
-  function sendcontact()
+async function sendcontact()
   {
-      var flexmes = makemessage()
+      var flexmes = await makemessage()
       liff.sendMessages([
                           {
                               type: "flex",
@@ -25,7 +25,7 @@ liff
 
 
 
-function makemessage()
+async function makemessage()
 {
 
     var mess = {
