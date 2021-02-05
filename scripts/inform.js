@@ -8,9 +8,9 @@ function send_reqnumber()
     formData.append('NO','JPTM64000283')
     $.ajax({
                 url: 'https://eservice.pea.co.th/cos/checkstatus',
-                headers: {  'Access-Control-Allow-Origin': 'https://eservice.pea.co.th/cos/checkstatus' },
                 method: 'POST',
                 data:formData,
+                dataType: 'jsonp',
                 async: true,
                 cache: false,
                 processData: false,
