@@ -17,8 +17,8 @@ function send_reqnumber()
                 contentType: false,
                 success: function(response) 
                 {
-                    var obj = JSON.parse(response)
-                    console.log(obj)     
+                    // var obj = JSON.parse(response)
+                    console.log(response)     
                 }					
             })
 }
