@@ -10,7 +10,6 @@ function send_reqnumber()
                 url: 'https://eservice.pea.co.th/cos/checkstatus',
                 method: 'POST',
                 data:formData,
-                dataType: 'jsonp',
                 async: true,
                 cache: false,
                 processData: false,
