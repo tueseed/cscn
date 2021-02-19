@@ -1,7 +1,6 @@
 $('#header').hide()
 main()
 
-
 async function main()
 {
 
@@ -20,9 +19,8 @@ function shared()
     liff.shareTargetPicker([
     
         {
-            type: "text",
-            altText: "กระแสไฟฟ้าขัดข้อง",
-            contents:"flexmes"
+            "type": "text",
+            "text": "Messages from Share Target Picker"
         }])
 }
 
