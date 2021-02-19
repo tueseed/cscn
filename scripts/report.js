@@ -1,27 +1,16 @@
 $('#header').hide()
-// main()
-liff.init({liffId: "1655595874-1mYGWaze"})
+main()
+
+
 async function main()
 {
-    var lat = localStorage.getItem('lat')
-    var long = localStorage.getItem('long')
-    var peano = localStorage.getItem('peano')
-    var place = localStorage.getItem('place')
-    var observ = localStorage.getItem('observ')
-    var customername = localStorage.getItem('customername')
-    var tel = localStorage.getItem('tel')
-    await liff.init({liffId: "1655595874-1mYGWaze"}) // Use own liffId})
-    var flexmes =  await makemessage(lat,long,peano,place,observ,customername,tel)
-    await liff.shareTargetPicker([
-    
-        {
-            type: "flex",
-            altText: "กระแสไฟฟ้าขัดข้อง",
-            contents:flexmes
-        }
-    
-    ])
-    liff.closeWindow()
+
+    await liff.init({liffId: "1655595874-RxwxJLN7"}) // Use own liffId})
+    if (liff.isLoggedIn()) {
+        // Login แล้วจ้า
+      } else {
+        liff.login()
+      }
 
 
 }
