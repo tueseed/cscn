@@ -19,5 +19,5 @@
     <label for="telInput" class="font-weight-bold text-success"><i class="fas fa-info"></i> รายละเอียด</label>
     </div>
 </div>
-<div id="content"> </div>
+<div id="content">   </div>
 
