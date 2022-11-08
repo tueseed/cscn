@@ -1,8 +1,6 @@
 $(document).ready(function() {
     $('#header').hide()
     gapi.load("client")
-    // loadClient()
-    // execute()
 })
 
 function loadClient() 
@@ -19,7 +17,7 @@ function execute()
     console.log(eventId)    
     return gapi.client.calendar.events.get({
       "calendarId": "peaptr99@gmail.com",
-      "eventId": "0lbg9j64nge1nnj33d8qf2tct2"
+      "eventId": "0lbg9j64nge1nnj33d8qf2tct"
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
@@ -27,6 +25,8 @@ function execute()
               },
               function(err) { console.error("Execute error", err); })
   }
+
+  gapi.load("client")
   
 
 
