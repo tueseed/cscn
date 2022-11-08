@@ -13,7 +13,7 @@
 
 <div class="row mt-2">
     <div class="col-lg-12 text-left">
-        <label for="telInput" class="font-weight-bold"> <i class="fas fa-handshake"></i> ประชุม</label>
+        <label for="telInput" class="font-weight-bold text-primary"> <i class="fas fa-handshake"></i> ประชุม</label>
     </div>
 
     <div class="col-lg-12 text-left">
@@ -21,18 +21,26 @@
     </div>
 
     <div class="col-lg-12 text-left">
-        <label for="telInput" class="font-weight-bold"><i class="fas fa-calendar"></i> วันที่</label>
+        <label for="telInput" class="font-weight-bold text-primary"><i class="fas fa-calendar"></i> วันที่</label>
     </div>
 
     <div class="col-lg-12 text-left">
-        <label for="telInput" class="font-weight-bold text-success" id="datetime"></label>
+        <label for="telInput" class="font-weight-bold text-success" id="date"></label>
     </div>
 
     <div class="col-lg-12 text-left">
-        <label for="telInput" class="font-weight-bold text-success"><i class="fas fa-clock"></i> เวลา</label>
+        <label for="telInput" class="font-weight-bold text-primary"><i class="fas fa-clock"></i> เวลา</label>
     </div>
 
     <div class="col-lg-12 text-left">
-        <label for="telInput" class="font-weight-bold text-success"><i class="fas fa-info"></i> รายละเอียด</label>
+        <label for="telInput" class="font-weight-bold text-success" id="time"></label>
+    </div>
+
+    <div class="col-lg-12 text-left">
+        <label for="telInput" class="font-weight-bold text-primary"><i class="fas fa-info"></i> รายละเอียด</label>
+    </div>
+
+    <div class="col-lg-12 text-left">
+        <label for="telInput" class="font-weight-bold text-success" id="description"></label>
     </div>
 </div>

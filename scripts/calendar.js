@@ -4,6 +4,13 @@ $(document).ready(function() {
 })
 const month = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"]
 const dayweek = ["จันทร์","อังคาร","พุธ","พฤหัส","ศุกร์","เสาร์","อาทิตย์"]
+
+function addZero(i) 
+{
+  if (i < 10) {i = "0" + i}
+  return i;
+}
+
 function loadClient()
 {
   gapi.client.setApiKey("AIzaSyAp1LKnVj68GEWrH43bRXEGbPf6W9iWyKY");
@@ -29,7 +36,9 @@ function execute() {
                 var end = new Date(response.result.end.dateTime)
                 var description = response.result.description
                 $('#meeting_topic').text(meeting)
-                $('#datetime').text("วัน" + dayweek[parseInt(start.getDay()-1)] +"ที่ "+ start.getDate() + " " + month[start.getMonth()] + " "+parseInt(start.getFullYear() + 543))
+                $('#date').text("วัน" + dayweek[parseInt(start.getDay()-1)] +"ที่ "+ start.getDate() + " " + month[start.getMonth()] + " "+parseInt(start.getFullYear() + 543))
+                $('#time').text(addZero(start.getHours())+':' + addZero(start.getMinutes())+ ' ถึง '+ addZero(end.getHours()) + ':'+addZero(end.getMinutes()))
+                $('#description').text(description)
 
               },
               function(err) { console.error("Execute error", err); });
