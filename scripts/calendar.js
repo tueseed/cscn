@@ -11,6 +11,7 @@ function addZero(i)
   return i;
 }
 
+
 function loadClient()
 {
   gapi.client.setApiKey("AIzaSyAp1LKnVj68GEWrH43bRXEGbPf6W9iWyKY");
@@ -26,9 +27,12 @@ function loadClient()
 
   // Make sure the client is loaded before calling this method.
 function execute() {
+  const eventId = getUrlVars()["eventId"]
+  console.log(eventId)
     return gapi.client.calendar.events.get({
       "calendarId": "peaptr99@gmail.com",
-      "eventId": "0lbg9j64nge1nnj33d8qf2tct2"
+      "eventId": eventId
+      // "eventId": "0lbg9j64nge1nnj33d8qf2tct2"
     })
         .then(function(response) {
                 var meeting = response.result.summary
