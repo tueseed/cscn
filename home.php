@@ -31,7 +31,7 @@
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="disAllcheck">
                 <label class="form-check-label" for="defaultCheck1">
-                  แสดงข้อมูลงานทั้งหมด
+                  แสดงข้อมูลงานทั้งหมด.......
                 </label>
               </div>
             </div>
